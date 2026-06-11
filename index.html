@@ -93,8 +93,29 @@
         </div>
       </section>
 
-      <section class="section photo-section" aria-label="Foto do casal">
-        <div class="photo-panel"></div>
+      <section class="section photo-section" aria-label="Fotos do casal">
+        <div class="photo-carousel" data-carousel aria-label="Carrossel de fotos do casal">
+          <div class="carousel-track">
+            <img class="carousel-slide is-active" src="fotos/foto%201.jpeg" alt="Camila e Matheus juntos na foto 1" />
+            <img class="carousel-slide" src="fotos/foto%202.jpeg" alt="Camila e Matheus juntos na foto 2" />
+            <img class="carousel-slide" src="fotos/foto%203.jpeg" alt="Camila e Matheus juntos na foto 3" />
+            <img class="carousel-slide" src="fotos/foto%204.jpeg" alt="Camila e Matheus juntos na foto 4" />
+            <img class="carousel-slide" src="fotos/foto%205.jpeg" alt="Camila e Matheus juntos na foto 5" />
+          </div>
+          <button class="carousel-control prev" type="button" data-carousel-control="prev" aria-label="Foto anterior">
+            ‹
+          </button>
+          <button class="carousel-control next" type="button" data-carousel-control="next" aria-label="Proxima foto">
+            ›
+          </button>
+          <div class="carousel-dots" aria-label="Selecionar foto">
+            <button class="is-active" type="button" data-carousel-dot="0" aria-label="Mostrar foto 1"></button>
+            <button type="button" data-carousel-dot="1" aria-label="Mostrar foto 2"></button>
+            <button type="button" data-carousel-dot="2" aria-label="Mostrar foto 3"></button>
+            <button type="button" data-carousel-dot="3" aria-label="Mostrar foto 4"></button>
+            <button type="button" data-carousel-dot="4" aria-label="Mostrar foto 5"></button>
+          </div>
+        </div>
         <div class="quote-panel">
           <p>
             "Assim, eles ja nao sao dois, mas sim uma so carne. Portanto, o que

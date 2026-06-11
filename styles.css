@@ -10,7 +10,6 @@
   --white: #ffffff;
   --shadow: 0 22px 70px rgba(31, 39, 35, 0.16);
   --hero-image: url("https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=1800&q=85");
-  --couple-image: url("https://images.unsplash.com/photo-1529634597503-139d3726fed5?auto=format&fit=crop&w=1600&q=85");
 }
 
 * {
@@ -304,13 +303,95 @@ h3 {
   background: var(--linen);
 }
 
-.photo-panel {
+.photo-carousel {
+  position: relative;
   min-height: clamp(420px, 56vw, 720px);
   border-radius: 8px;
-  background-image: var(--couple-image);
-  background-size: cover;
-  background-position: center;
+  overflow: hidden;
+  background: var(--ink);
   box-shadow: var(--shadow);
+}
+
+.carousel-track,
+.carousel-slide {
+  width: 100%;
+  height: 100%;
+}
+
+.carousel-track {
+  position: absolute;
+  inset: 0;
+}
+
+.carousel-slide {
+  position: absolute;
+  inset: 0;
+  object-fit: cover;
+  opacity: 0;
+  transform: scale(1.02);
+  transition: opacity 520ms ease, transform 720ms ease;
+}
+
+.carousel-slide.is-active {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.carousel-control {
+  position: absolute;
+  top: 50%;
+  z-index: 2;
+  display: grid;
+  width: 44px;
+  height: 44px;
+  place-items: center;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  border-radius: 50%;
+  color: var(--white);
+  background: rgba(36, 48, 43, 0.42);
+  font-size: 2rem;
+  line-height: 1;
+  cursor: pointer;
+  transform: translateY(-50%);
+  transition: background 180ms ease, transform 180ms ease;
+}
+
+.carousel-control:hover {
+  background: rgba(36, 48, 43, 0.68);
+  transform: translateY(-50%) scale(1.04);
+}
+
+.carousel-control.prev {
+  left: 18px;
+}
+
+.carousel-control.next {
+  right: 18px;
+}
+
+.carousel-dots {
+  position: absolute;
+  right: 0;
+  bottom: 18px;
+  left: 0;
+  z-index: 2;
+  display: flex;
+  justify-content: center;
+  gap: 9px;
+}
+
+.carousel-dots button {
+  width: 10px;
+  height: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.78);
+  border-radius: 50%;
+  padding: 0;
+  background: rgba(255, 255, 255, 0.34);
+  cursor: pointer;
+}
+
+.carousel-dots button.is-active {
+  background: var(--white);
 }
 
 .quote-panel {
@@ -476,7 +557,7 @@ textarea {
     min-height: auto;
   }
 
-  .photo-panel {
+  .photo-carousel {
     min-height: 420px;
   }
 

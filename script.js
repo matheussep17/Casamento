@@ -5,6 +5,7 @@ const weddingConfig = {
 const header = document.querySelector(".site-header");
 const countdown = document.querySelector(".countdown");
 const form = document.querySelector(".rsvp-form");
+const carousel = document.querySelector("[data-carousel]");
 
 const updateHeader = () => {
   header.classList.toggle("is-scrolled", window.scrollY > 24);
@@ -54,9 +55,54 @@ const handleSubmit = (event) => {
   );
 };
 
+const setupCarousel = () => {
+  if (!carousel) return;
+
+  const slides = [...carousel.querySelectorAll(".carousel-slide")];
+  const dots = [...carousel.querySelectorAll("[data-carousel-dot]")];
+  const controls = [...carousel.querySelectorAll("[data-carousel-control]")];
+  let activeIndex = 0;
+  let autoplayId;
+
+  const showSlide = (index) => {
+    activeIndex = (index + slides.length) % slides.length;
+
+    slides.forEach((slide, slideIndex) => {
+      slide.classList.toggle("is-active", slideIndex === activeIndex);
+    });
+
+    dots.forEach((dot, dotIndex) => {
+      dot.classList.toggle("is-active", dotIndex === activeIndex);
+    });
+  };
+
+  const startAutoplay = () => {
+    window.clearInterval(autoplayId);
+    autoplayId = window.setInterval(() => showSlide(activeIndex + 1), 5200);
+  };
+
+  controls.forEach((control) => {
+    control.addEventListener("click", () => {
+      showSlide(activeIndex + (control.dataset.carouselControl === "next" ? 1 : -1));
+      startAutoplay();
+    });
+  });
+
+  dots.forEach((dot) => {
+    dot.addEventListener("click", () => {
+      showSlide(Number(dot.dataset.carouselDot));
+      startAutoplay();
+    });
+  });
+
+  showSlide(0);
+  startAutoplay();
+};
+
 window.addEventListener("scroll", updateHeader, { passive: true });
 form?.addEventListener("submit", handleSubmit);
 
 updateHeader();
 updateCountdown();
+setupCarousel();
 setInterval(updateCountdown, 1000);
