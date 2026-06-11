@@ -41,14 +41,14 @@ const handleSubmit = (event) => {
   const status = form.querySelector(".form-status");
 
   const text = [
-    `Oi! Aqui e ${name}.`,
-    `Confirmo presenca no casamento para ${guests} pessoa(s).`,
+    `Oi! Aqui é ${name}.`,
+    `Confirmo presença no casamento para ${guests} pessoa(s).`,
     message ? `Mensagem: ${message}` : "",
   ]
     .filter(Boolean)
     .join("\n");
 
-  status.textContent = "Abrindo WhatsApp para concluir a confirmacao...";
+  status.textContent = "Abrindo WhatsApp para concluir a confirmação...";
   window.open(
     `https://wa.me/${weddingConfig.whatsappNumber}?text=${encodeURIComponent(text)}`,
     "_blank",
