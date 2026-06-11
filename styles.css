@@ -320,6 +320,11 @@ h3 {
   color: var(--white);
 }
 
+.event-card-featured .event-location,
+.event-card-featured .event-address {
+  color: #ffffff !important;
+}
+
 .photo-section {
   display: grid;
   grid-template-columns: 1.15fr 0.85fr;
