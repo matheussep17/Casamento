@@ -26,7 +26,7 @@
       <section class="hero" id="inicio">
         <div class="hero-overlay"></div>
         <div class="hero-content">
-          <p class="eyebrow">Reserve a data</p>
+          <p class="eyebrow">Casamento</p>
           <h1>Camila & Matheus</h1>
           <p class="hero-date">14 de agosto de 2027</p>
           <p class="hero-text">
@@ -129,7 +129,7 @@
       <section class="section event" id="evento">
         <div class="section-copy">
           <p class="eyebrow">Programação</p>
-          <h2>Todos os detalhes para viver esse dia com a gente.</h2>
+          <h2>Todos os detalhes para compartilhar esse dia tão especial conosco.</h2>
         </div>
         <div class="event-layout">
           <article class="event-card event-card-featured">
@@ -158,16 +158,16 @@
       <section class="section rsvp" id="rsvp">
         <div class="section-copy">
           <p class="eyebrow">Confirme sua presença</p>
-          <h2>Sua resposta ajuda a gente a cuidar de cada detalhe.</h2>
+          <h2>Sua resposta nos ajuda a cuidar de cada detalhe.</h2>
         </div>
         <form class="rsvp-form" aria-label="Formulário de confirmação">
           <label>
-            Nome completo
-            <input type="text" name="nome" placeholder="Seu nome" required />
+            Nome de quem está confirmando
+            <input type="text" name="responsavel" placeholder="Seu nome completo" required />
           </label>
           <label>
-            Quantidade de convidados
-            <select name="convidados" required>
+            Pessoas confirmadas
+            <select name="convidados" data-guests-select required>
               <option value="">Selecione</option>
               <option value="1">1 pessoa</option>
               <option value="2">2 pessoas</option>
@@ -175,6 +175,11 @@
               <option value="4">4 pessoas</option>
             </select>
           </label>
+          <div class="guest-list" data-guest-list></div>
+          <p class="rsvp-note">
+            Para recebermos todos com carinho, confirme apenas as pessoas que já estão na lista de
+            convidados. Assim conseguimos organizar os lugares e evitar qualquer imprevisto no dia.
+          </p>
           <label>
             Mensagem para os noivos
             <textarea
@@ -191,7 +196,7 @@
       <section class="section gifts" id="presentes">
         <div class="section-copy">
           <p class="eyebrow">Lista de presentes</p>
-          <h2>Quem quiser nos presentear pode escolher uma das opções.</h2>
+          <h2>Aos que desejarem nos presentear deixando um link abaixo.</h2>
         </div>
         <div class="gift-grid">
           <a class="gift-card" href="#" aria-label="Abrir lista de presentes">
@@ -223,11 +228,6 @@
             </button>
             <p class="pix-copy-status" role="status" aria-live="polite"></p>
           </article>
-          <a class="gift-card" href="#" aria-label="Abrir cotas de lua de mel">
-            <span>Lua de mel</span>
-            <strong>Experiências</strong>
-            <p>Jantar, passeio, hospedagem e momentos especiais.</p>
-          </a>
         </div>
       </section>
     </main>

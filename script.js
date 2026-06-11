@@ -1,5 +1,5 @@
 const weddingConfig = {
-  whatsappNumber: "5500000000000",
+  whatsappNumber: "5562992304054",
 };
 
 const header = document.querySelector(".site-header");
@@ -7,6 +7,8 @@ const countdown = document.querySelector(".countdown");
 const form = document.querySelector(".rsvp-form");
 const carousel = document.querySelector("[data-carousel]");
 const pixCopyButton = document.querySelector("[data-copy-pix]");
+const guestsSelect = form?.querySelector("[data-guests-select]");
+const guestList = form?.querySelector("[data-guest-list]");
 
 const updateHeader = () => {
   header.classList.toggle("is-scrolled", window.scrollY > 24);
@@ -32,18 +34,46 @@ const updateCountdown = () => {
   });
 };
 
+const renderGuestFields = () => {
+  if (!guestsSelect || !guestList) return;
+
+  const guestCount = Number(guestsSelect.value || 0);
+  guestList.innerHTML = "";
+
+  for (let index = 1; index <= guestCount; index += 1) {
+    const label = document.createElement("label");
+    const input = document.createElement("input");
+
+    label.textContent = `Nome do convidado ${index}`;
+    input.type = "text";
+    input.name = "nomesConvidados";
+    input.placeholder = index === 1 ? "Nome completo" : "Nome de quem vai junto";
+    input.required = true;
+
+    label.append(input);
+    guestList.append(label);
+  }
+};
+
 const handleSubmit = (event) => {
   event.preventDefault();
 
   const data = new FormData(form);
-  const name = data.get("nome")?.toString().trim() || "Convidado";
-  const guests = data.get("convidados") || "1";
+  const responsible = data.get("responsavel")?.toString().trim() || "Convidado";
+  const guestNames = data
+    .getAll("nomesConvidados")
+    .map((guest) => guest.toString().trim())
+    .filter(Boolean);
   const message = data.get("mensagem")?.toString().trim();
   const status = form.querySelector(".form-status");
+  const guestListText = guestNames
+    .map((guest, index) => `${index + 1}. ${guest}`)
+    .join("\n");
 
   const text = [
-    `Oi! Aqui é ${name}.`,
-    `Confirmo presença no casamento para ${guests} pessoa(s).`,
+    `Oi! Aqui é ${responsible}.`,
+    `Confirmo presença no casamento para ${guestNames.length} pessoa(s):`,
+    guestListText,
     message ? `Mensagem: ${message}` : "",
   ]
     .filter(Boolean)
@@ -116,9 +146,11 @@ const copyPixKey = async () => {
 
 window.addEventListener("scroll", updateHeader, { passive: true });
 form?.addEventListener("submit", handleSubmit);
+guestsSelect?.addEventListener("change", renderGuestFields);
 pixCopyButton?.addEventListener("click", copyPixKey);
 
 updateHeader();
 updateCountdown();
+renderGuestFields();
 setupCarousel();
 setInterval(updateCountdown, 1000);
