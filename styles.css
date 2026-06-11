@@ -185,6 +185,10 @@ h3 {
   background: var(--terracotta);
 }
 
+.button.presence-button {
+  background: #d96f96;
+}
+
 .button.secondary {
   color: var(--white);
   border-color: rgba(255, 255, 255, 0.58);
