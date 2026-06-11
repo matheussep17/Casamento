@@ -315,6 +315,11 @@ h3 {
   font-style: normal;
 }
 
+.event-card.event-card-featured p,
+.event-card.event-card-featured address {
+  color: var(--white);
+}
+
 .photo-section {
   display: grid;
   grid-template-columns: 1.15fr 0.85fr;
