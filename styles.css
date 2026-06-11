@@ -253,6 +253,10 @@ h3 {
   gap: 18px;
 }
 
+.event-layout {
+  grid-template-columns: minmax(0, 1.35fr) minmax(280px, 0.65fr);
+}
+
 .story-grid article,
 .event-card,
 .gift-card,
@@ -267,6 +271,22 @@ h3 {
 .gift-card {
   min-height: 230px;
   padding: clamp(22px, 4vw, 34px);
+}
+
+.event-card-featured {
+  background: var(--olive);
+  color: var(--white);
+}
+
+.event-card-featured .time,
+.event-card-featured p,
+.event-card-featured address {
+  color: rgba(255, 255, 255, 0.82);
+}
+
+.event-card-featured h3 {
+  color: var(--white);
+  font-size: clamp(2rem, 4vw, 3.25rem);
 }
 
 .story-grid span,
