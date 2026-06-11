@@ -6,6 +6,7 @@ const header = document.querySelector(".site-header");
 const countdown = document.querySelector(".countdown");
 const form = document.querySelector(".rsvp-form");
 const carousel = document.querySelector("[data-carousel]");
+const pixCopyButton = document.querySelector("[data-copy-pix]");
 
 const updateHeader = () => {
   header.classList.toggle("is-scrolled", window.scrollY > 24);
@@ -99,8 +100,23 @@ const setupCarousel = () => {
   startAutoplay();
 };
 
+const copyPixKey = async () => {
+  if (!pixCopyButton) return;
+
+  const pixKey = pixCopyButton.dataset.copyPix;
+  const status = document.querySelector(".pix-copy-status");
+
+  try {
+    await navigator.clipboard.writeText(pixKey);
+    status.textContent = "Chave Pix copiada.";
+  } catch {
+    status.textContent = `Chave Pix: ${pixKey}`;
+  }
+};
+
 window.addEventListener("scroll", updateHeader, { passive: true });
 form?.addEventListener("submit", handleSubmit);
+pixCopyButton?.addEventListener("click", copyPixKey);
 
 updateHeader();
 updateCountdown();

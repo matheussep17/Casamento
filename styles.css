@@ -528,6 +528,60 @@ textarea {
   font-weight: 400;
 }
 
+.pix-card {
+  display: grid;
+  gap: 16px;
+}
+
+.pix-qr-code {
+  width: min(220px, 100%);
+  aspect-ratio: 1;
+  justify-self: center;
+  border-radius: 8px;
+  background: var(--white);
+}
+
+.pix-details {
+  display: grid;
+  gap: 10px;
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.pix-details div {
+  display: grid;
+  gap: 4px;
+}
+
+.pix-details dt {
+  color: var(--sage);
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.pix-details dd {
+  margin: 0;
+  color: var(--ink);
+  font-size: 0.96rem;
+  line-height: 1.35;
+  overflow-wrap: anywhere;
+}
+
+.pix-copy-button {
+  width: 100%;
+}
+
+.pix-copy-status {
+  min-height: 22px;
+  margin: 0;
+  color: var(--sage);
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 0.9rem;
+  font-weight: 700;
+}
+
 .footer {
   display: flex;
   align-items: center;
