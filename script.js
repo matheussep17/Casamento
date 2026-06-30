@@ -1,16 +1,257 @@
-const weddingConfig = {
-  whatsappNumber: "5562992304054",
+const weddingPages = {
+  casamento: {
+    meta: {
+      title: "Camila & Matheus | Casamento",
+      description:
+        "Site de casamento com informações da cerimônia, recepção, confirmação de presença e lista de presentes.",
+    },
+    heroImage: "https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=1800&q=85",
+    brand: "C & M",
+    nav: ["História", "Evento", "Presença", "Presentes"],
+    hero: {
+      eyebrow: "Casamento",
+      coupleName: "Camila & Matheus",
+      dateLabel: "14 de agosto de 2027",
+      weddingDate: "2027-08-14T16:30:00-03:00",
+      text:
+        "Estamos preparando cada detalhe com muito carinho para celebrar o amor que Deus cultivou entre nós, unindo nossos corações e dando início aos sonhos que florescem em nossa nova jornada.",
+    },
+    story: {
+      eyebrow: "Nossa história",
+      title: "Dois caminhos unidos pelo amor e uma história que seguirá para sempre.",
+      cards: [
+        {
+          step: "01",
+          title: "O começo",
+          text:
+            "Uma conversa virou companhia, a companhia virou escolha, e aos poucos entendemos que Deus estava escrevendo uma história bonita em nós.",
+        },
+        {
+          step: "02",
+          title: "O pedido",
+          text:
+            "O sim veio com a certeza tranquila de quem já sonhava junto: começar uma nova família cercados de amor, fé e gratidão.",
+        },
+        {
+          step: "03",
+          title: "O grande dia",
+          text:
+            "Agora queremos celebrar esse passo com pessoas especiais, pedindo a bênção de Deus para a vida que vamos construir lado a lado.",
+        },
+      ],
+    },
+    photos: [
+      { src: "fotos/foto-1.jpeg?v=photo-2", alt: "Camila e Matheus juntos na foto 1" },
+      { src: "fotos/foto-2.jpeg", alt: "Camila e Matheus juntos na foto 2" },
+      { src: "fotos/foto-3.jpeg", alt: "Camila e Matheus juntos na foto 3" },
+      { src: "fotos/foto-4.jpeg", alt: "Camila e Matheus juntos na foto 4" },
+      { src: "fotos/foto-5.jpeg", alt: "Camila e Matheus juntos na foto 5" },
+    ],
+    event: {
+      eyebrow: "Programação",
+      title: "Todos os detalhes para compartilhar esse dia tão especial conosco.",
+      main: {
+        time: "16:30 até 21:00",
+        title: "Cerimônia & Recepção",
+        location: "Chácara do italiano",
+        address: "BR-414 - Jardim Promissão, Anápolis - GO, 75073-815",
+      },
+      attire: {
+        time: "Traje",
+        title: "Social elegante",
+        text: "Cores claras são bem-vindas para fotos ao ar livre.",
+        address: "Evite branco, off-white e tons de noiva.",
+      },
+      mapLink: "https://maps.app.goo.gl/Md8mdx3pKJH91gai7",
+    },
+    rsvp: {
+      eyebrow: "Confirme sua presença",
+      title: "Sua resposta nos ajuda a cuidar de cada detalhe.",
+      note:
+        "Para recebermos todos com carinho, confirme apenas as pessoas que já estão na lista de convidados. Assim conseguimos organizar os lugares e evitar qualquer imprevisto no dia.",
+      status: "Abrindo WhatsApp para concluir a confirmação...",
+      selectOptions: ["1 pessoa", "2 pessoas", "3 pessoas", "4 pessoas"],
+    },
+    gifts: {
+      eyebrow: "Lista de presentes",
+      title: "Aos que desejarem nos presentear deixando um link abaixo.",
+      listCard: {
+        label: "Casa nova",
+        title: "Lista digital",
+        text: "Itens para montar nosso lar com carinho.",
+        href: "#",
+      },
+      pixCard: {
+        label: "Pix",
+        title: "Cota livre",
+        text: "Obrigado por fazer parte da nossa história!",
+        qrSrc: "fotos/pix-qrcode.jpeg",
+        qrAlt: "QR Code Pix de Matheus Torres Ribeiro",
+        keyLabel: "Chave Pix",
+        keyValue: "62992304054",
+        nameLabel: "Nome",
+        nameValue: "Matheus Torres Ribeiro",
+        bankLabel: "Banco",
+        bankValue: "Nubank",
+        buttonText: "Copiar chave Pix",
+        copiedText: "Chave Pix copiada.",
+      },
+    },
+    footer: {
+      text: "Com amor, Camila & Matheus",
+    },
+    whatsappNumber: "5562992304054",
+  },
+  casamentoelias: {
+    meta: {
+      title: "Elias & Noiva | Casamento",
+      description:
+        "Modelo de site de casamento para personalizar com os dados do casal, mantendo a mesma estrutura e URL.",
+    },
+    heroImage: "https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=1800&q=85",
+    brand: "E & N",
+    nav: ["História", "Evento", "Presença", "Presentes"],
+    hero: {
+      eyebrow: "Casamento",
+      coupleName: "Elias & Noiva",
+      dateLabel: "Data a definir",
+      weddingDate: "2027-01-01T16:30:00-03:00",
+      text:
+        "Troque este conteúdo no objeto `casamentoelias` em `script.js` para publicar um convite com os dados do novo casal.",
+    },
+    story: {
+      eyebrow: "Nossa história",
+      title: "Uma história pronta para ser personalizada com o novo casal.",
+      cards: [
+        {
+          step: "01",
+          title: "O começo",
+          text:
+            "Substitua este texto pela história do casal, mantendo a mesma estrutura visual do convite.",
+        },
+        {
+          step: "02",
+          title: "O pedido",
+          text:
+            "Aqui entra o texto do pedido de casamento, no tom e na linguagem que vocês quiserem usar.",
+        },
+        {
+          step: "03",
+          title: "O grande dia",
+          text:
+            "Esse bloco pode receber a mensagem final do convite, com bênção, emoção e expectativa.",
+        },
+      ],
+    },
+    photos: [
+      { src: "fotos/foto-1.jpeg", alt: "Elias e noiva na foto 1" },
+      { src: "fotos/foto-2.jpeg", alt: "Elias e noiva na foto 2" },
+      { src: "fotos/foto-3.jpeg", alt: "Elias e noiva na foto 3" },
+      { src: "fotos/foto-4.jpeg", alt: "Elias e noiva na foto 4" },
+      { src: "fotos/foto-5.jpeg", alt: "Elias e noiva na foto 5" },
+    ],
+    event: {
+      eyebrow: "Programação",
+      title: "Edite os dados do evento para refletir o casamento deles.",
+      main: {
+        time: "Horário a definir",
+        title: "Cerimônia & Recepção",
+        location: "Local do evento",
+        address: "Endereço completo do evento",
+      },
+      attire: {
+        time: "Traje",
+        title: "Social elegante",
+        text: "Atualize a recomendação de traje conforme a proposta do casamento.",
+        address: "Evite branco e tons que conflitem com a noiva.",
+      },
+      mapLink: "#",
+    },
+    rsvp: {
+      eyebrow: "Confirme sua presença",
+      title: "Esse trecho também pode ser reaproveitado para o novo casal.",
+      note:
+        "Altere este texto se quiser incluir instruções específicas de confirmação, lista ou contato.",
+      status: "Abrindo WhatsApp para concluir a confirmação...",
+      selectOptions: ["1 pessoa", "2 pessoas", "3 pessoas", "4 pessoas"],
+    },
+    gifts: {
+      eyebrow: "Lista de presentes",
+      title: "Use esta área para o link da lista ou para um Pix do casal.",
+      listCard: {
+        label: "Casa nova",
+        title: "Lista digital",
+        text: "Substitua por um link real de presentes.",
+        href: "#",
+      },
+      pixCard: {
+        label: "Pix",
+        title: "Cota livre",
+        text: "Atualize com a chave Pix e os dados corretos do casal.",
+        qrSrc: "fotos/pix-qrcode.jpeg",
+        qrAlt: "QR Code Pix do casal",
+        keyLabel: "Chave Pix",
+        keyValue: "00000000000",
+        nameLabel: "Nome",
+        nameValue: "Nome do casal",
+        bankLabel: "Banco",
+        bankValue: "Banco",
+        buttonText: "Copiar chave Pix",
+        copiedText: "Chave Pix copiada.",
+      },
+    },
+    footer: {
+      text: "Com amor, Elias & Noiva",
+    },
+    whatsappNumber: "5562992304054",
+  },
 };
+
+const getWeddingSlug = () => {
+  const segments = window.location.pathname.split("/").filter(Boolean);
+
+  if (!segments.length) return "casamento";
+
+  const lastSegment = segments[segments.length - 1]?.toLowerCase();
+  const candidate =
+    lastSegment === "index.html" && segments.length > 1
+      ? segments[segments.length - 2]?.toLowerCase()
+      : lastSegment;
+
+  return candidate && weddingPages[candidate] ? candidate : "casamento";
+};
+
+const currentWedding = weddingPages[getWeddingSlug()] ?? weddingPages.casamento;
+const assetBase = document.documentElement.dataset.assetBase || "./";
 
 const header = document.querySelector(".site-header");
 const countdown = document.querySelector(".countdown");
 const form = document.querySelector(".rsvp-form");
 const carousel = document.querySelector("[data-carousel]");
-const pixCopyButton = document.querySelector("[data-copy-pix]");
 const guestsSelect = form?.querySelector("[data-guests-select]");
 const guestList = form?.querySelector("[data-guest-list]");
 
+const resolveAssetPath = (path) => new URL(path, new URL(assetBase, document.baseURI)).href;
+
+const setText = (selector, value, root = document) => {
+  const element = root.querySelector(selector);
+  if (element) element.textContent = value;
+};
+
+const setMetaContent = (name, content) => {
+  let element = document.head.querySelector(`meta[name="${name}"]`);
+
+  if (!element) {
+    element = document.createElement("meta");
+    element.setAttribute("name", name);
+    document.head.append(element);
+  }
+
+  element.setAttribute("content", content);
+};
+
 const updateHeader = () => {
+  if (!header) return;
   header.classList.toggle("is-scrolled", window.scrollY > 24);
 };
 
@@ -38,7 +279,7 @@ const renderGuestFields = () => {
   if (!guestsSelect || !guestList) return;
 
   const guestCount = Number(guestsSelect.value || 0);
-  guestList.innerHTML = "";
+  guestList.replaceChildren();
 
   for (let index = 1; index <= guestCount; index += 1) {
     const label = document.createElement("label");
@@ -55,6 +296,230 @@ const renderGuestFields = () => {
   }
 };
 
+const renderNavigation = () => {
+  const navLinks = [...document.querySelectorAll(".nav-links a")];
+  navLinks.forEach((link, index) => {
+    if (currentWedding.nav[index]) link.textContent = currentWedding.nav[index];
+  });
+};
+
+const renderHero = () => {
+  setText(".brand", currentWedding.brand);
+  setText(".hero .eyebrow", currentWedding.hero.eyebrow);
+  setText(".hero h1", currentWedding.hero.coupleName);
+  setText(".hero-date", currentWedding.hero.dateLabel);
+  setText(".hero-text", currentWedding.hero.text);
+
+  if (currentWedding.heroImage) {
+    document.documentElement.style.setProperty(
+      "--hero-image",
+      `url("${resolveAssetPath(currentWedding.heroImage)}")`,
+    );
+  }
+
+  if (countdown) {
+    countdown.dataset.weddingDate = currentWedding.hero.weddingDate;
+  }
+};
+
+const renderStory = () => {
+  const storySection = document.querySelector("#historia");
+  const storyGrid = storySection?.querySelector(".story-grid");
+
+  if (!storySection || !storyGrid) return;
+
+  setText("#historia .eyebrow", currentWedding.story.eyebrow);
+  setText("#historia h2", currentWedding.story.title);
+
+  storyGrid.replaceChildren();
+
+  currentWedding.story.cards.forEach((card) => {
+    const article = document.createElement("article");
+    const step = document.createElement("span");
+    const title = document.createElement("h3");
+    const text = document.createElement("p");
+
+    step.textContent = card.step;
+    title.textContent = card.title;
+    text.textContent = card.text;
+
+    article.append(step, title, text);
+    storyGrid.append(article);
+  });
+};
+
+const renderCarousel = () => {
+  if (!carousel) return;
+
+  const track = carousel.querySelector(".carousel-track");
+  const dots = carousel.querySelector(".carousel-dots");
+
+  if (!track || !dots) return;
+
+  track.replaceChildren();
+  dots.replaceChildren();
+
+  currentWedding.photos.forEach((photo, index) => {
+    const slide = document.createElement("img");
+    const dot = document.createElement("button");
+
+    slide.className = `carousel-slide${index === 0 ? " is-active" : ""}`;
+    slide.src = resolveAssetPath(photo.src);
+    slide.alt = photo.alt;
+    if (index !== 0) slide.loading = "lazy";
+
+    dot.type = "button";
+    dot.dataset.carouselDot = String(index);
+    dot.ariaLabel = `Mostrar foto ${index + 1}`;
+    if (index === 0) dot.classList.add("is-active");
+
+    track.append(slide);
+    dots.append(dot);
+  });
+};
+
+const renderEvent = () => {
+  const eventSection = document.querySelector("#evento");
+  const eventCards = [...document.querySelectorAll("#evento .event-card")];
+
+  if (!eventSection || eventCards.length < 2) return;
+
+  setText("#evento .eyebrow", currentWedding.event.eyebrow);
+  setText("#evento h2", currentWedding.event.title);
+
+  const [mainCard, attireCard] = eventCards;
+  setText(".time", currentWedding.event.main.time, mainCard);
+  setText("h3", currentWedding.event.main.title, mainCard);
+  setText(".event-location", currentWedding.event.main.location, mainCard);
+  setText(".event-address", currentWedding.event.main.address, mainCard);
+
+  setText(".time", currentWedding.event.attire.time, attireCard);
+  setText("h3", currentWedding.event.attire.title, attireCard);
+  const attireParagraph = attireCard.querySelectorAll("p")[1];
+  if (attireParagraph) attireParagraph.textContent = currentWedding.event.attire.text;
+  setText("address", currentWedding.event.attire.address, attireCard);
+
+  const mapLink = eventSection.querySelector(".map-link");
+  if (mapLink) mapLink.href = currentWedding.event.mapLink;
+};
+
+const renderRsvp = () => {
+  const rsvpSection = document.querySelector("#rsvp");
+  if (!rsvpSection) return;
+
+  setText("#rsvp .eyebrow", currentWedding.rsvp.eyebrow);
+  setText("#rsvp h2", currentWedding.rsvp.title);
+  setText(".rsvp-note", currentWedding.rsvp.note);
+
+  if (guestsSelect) {
+    guestsSelect.innerHTML = "";
+
+    const defaultOption = document.createElement("option");
+    defaultOption.value = "";
+    defaultOption.textContent = "Selecione";
+    guestsSelect.append(defaultOption);
+
+    currentWedding.rsvp.selectOptions.forEach((label, index) => {
+      const option = document.createElement("option");
+      option.value = String(index + 1);
+      option.textContent = label;
+      guestsSelect.append(option);
+    });
+  }
+};
+
+const renderGifts = () => {
+  const giftsSection = document.querySelector("#presentes");
+  const giftGrid = giftsSection?.querySelector(".gift-grid");
+
+  if (!giftsSection || !giftGrid) return;
+
+  setText("#presentes .eyebrow", currentWedding.gifts.eyebrow);
+  setText("#presentes h2", currentWedding.gifts.title);
+
+  giftGrid.replaceChildren();
+
+  const linkCard = document.createElement("a");
+  linkCard.className = "gift-card";
+  linkCard.href = currentWedding.gifts.listCard.href;
+  linkCard.setAttribute("aria-label", "Abrir lista de presentes");
+
+  const linkSpan = document.createElement("span");
+  const linkStrong = document.createElement("strong");
+  const linkParagraph = document.createElement("p");
+  linkSpan.textContent = currentWedding.gifts.listCard.label;
+  linkStrong.textContent = currentWedding.gifts.listCard.title;
+  linkParagraph.textContent = currentWedding.gifts.listCard.text;
+  linkCard.append(linkSpan, linkStrong, linkParagraph);
+
+  const pixCard = document.createElement("article");
+  pixCard.className = "gift-card pix-card";
+  pixCard.setAttribute("aria-label", "Dados para presente via Pix");
+
+  const pixSpan = document.createElement("span");
+  const pixStrong = document.createElement("strong");
+  const pixParagraph = document.createElement("p");
+  const pixImage = document.createElement("img");
+  const pixDetails = document.createElement("dl");
+  const pixButton = document.createElement("button");
+  const pixStatus = document.createElement("p");
+
+  pixSpan.textContent = currentWedding.gifts.pixCard.label;
+  pixStrong.textContent = currentWedding.gifts.pixCard.title;
+  pixParagraph.textContent = currentWedding.gifts.pixCard.text;
+  pixImage.className = "pix-qr-code";
+  pixImage.src = resolveAssetPath(currentWedding.gifts.pixCard.qrSrc);
+  pixImage.alt = currentWedding.gifts.pixCard.qrAlt;
+
+  const detailRows = [
+    [currentWedding.gifts.pixCard.keyLabel, currentWedding.gifts.pixCard.keyValue],
+    [currentWedding.gifts.pixCard.nameLabel, currentWedding.gifts.pixCard.nameValue],
+    [currentWedding.gifts.pixCard.bankLabel, currentWedding.gifts.pixCard.bankValue],
+  ];
+
+  detailRows.forEach(([term, definition]) => {
+    const row = document.createElement("div");
+    const termNode = document.createElement("dt");
+    const definitionNode = document.createElement("dd");
+
+    termNode.textContent = term;
+    definitionNode.textContent = definition;
+    row.append(termNode, definitionNode);
+    pixDetails.append(row);
+  });
+
+  pixButton.className = "button primary presence-button pix-copy-button";
+  pixButton.type = "button";
+  pixButton.dataset.copyPix = currentWedding.gifts.pixCard.keyValue;
+  pixButton.textContent = currentWedding.gifts.pixCard.buttonText;
+
+  pixStatus.className = "pix-copy-status";
+  pixStatus.setAttribute("role", "status");
+  pixStatus.setAttribute("aria-live", "polite");
+
+  pixCard.append(pixSpan, pixStrong, pixParagraph, pixImage, pixDetails, pixButton, pixStatus);
+  giftGrid.append(linkCard, pixCard);
+};
+
+const renderFooter = () => {
+  setText(".footer p", currentWedding.footer.text);
+};
+
+const renderDocument = () => {
+  document.title = currentWedding.meta.title;
+  setMetaContent("description", currentWedding.meta.description);
+
+  renderNavigation();
+  renderHero();
+  renderStory();
+  renderCarousel();
+  renderEvent();
+  renderRsvp();
+  renderGifts();
+  renderFooter();
+  renderGuestFields();
+};
+
 const handleSubmit = (event) => {
   event.preventDefault();
 
@@ -66,9 +531,7 @@ const handleSubmit = (event) => {
     .filter(Boolean);
   const message = data.get("mensagem")?.toString().trim();
   const status = form.querySelector(".form-status");
-  const guestListText = guestNames
-    .map((guest, index) => `${index + 1}. ${guest}`)
-    .join("\n");
+  const guestListText = guestNames.map((guest, index) => `${index + 1}. ${guest}`).join("\n");
 
   const text = [
     `Oi! Aqui é ${responsible}.`,
@@ -79,9 +542,10 @@ const handleSubmit = (event) => {
     .filter(Boolean)
     .join("\n");
 
-  status.textContent = "Abrindo WhatsApp para concluir a confirmação...";
+  if (status) status.textContent = currentWedding.rsvp.status;
+
   window.open(
-    `https://wa.me/${weddingConfig.whatsappNumber}?text=${encodeURIComponent(text)}`,
+    `https://wa.me/${currentWedding.whatsappNumber}?text=${encodeURIComponent(text)}`,
     "_blank",
   );
 };
@@ -94,6 +558,8 @@ const setupCarousel = () => {
   const controls = [...carousel.querySelectorAll("[data-carousel-control]")];
   let activeIndex = 0;
   let autoplayId;
+
+  if (!slides.length || !dots.length) return;
 
   const showSlide = (index) => {
     activeIndex = (index + slides.length) % slides.length;
@@ -130,27 +596,30 @@ const setupCarousel = () => {
   startAutoplay();
 };
 
-const copyPixKey = async () => {
-  if (!pixCopyButton) return;
+const copyPixKey = async (button) => {
+  const pixKey = button?.dataset.copyPix;
+  const status = button?.closest(".pix-card")?.querySelector(".pix-copy-status");
 
-  const pixKey = pixCopyButton.dataset.copyPix;
-  const status = document.querySelector(".pix-copy-status");
+  if (!pixKey) return;
 
   try {
     await navigator.clipboard.writeText(pixKey);
-    status.textContent = "Chave Pix copiada.";
+    if (status) status.textContent = currentWedding.gifts.pixCard.copiedText;
   } catch {
-    status.textContent = `Chave Pix: ${pixKey}`;
+    if (status) status.textContent = `Chave Pix: ${pixKey}`;
   }
 };
 
 window.addEventListener("scroll", updateHeader, { passive: true });
 form?.addEventListener("submit", handleSubmit);
 guestsSelect?.addEventListener("change", renderGuestFields);
-pixCopyButton?.addEventListener("click", copyPixKey);
+document.addEventListener("click", (event) => {
+  const button = event.target.closest("[data-copy-pix]");
+  if (button) copyPixKey(button);
+});
 
+renderDocument();
 updateHeader();
 updateCountdown();
-renderGuestFields();
 setupCarousel();
-setInterval(updateCountdown, 1000);
+window.setInterval(updateCountdown, 1000);

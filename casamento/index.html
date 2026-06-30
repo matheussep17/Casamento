@@ -1,0 +1,176 @@
+<!doctype html>
+<html lang="pt-BR" data-asset-base="../">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Casamento</title>
+    <meta
+      name="description"
+      content="Convite de casamento com cerimônia, recepção, confirmação de presença e lista de presentes."
+    />
+    <link rel="icon" href="../favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="../styles.css?v=map-pink-1" />
+  </head>
+  <body>
+    <header class="site-header" aria-label="Navegação principal">
+      <a class="brand" href="#inicio">C &amp; M</a>
+      <nav class="nav-links" aria-label="Seções do site">
+        <a href="#historia">História</a>
+        <a href="#evento">Evento</a>
+        <a href="#rsvp">Presença</a>
+        <a href="#presentes">Presentes</a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero" id="inicio">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+          <p class="eyebrow">Casamento</p>
+          <h1>Camila &amp; Matheus</h1>
+          <p class="hero-date">14 de agosto de 2027</p>
+          <p class="hero-text">Convite personalizado do casal.</p>
+          <div class="hero-actions">
+            <a class="button primary presence-button" href="#rsvp">Confirmar presença</a>
+            <a class="button secondary" href="#evento">Ver detalhes</a>
+          </div>
+        </div>
+      </section>
+
+      <section class="countdown-band" aria-label="Contagem regressiva">
+        <div class="countdown" data-wedding-date="2027-08-14T16:30:00-03:00">
+          <div><strong data-countdown="days">000</strong><span>dias</span></div>
+          <div><strong data-countdown="hours">00</strong><span>horas</span></div>
+          <div><strong data-countdown="minutes">00</strong><span>min</span></div>
+          <div><strong data-countdown="seconds">00</strong><span>seg</span></div>
+        </div>
+      </section>
+
+      <section class="section intro" id="historia">
+        <div class="section-copy">
+          <p class="eyebrow">Nossa história</p>
+          <h2>Uma história feita para celebrar o amor.</h2>
+        </div>
+        <div class="story-grid">
+          <article><span>01</span><h3>O começo</h3><p>Texto da história.</p></article>
+          <article><span>02</span><h3>O pedido</h3><p>Texto da história.</p></article>
+          <article><span>03</span><h3>O grande dia</h3><p>Texto da história.</p></article>
+        </div>
+      </section>
+
+      <section class="section photo-section" aria-label="Fotos do casal">
+        <div class="photo-carousel" data-carousel aria-label="Carrossel de fotos do casal">
+          <div class="carousel-track">
+            <img class="carousel-slide is-active" src="../fotos/foto-1.jpeg?v=photo-2" alt="Foto 1" />
+            <img class="carousel-slide" src="../fotos/foto-2.jpeg" alt="Foto 2" />
+            <img class="carousel-slide" src="../fotos/foto-3.jpeg" alt="Foto 3" />
+            <img class="carousel-slide" src="../fotos/foto-4.jpeg" alt="Foto 4" />
+            <img class="carousel-slide" src="../fotos/foto-5.jpeg" alt="Foto 5" />
+          </div>
+          <button class="carousel-control prev" type="button" data-carousel-control="prev" aria-label="Foto anterior">‹</button>
+          <button class="carousel-control next" type="button" data-carousel-control="next" aria-label="Próxima foto">›</button>
+          <div class="carousel-dots" aria-label="Selecionar foto">
+            <button class="is-active" type="button" data-carousel-dot="0" aria-label="Mostrar foto 1"></button>
+            <button type="button" data-carousel-dot="1" aria-label="Mostrar foto 2"></button>
+            <button type="button" data-carousel-dot="2" aria-label="Mostrar foto 3"></button>
+            <button type="button" data-carousel-dot="3" aria-label="Mostrar foto 4"></button>
+            <button type="button" data-carousel-dot="4" aria-label="Mostrar foto 5"></button>
+          </div>
+        </div>
+        <div class="quote-panel">
+          <p>"Assim, eles já não são dois, mas sim uma só carne."</p>
+          <span>Mateus 19:6</span>
+        </div>
+      </section>
+
+      <section class="section event" id="evento">
+        <div class="section-copy">
+          <p class="eyebrow">Programação</p>
+          <h2>Detalhes do evento.</h2>
+        </div>
+        <div class="event-layout">
+          <article class="event-card event-card-featured">
+            <p class="time">16:30 até 21:00</p>
+            <h3>Cerimônia &amp; Recepção</h3>
+            <p class="event-location">Local do evento</p>
+            <address class="event-address">Endereço do evento</address>
+          </article>
+          <article class="event-card">
+            <p class="time">Traje</p>
+            <h3>Social elegante</h3>
+            <p>Cores claras são bem-vindas para fotos ao ar livre.</p>
+            <address>Evite branco, off-white e tons de noiva.</address>
+          </article>
+        </div>
+        <a class="map-link" href="#" target="_blank" rel="noreferrer">Abrir local no mapa</a>
+      </section>
+
+      <section class="section rsvp" id="rsvp">
+        <div class="section-copy">
+          <p class="eyebrow">Confirme sua presença</p>
+          <h2>Sua resposta nos ajuda a cuidar de cada detalhe.</h2>
+        </div>
+        <form class="rsvp-form" aria-label="Formulário de confirmação">
+          <label>
+            Nome de quem está confirmando
+            <input type="text" name="responsavel" placeholder="Seu nome completo" required />
+          </label>
+          <label>
+            Pessoas confirmadas
+            <select name="convidados" data-guests-select required>
+              <option value="">Selecione</option>
+              <option value="1">1 pessoa</option>
+              <option value="2">2 pessoas</option>
+              <option value="3">3 pessoas</option>
+              <option value="4">4 pessoas</option>
+            </select>
+          </label>
+          <div class="guest-list" data-guest-list></div>
+          <p class="rsvp-note">
+            Para recebermos todos com carinho, confirme apenas as pessoas que já estão na lista de convidados.
+          </p>
+          <label>
+            Mensagem para os noivos
+            <textarea name="mensagem" rows="4" placeholder="Deixe uma mensagem carinhosa"></textarea>
+          </label>
+          <button class="button primary presence-button" type="submit">Enviar confirmação</button>
+          <p class="form-status" role="status" aria-live="polite"></p>
+        </form>
+      </section>
+
+      <section class="section gifts" id="presentes">
+        <div class="section-copy">
+          <p class="eyebrow">Lista de presentes</p>
+          <h2>Aos que desejarem nos presentear deixando um link abaixo.</h2>
+        </div>
+        <div class="gift-grid">
+          <a class="gift-card" href="#" aria-label="Abrir lista de presentes">
+            <span>Casa nova</span>
+            <strong>Lista digital</strong>
+            <p>Itens para montar nosso lar com carinho.</p>
+          </a>
+          <article class="gift-card pix-card" aria-label="Dados para presente via Pix">
+            <span>Pix</span>
+            <strong>Cota livre</strong>
+            <p>Obrigado por fazer parte da nossa história!</p>
+            <img class="pix-qr-code" src="../fotos/pix-qrcode.jpeg" alt="QR Code Pix" />
+            <dl class="pix-details">
+              <div><dt>Chave Pix</dt><dd>00000000000</dd></div>
+              <div><dt>Nome</dt><dd>Nome do casal</dd></div>
+              <div><dt>Banco</dt><dd>Banco</dd></div>
+            </dl>
+            <button class="button primary presence-button pix-copy-button" type="button" data-copy-pix="00000000000">Copiar chave Pix</button>
+            <p class="pix-copy-status" role="status" aria-live="polite"></p>
+          </article>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <p>Com amor, Camila &amp; Matheus</p>
+      <a href="#inicio">Voltar ao topo</a>
+    </footer>
+
+    <script src="../script.js?v=carousel-2"></script>
+  </body>
+</html>
