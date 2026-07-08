@@ -477,12 +477,17 @@ const renderGifts = () => {
     [currentWedding.gifts.pixCard.bankLabel, currentWedding.gifts.pixCard.bankValue],
   ];
 
-  detailRows.forEach(([term, definition]) => {
+  detailRows.forEach(([term, definition], index) => {
     const row = document.createElement("div");
     const termNode = document.createElement("dt");
+    const termStrong = document.createElement("strong");
     const definitionNode = document.createElement("dd");
 
-    termNode.textContent = term;
+    row.className = "pix-row";
+    if (index === 0) row.classList.add("pix-row--key");
+
+    termStrong.textContent = term;
+    termNode.append(termStrong);
     definitionNode.textContent = definition;
     row.append(termNode, definitionNode);
     pixDetails.append(row);
