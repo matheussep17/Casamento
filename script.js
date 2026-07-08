@@ -12,7 +12,7 @@ const weddingPages = {
       eyebrow: "Casamento",
       coupleName: "Camila & Matheus",
       dateLabel: "14 de agosto de 2027",
-      weddingDate: "2027-08-14T16:30:00-03:00",
+      weddingDate: "2027-08-14T16:00:00-03:00",
       text:
         "Estamos preparando cada detalhe com muito carinho para celebrar o amor que Deus cultivou entre nós, unindo nossos corações e dando início aos sonhos que florescem em nossa nova jornada.",
     },
@@ -51,7 +51,7 @@ const weddingPages = {
       eyebrow: "Programação",
       title: "Todos os detalhes para compartilhar esse dia tão especial conosco.",
       main: {
-        time: "16:30 até 21:00",
+        time: "16:00 até 21:00",
         title: "Cerimônia & Recepção",
         location: "Chácara do italiano",
         address: "BR-414 - Jardim Promissão, Anápolis - GO, 75073-815",
