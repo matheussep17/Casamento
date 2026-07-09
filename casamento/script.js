@@ -76,8 +76,7 @@ const weddingPages = {
           {
             title: "Padrinhos",
             lines: [
-              "A gravata fica em prata tradicional e o terno em cinza claro.",
-              "As tonalidades sugeridas mantêm o cortejo harmônico e sofisticado.",
+              "Para harmonizar com a paleta das madrinhas, sugerimos o uso de terno em cinza claro, camisa branca e gravata prata tradicional.",
             ],
             palettes: [
               {
