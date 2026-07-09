@@ -101,7 +101,7 @@ const weddingPages = {
       eyebrow: "Confirme sua presença",
       title: "Sua resposta nos ajuda a cuidar de cada detalhe.",
       note:
-        "Para recebermos todos com carinho, confirme apenas as pessoas que já estão na lista de convidados. Assim conseguimos organizar os lugares e evitar qualquer imprevisto no dia.",
+        "Para recebermos todos com conforto, confirme apenas as pessoas que já estão na lista de convidados. Assim conseguimos organizar os lugares e evitar qualquer imprevisto no dia.",
       status: "Abrindo WhatsApp para concluir a confirma\u00e7\u00e3o...",
       selectOptions: ["1 pessoa", "2 pessoas", "3 pessoas", "4 pessoas"],
     },
