@@ -815,8 +815,9 @@ textarea {
 }
 
 .pix-badge {
-  display: grid;
-  place-items: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   width: 62px;
   height: 62px;
   margin-top: 2px;
@@ -828,6 +829,8 @@ textarea {
   font-size: 1rem;
   font-weight: 900;
   letter-spacing: 0.08em;
+  line-height: 1;
+  text-align: center;
 }
 
 .pix-qr-code {
