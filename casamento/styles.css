@@ -479,6 +479,12 @@ h3 {
   margin-inline: auto;
 }
 
+.attire-panel--madrinhas .color-list--cards {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  max-width: 520px;
+  margin-inline: auto;
+}
+
 .attire-palette-label {
   margin: 0 0 12px;
   color: var(--ink);
@@ -498,6 +504,15 @@ h3 {
   font-size: 0.9rem;
   font-weight: 800;
   line-height: 1.15;
+}
+
+.color-code {
+  color: var(--muted);
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
 }
 
 .attire-panel--padrinhos .color-name {
@@ -920,8 +935,8 @@ textarea {
   }
 
   .attire-panel--madrinhas .color-list--cards {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    max-width: 420px;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    max-width: 520px;
     margin-inline: auto;
   }
 

@@ -1,42 +1,42 @@
-const weddingPages = {
+﻿const weddingPages = {
   casamento: {
     meta: {
       title: "Camila & Matheus | Casamento",
       description:
-        "Site de casamento com informações da cerimônia, recepção, confirmação de presença e lista de presentes.",
+        "Site de casamento com informaÃ§Ãµes da cerimÃ´nia, recepÃ§Ã£o, confirmaÃ§Ã£o de presenÃ§a e lista de presentes.",
     },
     heroImage: "https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=1800&q=85",
     brand: "C & M",
-    nav: ["História", "Evento", "Traje", "Presença", "Presentes"],
+    nav: ["HistÃ³ria", "Evento", "Traje", "PresenÃ§a", "Presentes"],
     hero: {
       eyebrow: "Casamento",
       coupleName: "Camila & Matheus",
       dateLabel: "14 de agosto de 2027",
       weddingDate: "2027-08-14T16:30:00-03:00",
       text:
-        "Estamos preparando cada detalhe com muito carinho para celebrar o amor que Deus cultivou entre nós, unindo nossos corações e dando início aos sonhos que florescem em nossa nova jornada.",
+        "Estamos preparando cada detalhe com muito carinho para celebrar o amor que Deus cultivou entre nÃ³s, unindo nossos coraÃ§Ãµes e dando inÃ­cio aos sonhos que florescem em nossa nova jornada.",
     },
     story: {
-      eyebrow: "Nossa história",
-      title: "Dois caminhos unidos pelo amor e uma história que seguirá para sempre.",
+      eyebrow: "Nossa histÃ³ria",
+      title: "Dois caminhos unidos pelo amor e uma histÃ³ria que seguirÃ¡ para sempre.",
       cards: [
         {
           step: "01",
-          title: "O começo",
+          title: "O comeÃ§o",
           text:
-            "Uma conversa virou companhia, a companhia virou escolha, e aos poucos entendemos que Deus estava escrevendo uma história bonita em nós.",
+            "Uma conversa virou companhia, a companhia virou escolha, e aos poucos entendemos que Deus estava escrevendo uma histÃ³ria bonita em nÃ³s.",
         },
         {
           step: "02",
           title: "O pedido",
           text:
-            "O sim veio com a certeza tranquila de quem já sonhava junto: começar uma nova família cercados de amor, fé e gratidão.",
+            "O sim veio com a certeza tranquila de quem jÃ¡ sonhava junto: comeÃ§ar uma nova famÃ­lia cercados de amor, fÃ© e gratidÃ£o.",
         },
         {
           step: "03",
           title: "O grande dia",
           text:
-            "Agora queremos celebrar esse passo com pessoas especiais, pedindo a bênção de Deus para a vida que vamos construir lado a lado.",
+            "Agora queremos celebrar esse passo com pessoas especiais, pedindo a bÃªnÃ§Ã£o de Deus para a vida que vamos construir lado a lado.",
         },
       ],
     },
@@ -48,13 +48,13 @@ const weddingPages = {
       { src: "fotos/foto-5.jpeg", alt: "Camila e Matheus juntos na foto 5" },
     ],
     event: {
-      eyebrow: "Programação",
-      title: "Todos os detalhes para compartilhar esse dia tão especial conosco.",
+      eyebrow: "ProgramaÃ§Ã£o",
+      title: "Todos os detalhes para compartilhar esse dia tÃ£o especial conosco.",
       main: {
-        time: "16:30 até 21:00",
-        title: "Cerimônia & Recepção",
-        location: "Chácara do italiano",
-        address: "BR-414 - Jardim Promissão, Anápolis - GO, 75073-815",
+        time: "16:30 atÃ© 21:00",
+        title: "CerimÃ´nia & RecepÃ§Ã£o",
+        location: "ChÃ¡cara do italiano",
+        address: "BR-414 - Jardim PromissÃ£o, AnÃ¡polis - GO, 75073-815",
       },
       attire: {
         time: "Traje",
@@ -63,14 +63,15 @@ const weddingPages = {
           {
             title: "Madrinhas",
             lines: [
-              "Para tornar esse dia ainda mais especial, escolhemos uma paleta de tons de rosa que traduz a essência do nosso casamento.",
-              "Cada madrinha poderá escolher o vestido no tom que mais gostar, dentro da nossa paleta: Rosa Chiclete, Rosa Orquídea ou Rosa Flamingo.",
-              "Como a cerimônia acontecerá em um espaço ao ar livre, sobre a grama, sugerimos o uso de saltos blocados (quadrados) ou adaptadores de salto, garantindo mais conforto e segurança durante toda a celebração.",
+              "Para tornar esse dia ainda mais especial, escolhemos uma paleta de tons de rosa que traduz a essÃªncia do nosso casamento.",
+              "Cada madrinha poderÃ¡ escolher o vestido no tom que mais gostar, dentro da nossa paleta: Rosa BebÃª, Rosa Ballet, Rosa Chiclete ou Rosa Flamingo.",
+              "Como a cerimÃ´nia acontecerÃ¡ em um espaÃ§o ao ar livre, sobre a grama, sugerimos o uso de saltos blocados (quadrados) ou adaptadores de salto, garantindo mais conforto e seguranÃ§a durante toda a celebraÃ§Ã£o.",
             ],
             colors: [
-              { name: "Rosa Chiclete", color: "#F163A8" },
-              { name: "Rosa Orquídea", color: "#C6186C" },
-              { name: "Rosa Flamingo", color: "#ED4D9A" },
+              { name: "Rosa BebÃª", code: "PANTONE 706 C", color: "#F3B2D4" },
+              { name: "Rosa Ballet", code: "PANTONE 203 C", color: "#F68FC0" },
+              { name: "Rosa Chiclete", code: "PANTONE 218 C", color: "#F163A8" },
+              { name: "Rosa Flamingo", code: "PANTONE 1915 C", color: "#ED4D9A" },
             ],
           },
           {
@@ -87,7 +88,7 @@ const weddingPages = {
                 label: "Terno",
                 colors: [
                   { name: "Cinza Gelo / Claro", color: "#D3D3D3" },
-                  { name: "Cinza Médio / Prata", color: "#C0C0C0" },
+                  { name: "Cinza MÃ©dio / Prata", color: "#C0C0C0" },
                 ],
               },
             ],
@@ -97,11 +98,11 @@ const weddingPages = {
       mapLink: "https://maps.app.goo.gl/Md8mdx3pKJH91gai7",
     },
     rsvp: {
-      eyebrow: "Confirme sua presença",
+      eyebrow: "Confirme sua presenÃ§a",
       title: "Sua resposta nos ajuda a cuidar de cada detalhe.",
       note:
-        "Para recebermos todos com carinho, confirme apenas as pessoas que já estão na lista de convidados. Assim conseguimos organizar os lugares e evitar qualquer imprevisto no dia.",
-      status: "Abrindo WhatsApp para concluir a confirmação...",
+        "Para recebermos todos com carinho, confirme apenas as pessoas que jÃ¡ estÃ£o na lista de convidados. Assim conseguimos organizar os lugares e evitar qualquer imprevisto no dia.",
+      status: "Abrindo WhatsApp para concluir a confirmaÃ§Ã£o...",
       selectOptions: ["1 pessoa", "2 pessoas", "3 pessoas", "4 pessoas"],
     },
     gifts: {
@@ -116,7 +117,7 @@ const weddingPages = {
       pixCard: {
         label: "Pix",
         title: "Cota livre",
-        text: "Obrigado por fazer parte da nossa história!",
+        text: "Obrigado por fazer parte da nossa histÃ³ria!",
         qrSrc: "fotos/pix-qrcode.jpeg",
         qrAlt: "QR Code Pix de Matheus Torres Ribeiro",
         keyLabel: "Chave Pix",
@@ -366,6 +367,13 @@ const renderEvent = () => {
           label.textContent = item.name;
 
           li.append(swatch, label);
+
+          if (item.code) {
+            const code = document.createElement("span");
+            code.className = "color-code";
+            code.textContent = item.code;
+            li.append(code);
+          }
           colorList.append(li);
         });
 
@@ -551,8 +559,8 @@ const handleSubmit = (event) => {
   const guestListText = guestNames.map((guest, index) => `${index + 1}. ${guest}`).join("\n");
 
   const text = [
-    `Oi! Aqui é ${responsible}.`,
-    `Confirmo presença no casamento para ${guestNames.length} pessoa(s):`,
+    `Oi! Aqui Ã© ${responsible}.`,
+    `Confirmo presenÃ§a no casamento para ${guestNames.length} pessoa(s):`,
     guestListText,
     message ? `Mensagem: ${message}` : "",
   ]
