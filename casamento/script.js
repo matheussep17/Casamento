@@ -59,43 +59,33 @@ const weddingPages = {
       attire: {
         time: "Traje",
         title: "Social elegante",
-        intro: "Madrinhas em rosas suaves e padrinhos em prata e cinza elegante.",
         groups: [
           {
             title: "Madrinhas",
-            eyebrow: "Vestidos",
             icon: "✿",
-            description:
-              "Para tornar esse dia ainda mais especial, escolhemos uma paleta de tons de rosa que traduz a essência do nosso casamento. Cada madrinha poderá escolher o vestido no tom que mais gostar, dentro da nossa paleta: Rosa Chiclete, Rosa Orquídea ou Rosa Flamingo. Como a cerimônia acontecerá em um espaço ao ar livre, sobre a grama, sugerimos o uso de saltos blocados (quadrados) ou adaptadores de salto, garantindo mais conforto e segurança durante toda a celebração.",
-            palettes: [
-              {
-                label: "Cores sugeridas",
-                colors: [
-                  { name: "Rosa Flamingo", color: "#F67BB6" },
-                  { name: "Rosa Orquídea", color: "#F163A8" },
-                  { name: "Rosa Fúcsia Claro", color: "#ED4D9A" },
-                ],
-              },
+            lines: [
+              "Para tornar esse dia ainda mais especial, escolhemos uma paleta de tons de rosa que traduz a essência do nosso casamento.",
+              "Cada madrinha poderá escolher o vestido no tom que mais gostar, dentro da nossa paleta: Rosa Chiclete, Rosa Orquídea ou Rosa Flamingo.",
+              "Como a cerimônia acontecerá em um espaço ao ar livre, sobre a grama, sugerimos o uso de saltos blocados (quadrados) ou adaptadores de salto, garantindo mais conforto e segurança durante toda a celebração.",
+            ],
+            colors: [
+              { name: "Rosa Chiclete", color: "#F163A8" },
+              { name: "Rosa Orquídea", color: "#C6186C" },
+              { name: "Rosa Flamingo", color: "#ED4D9A" },
             ],
           },
           {
             title: "Padrinhos",
-            eyebrow: "Gravata e terno",
             icon: "◈",
-            description: "A gravata fica em prata tradicional e o terno em cinza claro.",
-            palettes: [
-              {
-                label: "Gravata",
-                colors: [{ name: "Prata Tradicional", color: "#C0C0C0" }],
-              },
-              {
-                label: "Terno",
-                colors: [
-                  { name: "Cinza Gelo / Claro", color: "#D3D3D3" },
-                  { name: "Cinza Médio / Prata", color: "#C0C0C0" },
-                  { name: "Cinza Intermediário / Terno Cinza", color: "#898989" },
-                ],
-              },
+            lines: [
+              "A gravata fica em prata tradicional e o terno em cinza claro.",
+              "As tonalidades sugeridas mantêm o cortejo harmônico e sofisticado.",
+            ],
+            colors: [
+              { name: "Prata Tradicional", color: "#C0C0C0" },
+              { name: "Cinza Gelo / Claro", color: "#D3D3D3" },
+              { name: "Cinza Médio / Prata", color: "#C0C0C0" },
+              { name: "Cinza Intermediário / Terno Cinza", color: "#898989" },
             ],
           },
         ],
@@ -331,9 +321,6 @@ const renderEvent = () => {
 
   setText(".time", currentWedding.event.attire.time, attireCard);
   setText("h3", currentWedding.event.attire.title, attireCard);
-  const attireIntro = attireCard.querySelector(".attire-intro");
-  if (attireIntro) attireIntro.textContent = currentWedding.event.attire.intro;
-
   const attireGroups = attireCard.querySelector(".attire-groups");
   if (attireGroups) {
     attireGroups.innerHTML = "";
@@ -341,10 +328,6 @@ const renderEvent = () => {
     currentWedding.event.attire.groups.forEach((group, groupIndex) => {
       const panel = document.createElement("section");
       panel.className = `attire-panel attire-panel--${groupIndex === 0 ? "madrinhas" : "padrinhos"}`;
-
-      const panelEyebrow = document.createElement("p");
-      panelEyebrow.className = "attire-panel-eyebrow";
-      panelEyebrow.textContent = group.eyebrow;
 
       const panelTitle = document.createElement("h4");
       const panelIcon = document.createElement("span");
@@ -356,44 +339,38 @@ const renderEvent = () => {
 
       panelTitle.append(panelIcon, panelTitleText);
 
-      const panelDescription = document.createElement("p");
-      panelDescription.className = "attire-panel-description";
-      panelDescription.textContent = group.description;
+      const linesWrap = document.createElement("div");
+      linesWrap.className = "attire-lines";
 
-      panel.append(panelEyebrow, panelTitle, panelDescription);
-
-      group.palettes.forEach((palette) => {
-        const paletteBlock = document.createElement("div");
-        paletteBlock.className = "attire-palette";
-
-        const paletteLabel = document.createElement("p");
-        paletteLabel.className = "attire-palette-label";
-        paletteLabel.textContent = palette.label;
-
-        const colorList = document.createElement("ul");
-        colorList.className = "color-list color-list--compact";
-        colorList.setAttribute("aria-label", `${group.title} - ${palette.label}`);
-
-        palette.colors.forEach((item) => {
-          const li = document.createElement("li");
-          li.className = "color-item";
-
-          const swatch = document.createElement("span");
-          swatch.className = "color-swatch";
-          swatch.style.backgroundColor = item.color;
-          swatch.setAttribute("aria-hidden", "true");
-
-          const label = document.createElement("span");
-          label.className = "color-name";
-          label.textContent = item.name;
-
-          li.append(swatch, label);
-          colorList.append(li);
-        });
-
-        paletteBlock.append(paletteLabel, colorList);
-        panel.append(paletteBlock);
+      group.lines.forEach((line) => {
+        const paragraph = document.createElement("p");
+        paragraph.className = "attire-line";
+        paragraph.textContent = line;
+        linesWrap.append(paragraph);
       });
+
+      const colorList = document.createElement("ul");
+      colorList.className = "color-list color-list--compact color-list--cards";
+      colorList.setAttribute("aria-label", `${group.title} - cores sugeridas`);
+
+      group.colors.forEach((item) => {
+        const li = document.createElement("li");
+        li.className = "color-item color-item--card";
+
+        const swatch = document.createElement("span");
+        swatch.className = "color-swatch";
+        swatch.style.backgroundColor = item.color;
+        swatch.setAttribute("aria-hidden", "true");
+
+        const label = document.createElement("span");
+        label.className = "color-name";
+        label.textContent = item.name;
+
+        li.append(swatch, label);
+        colorList.append(li);
+      });
+
+      panel.append(panelTitle, linesWrap, colorList);
 
       attireGroups.append(panel);
     });
