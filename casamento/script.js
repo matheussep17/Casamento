@@ -1,42 +1,42 @@
-﻿const weddingPages = {
+const weddingPages = {
   casamento: {
     meta: {
       title: "Camila & Matheus | Casamento",
       description:
-        "Site de casamento com informaÃ§Ãµes da cerimÃ´nia, recepÃ§Ã£o, confirmaÃ§Ã£o de presenÃ§a e lista de presentes.",
+        "Site de casamento com informa\u00e7\u00f5es da cerim\u00f4nia, recep\u00e7\u00e3o, confirma\u00e7\u00e3o de presen\u00e7a e lista de presentes.",
     },
     heroImage: "https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=1800&q=85",
     brand: "C & M",
-    nav: ["HistÃ³ria", "Evento", "Traje", "PresenÃ§a", "Presentes"],
+    nav: ["Hist\u00f3ria", "Evento", "Traje", "Presen\u00e7a", "Presentes"],
     hero: {
       eyebrow: "Casamento",
       coupleName: "Camila & Matheus",
       dateLabel: "14 de agosto de 2027",
       weddingDate: "2027-08-14T16:30:00-03:00",
       text:
-        "Estamos preparando cada detalhe com muito carinho para celebrar o amor que Deus cultivou entre nÃ³s, unindo nossos coraÃ§Ãµes e dando inÃ­cio aos sonhos que florescem em nossa nova jornada.",
+        "Estamos preparando cada detalhe com muito carinho para celebrar o amor que Deus cultivou entre n\u00f3s, unindo nossos cora\u00e7\u00f5es e dando in\u00edcio aos sonhos que florescem em nossa nova jornada.",
     },
     story: {
-      eyebrow: "Nossa histÃ³ria",
-      title: "Dois caminhos unidos pelo amor e uma histÃ³ria que seguirÃ¡ para sempre.",
+      eyebrow: "Nossa hist\u00f3ria",
+      title: "Dois caminhos unidos pelo amor e uma hist\u00f3ria que seguir\u00e1 para sempre.",
       cards: [
         {
           step: "01",
-          title: "O comeÃ§o",
+          title: "O come\u00e7o",
           text:
-            "Uma conversa virou companhia, a companhia virou escolha, e aos poucos entendemos que Deus estava escrevendo uma histÃ³ria bonita em nÃ³s.",
+            "Uma conversa virou companhia, a companhia virou escolha, e aos poucos entendemos que Deus estava escrevendo uma hist\u00f3ria bonita em n\u00f3s.",
         },
         {
           step: "02",
           title: "O pedido",
           text:
-            "O sim veio com a certeza tranquila de quem jÃ¡ sonhava junto: comeÃ§ar uma nova famÃ­lia cercados de amor, fÃ© e gratidÃ£o.",
+            "O sim veio com a certeza tranquila de quem j\u00e1 sonhava junto: come\u00e7ar uma nova fam\u00edlia cercados de amor, f\u00e9 e gratid\u00e3o.",
         },
         {
           step: "03",
           title: "O grande dia",
           text:
-            "Agora queremos celebrar esse passo com pessoas especiais, pedindo a bÃªnÃ§Ã£o de Deus para a vida que vamos construir lado a lado.",
+            "Agora queremos celebrar esse passo com pessoas especiais, pedindo a b\u00ean\u00e7\u00e3o de Deus para a vida que vamos construir lado a lado.",
         },
       ],
     },
@@ -48,13 +48,13 @@
       { src: "fotos/foto-5.jpeg", alt: "Camila e Matheus juntos na foto 5" },
     ],
     event: {
-      eyebrow: "ProgramaÃ§Ã£o",
-      title: "Todos os detalhes para compartilhar esse dia tÃ£o especial conosco.",
+      eyebrow: "Programa\u00e7\u00e3o",
+      title: "Todos os detalhes para compartilhar esse dia t\u00e3o especial conosco.",
       main: {
-        time: "16:30 atÃ© 21:00",
-        title: "CerimÃ´nia & RecepÃ§Ã£o",
-        location: "ChÃ¡cara do italiano",
-        address: "BR-414 - Jardim PromissÃ£o, AnÃ¡polis - GO, 75073-815",
+        time: "16:30 at\u00e9 21:00",
+        title: "Cerim\u00f4nia & Recep\u00e7\u00e3o",
+        location: "Ch\u00e1cara do italiano",
+        address: "BR-414 - Jardim Promiss\u00e3o, An\u00e1polis - GO, 75073-815",
       },
       attire: {
         time: "Traje",
@@ -63,15 +63,15 @@
           {
             title: "Madrinhas",
             lines: [
-              "Para tornar esse dia ainda mais especial, escolhemos uma paleta de tons de rosa que traduz a essÃªncia do nosso casamento.",
-              "Cada madrinha poderÃ¡ escolher o vestido no tom que mais gostar, dentro da nossa paleta: Rosa BebÃª, Rosa Ballet, Rosa Chiclete ou Rosa Flamingo.",
-              "Como a cerimÃ´nia acontecerÃ¡ em um espaÃ§o ao ar livre, sobre a grama, sugerimos o uso de saltos blocados (quadrados) ou adaptadores de salto, garantindo mais conforto e seguranÃ§a durante toda a celebraÃ§Ã£o.",
+              "Para tornar esse dia ainda mais especial, escolhemos uma paleta de tons de rosa que traduz a ess\u00eancia do nosso casamento.",
+              "Cada madrinha poder\u00e1 escolher o vestido no tom que mais gostar, dentro da nossa paleta: Rosa Beb\u00ea, Rosa Ballet, Rosa Chiclete ou Rosa Flamingo.",
+              "Como a cerim\u00f4nia acontecer\u00e1 em um espa\u00e7o ao ar livre, sobre a grama, sugerimos o uso de saltos blocados (quadrados) ou adaptadores de salto, garantindo mais conforto e seguran\u00e7a durante toda a celebra\u00e7\u00e3o.",
             ],
             colors: [
-              { name: "Rosa BebÃª", code: "PANTONE 706 C", color: "#F3B2D4" },
-              { name: "Rosa Ballet", code: "PANTONE 203 C", color: "#F68FC0" },
-              { name: "Rosa Chiclete", code: "PANTONE 218 C", color: "#F163A8" },
-              { name: "Rosa Flamingo", code: "PANTONE 1915 C", color: "#ED4D9A" },
+              { name: "Rosa Beb\u00ea", color: "#F3B2D4" },
+              { name: "Rosa Ballet", color: "#F68FC0" },
+              { name: "Rosa Chiclete", color: "#F163A8" },
+              { name: "Rosa Flamingo", color: "#ED4D9A" },
             ],
           },
           {
@@ -88,7 +88,7 @@
                 label: "Terno",
                 colors: [
                   { name: "Cinza Gelo / Claro", color: "#D3D3D3" },
-                  { name: "Cinza MÃ©dio / Prata", color: "#C0C0C0" },
+                  { name: "Cinza Médio / Prata", color: "#C0C0C0" },
                 ],
               },
             ],
@@ -98,11 +98,11 @@
       mapLink: "https://maps.app.goo.gl/Md8mdx3pKJH91gai7",
     },
     rsvp: {
-      eyebrow: "Confirme sua presenÃ§a",
+      eyebrow: "Confirme sua presença",
       title: "Sua resposta nos ajuda a cuidar de cada detalhe.",
       note:
-        "Para recebermos todos com carinho, confirme apenas as pessoas que jÃ¡ estÃ£o na lista de convidados. Assim conseguimos organizar os lugares e evitar qualquer imprevisto no dia.",
-      status: "Abrindo WhatsApp para concluir a confirmaÃ§Ã£o...",
+        "Para recebermos todos com carinho, confirme apenas as pessoas que já estão na lista de convidados. Assim conseguimos organizar os lugares e evitar qualquer imprevisto no dia.",
+      status: "Abrindo WhatsApp para concluir a confirma\u00e7\u00e3o...",
       selectOptions: ["1 pessoa", "2 pessoas", "3 pessoas", "4 pessoas"],
     },
     gifts: {
@@ -117,7 +117,7 @@
       pixCard: {
         label: "Pix",
         title: "Cota livre",
-        text: "Obrigado por fazer parte da nossa histÃ³ria!",
+        text: "Obrigado por fazer parte da nossa história!",
         qrSrc: "fotos/pix-qrcode.jpeg",
         qrAlt: "QR Code Pix de Matheus Torres Ribeiro",
         keyLabel: "Chave Pix",
@@ -136,7 +136,6 @@
     whatsappNumber: "5562992304054",
   },
 };
-
 const getWeddingSlug = () => {
   const segments = window.location.pathname.split("/").filter(Boolean);
 
@@ -367,13 +366,6 @@ const renderEvent = () => {
           label.textContent = item.name;
 
           li.append(swatch, label);
-
-          if (item.code) {
-            const code = document.createElement("span");
-            code.className = "color-code";
-            code.textContent = item.code;
-            li.append(code);
-          }
           colorList.append(li);
         });
 
@@ -559,8 +551,8 @@ const handleSubmit = (event) => {
   const guestListText = guestNames.map((guest, index) => `${index + 1}. ${guest}`).join("\n");
 
   const text = [
-    `Oi! Aqui Ã© ${responsible}.`,
-    `Confirmo presenÃ§a no casamento para ${guestNames.length} pessoa(s):`,
+    `Oi! Aqui \u00e9 ${responsible}.`,
+    `Confirmo presen\u00e7a no casamento para ${guestNames.length} pessoa(s):`,
     guestListText,
     message ? `Mensagem: ${message}` : "",
   ]
