@@ -469,7 +469,6 @@ const renderGifts = () => {
   pixCard.setAttribute("aria-label", "Dados para presente via Pix");
 
   const pixSpan = document.createElement("span");
-  const pixBadge = document.createElement("span");
   const pixStrong = document.createElement("strong");
   const pixParagraph = document.createElement("p");
   const pixImage = document.createElement("img");
@@ -478,8 +477,6 @@ const renderGifts = () => {
   const pixStatus = document.createElement("p");
 
   pixSpan.textContent = currentWedding.gifts.pixCard.label;
-  pixBadge.className = "pix-badge";
-  pixBadge.textContent = "R$";
   pixStrong.textContent = currentWedding.gifts.pixCard.title;
   pixParagraph.textContent = currentWedding.gifts.pixCard.text;
   pixImage.className = "pix-qr-code";
@@ -517,7 +514,7 @@ const renderGifts = () => {
   pixStatus.setAttribute("role", "status");
   pixStatus.setAttribute("aria-live", "polite");
 
-  pixCard.append(pixBadge, pixSpan, pixStrong, pixParagraph, pixImage, pixDetails, pixButton, pixStatus);
+  pixCard.append(pixSpan, pixStrong, pixParagraph, pixImage, pixDetails, pixButton, pixStatus);
   giftGrid.append(linkCard, pixCard);
 };
 
