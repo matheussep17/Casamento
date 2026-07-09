@@ -59,11 +59,42 @@ const weddingPages = {
       attire: {
         time: "Traje",
         title: "Social elegante",
-        text: "Para as madrinhas, sugerimos estas cores:",
-        colors: [
-          { name: "Rosa Flamingo", color: "#F67BB6" },
-          { name: "Rosa Orquídea", color: "#F163A8" },
-          { name: "Rosa Fúcsia Claro", color: "#ED4D9A" },
+        intro: "Madrinhas em rosas suaves e padrinhos em prata e cinza elegante.",
+        groups: [
+          {
+            title: "Madrinhas",
+            eyebrow: "Vestidos",
+            description: "Tons rosados para um visual delicado e harmonioso.",
+            palettes: [
+              {
+                label: "Cores sugeridas",
+                colors: [
+                  { name: "Rosa Flamingo", color: "#F67BB6" },
+                  { name: "Rosa Orquídea", color: "#F163A8" },
+                  { name: "Rosa Fúcsia Claro", color: "#ED4D9A" },
+                ],
+              },
+            ],
+          },
+          {
+            title: "Padrinhos",
+            eyebrow: "Gravata e terno",
+            description: "A gravata fica em prata tradicional e o terno em cinza claro.",
+            palettes: [
+              {
+                label: "Gravata",
+                colors: [{ name: "Prata Tradicional", color: "#C0C0C0" }],
+              },
+              {
+                label: "Terno",
+                colors: [
+                  { name: "Cinza Gelo / Claro", color: "#D3D3D3" },
+                  { name: "Cinza Médio / Prata", color: "#C0C0C0" },
+                  { name: "Cinza Intermediário / Terno Cinza", color: "#898989" },
+                ],
+              },
+            ],
+          },
         ],
         note: "Evite branco, off-white e tons de noiva.",
       },
@@ -297,27 +328,64 @@ const renderEvent = () => {
 
   setText(".time", currentWedding.event.attire.time, attireCard);
   setText("h3", currentWedding.event.attire.title, attireCard);
-  const attireParagraph = attireCard.querySelector(".attire-text");
-  if (attireParagraph) attireParagraph.textContent = currentWedding.event.attire.text;
+  const attireIntro = attireCard.querySelector(".attire-intro");
+  if (attireIntro) attireIntro.textContent = currentWedding.event.attire.intro;
 
-  const colorsList = attireCard.querySelector(".color-list");
-  if (colorsList) {
-    colorsList.innerHTML = "";
-    currentWedding.event.attire.colors.forEach((item) => {
-      const li = document.createElement("li");
-      li.className = "color-item";
+  const attireGroups = attireCard.querySelector(".attire-groups");
+  if (attireGroups) {
+    attireGroups.innerHTML = "";
 
-      const swatch = document.createElement("span");
-      swatch.className = "color-swatch";
-      swatch.style.backgroundColor = item.color;
-      swatch.setAttribute("aria-hidden", "true");
+    currentWedding.event.attire.groups.forEach((group, groupIndex) => {
+      const panel = document.createElement("section");
+      panel.className = `attire-panel attire-panel--${groupIndex === 0 ? "madrinhas" : "padrinhos"}`;
 
-      const label = document.createElement("span");
-      label.className = "color-name";
-      label.textContent = item.name;
+      const panelEyebrow = document.createElement("p");
+      panelEyebrow.className = "attire-panel-eyebrow";
+      panelEyebrow.textContent = group.eyebrow;
 
-      li.append(swatch, label);
-      colorsList.append(li);
+      const panelTitle = document.createElement("h4");
+      panelTitle.textContent = group.title;
+
+      const panelDescription = document.createElement("p");
+      panelDescription.className = "attire-panel-description";
+      panelDescription.textContent = group.description;
+
+      panel.append(panelEyebrow, panelTitle, panelDescription);
+
+      group.palettes.forEach((palette) => {
+        const paletteBlock = document.createElement("div");
+        paletteBlock.className = "attire-palette";
+
+        const paletteLabel = document.createElement("p");
+        paletteLabel.className = "attire-palette-label";
+        paletteLabel.textContent = palette.label;
+
+        const colorList = document.createElement("ul");
+        colorList.className = "color-list color-list--compact";
+        colorList.setAttribute("aria-label", `${group.title} - ${palette.label}`);
+
+        palette.colors.forEach((item) => {
+          const li = document.createElement("li");
+          li.className = "color-item";
+
+          const swatch = document.createElement("span");
+          swatch.className = "color-swatch";
+          swatch.style.backgroundColor = item.color;
+          swatch.setAttribute("aria-hidden", "true");
+
+          const label = document.createElement("span");
+          label.className = "color-name";
+          label.textContent = item.name;
+
+          li.append(swatch, label);
+          colorList.append(li);
+        });
+
+        paletteBlock.append(paletteLabel, colorList);
+        panel.append(paletteBlock);
+      });
+
+      attireGroups.append(panel);
     });
   }
 
