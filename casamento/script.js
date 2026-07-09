@@ -64,7 +64,8 @@ const weddingPages = {
           {
             title: "Madrinhas",
             eyebrow: "Vestidos",
-            description: "Tons rosados para um visual delicado e harmonioso.",
+            description:
+              "Para tornar esse dia ainda mais especial, escolhemos uma paleta de tons de rosa que traduz a essência do nosso casamento. Cada madrinha poderá escolher o vestido no tom que mais gostar, dentro da nossa paleta: Rosa Chiclete, Rosa Orquídea ou Rosa Flamingo. Como a cerimônia acontecerá em um espaço ao ar livre, sobre a grama, sugerimos o uso de saltos blocados (quadrados) ou adaptadores de salto, garantindo mais conforto e segurança durante toda a celebração.",
             palettes: [
               {
                 label: "Cores sugeridas",
