@@ -64,8 +64,8 @@ const weddingPages = {
             title: "Madrinhas",
             lines: [
               "Para tornar esse dia ainda mais especial, escolhemos uma paleta de tons de rosa que traduz a ess\u00eancia do nosso casamento.",
-              "Cada madrinha poder\u00e1 escolher o vestido no tom que mais gostar, dentro da nossa paleta:",
               "Como a cerim\u00f4nia acontecer\u00e1 em um espa\u00e7o ao ar livre, sobre a grama, sugerimos o uso de saltos blocados (quadrados) ou adaptadores de salto, garantindo mais conforto e seguran\u00e7a durante toda a celebra\u00e7\u00e3o.",
+              "Cada madrinha poder\u00e1 escolher o vestido no tom que mais gostar, dentro da nossa paleta:",
             ],
             colors: [
               { name: "Rosa Beb\u00ea", color: "#F3B2D4" },
@@ -469,6 +469,7 @@ const renderGifts = () => {
   pixCard.setAttribute("aria-label", "Dados para presente via Pix");
 
   const pixSpan = document.createElement("span");
+  const pixBadge = document.createElement("span");
   const pixStrong = document.createElement("strong");
   const pixParagraph = document.createElement("p");
   const pixImage = document.createElement("img");
@@ -477,6 +478,8 @@ const renderGifts = () => {
   const pixStatus = document.createElement("p");
 
   pixSpan.textContent = currentWedding.gifts.pixCard.label;
+  pixBadge.className = "pix-badge";
+  pixBadge.textContent = "R$";
   pixStrong.textContent = currentWedding.gifts.pixCard.title;
   pixParagraph.textContent = currentWedding.gifts.pixCard.text;
   pixImage.className = "pix-qr-code";
@@ -514,7 +517,7 @@ const renderGifts = () => {
   pixStatus.setAttribute("role", "status");
   pixStatus.setAttribute("aria-live", "polite");
 
-  pixCard.append(pixSpan, pixStrong, pixParagraph, pixImage, pixDetails, pixButton, pixStatus);
+  pixCard.append(pixBadge, pixSpan, pixStrong, pixParagraph, pixImage, pixDetails, pixButton, pixStatus);
   giftGrid.append(linkCard, pixCard);
 };
 
