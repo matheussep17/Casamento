@@ -64,6 +64,7 @@ const weddingPages = {
           {
             title: "Madrinhas",
             eyebrow: "Vestidos",
+            icon: "✿",
             description:
               "Para tornar esse dia ainda mais especial, escolhemos uma paleta de tons de rosa que traduz a essência do nosso casamento. Cada madrinha poderá escolher o vestido no tom que mais gostar, dentro da nossa paleta: Rosa Chiclete, Rosa Orquídea ou Rosa Flamingo. Como a cerimônia acontecerá em um espaço ao ar livre, sobre a grama, sugerimos o uso de saltos blocados (quadrados) ou adaptadores de salto, garantindo mais conforto e segurança durante toda a celebração.",
             palettes: [
@@ -80,6 +81,7 @@ const weddingPages = {
           {
             title: "Padrinhos",
             eyebrow: "Gravata e terno",
+            icon: "◈",
             description: "A gravata fica em prata tradicional e o terno em cinza claro.",
             palettes: [
               {
@@ -345,7 +347,14 @@ const renderEvent = () => {
       panelEyebrow.textContent = group.eyebrow;
 
       const panelTitle = document.createElement("h4");
-      panelTitle.textContent = group.title;
+      const panelIcon = document.createElement("span");
+      panelIcon.className = "attire-panel-icon";
+      panelIcon.textContent = group.icon || "•";
+
+      const panelTitleText = document.createElement("span");
+      panelTitleText.textContent = group.title;
+
+      panelTitle.append(panelIcon, panelTitleText);
 
       const panelDescription = document.createElement("p");
       panelDescription.className = "attire-panel-description";

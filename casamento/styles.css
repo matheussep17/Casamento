@@ -258,6 +258,12 @@ h3 {
   align-items: stretch;
 }
 
+.event-main {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
 .story-grid article,
 .event-card,
 .gift-card,
@@ -355,6 +361,27 @@ h3 {
   color: var(--olive);
   font-size: 0.98rem;
   font-weight: 600;
+}
+
+.attire-panel h4 {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 0;
+  color: var(--olive);
+  font-size: 1.1rem;
+}
+
+.attire-panel-icon {
+  display: inline-grid;
+  place-items: center;
+  width: 26px;
+  height: 26px;
+  border-radius: 999px;
+  background: rgba(217, 111, 150, 0.12);
+  color: #d96f96;
+  font-size: 0.95rem;
+  line-height: 1;
 }
 
 .attire-groups {
@@ -805,6 +832,10 @@ textarea {
   .photo-section,
   .rsvp {
     grid-template-columns: 1fr;
+  }
+
+  .event-main {
+    gap: 14px;
   }
 
   .attire-groups {
