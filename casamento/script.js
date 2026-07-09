@@ -89,7 +89,6 @@ const weddingPages = {
                 colors: [
                   { name: "Cinza Gelo / Claro", color: "#D3D3D3" },
                   { name: "Cinza Médio / Prata", color: "#C0C0C0" },
-                  { name: "Cinza Intermediário / Terno Cinza", color: "#898989" },
                 ],
               },
             ],
