@@ -64,7 +64,7 @@ const weddingPages = {
             title: "Madrinhas",
             lines: [
               "Para tornar esse dia ainda mais especial, escolhemos uma paleta de tons de rosa que traduz a ess\u00eancia do nosso casamento.",
-              "Cada madrinha poder\u00e1 escolher o vestido no tom que mais gostar, dentro da nossa paleta: Rosa Beb\u00ea, Rosa Ballet, Rosa Chiclete ou Rosa Flamingo.",
+              "Cada madrinha poder\u00e1 escolher o vestido no tom que mais gostar, dentro da nossa paleta:",
               "Como a cerim\u00f4nia acontecer\u00e1 em um espa\u00e7o ao ar livre, sobre a grama, sugerimos o uso de saltos blocados (quadrados) ou adaptadores de salto, garantindo mais conforto e seguran\u00e7a durante toda a celebra\u00e7\u00e3o.",
             ],
             colors: [

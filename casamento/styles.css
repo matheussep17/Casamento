@@ -175,6 +175,7 @@ h3 {
 .gift-grid {
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
   gap: 14px;
 }
 
