@@ -308,25 +308,55 @@ h3 {
   position: relative;
   overflow: hidden;
   background:
-    radial-gradient(circle at top right, rgba(255, 255, 255, 0.08), transparent 28%),
-    linear-gradient(180deg, #31453c 0%, #3a4f45 100%);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+    radial-gradient(circle at top right, rgba(255, 244, 236, 0.12), transparent 30%),
+    radial-gradient(circle at 14% 18%, rgba(217, 111, 150, 0.08), transparent 20%),
+    linear-gradient(160deg, #31453c 0%, #3d5449 52%, #36493f 100%);
+  border: 1px solid rgba(255, 255, 255, 0.09);
   color: var(--white);
   box-shadow:
-    0 26px 70px rgba(24, 34, 30, 0.18),
-    inset 0 1px 0 rgba(255, 255, 255, 0.06);
+    0 30px 84px rgba(24, 34, 30, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.07);
 }
 
 .event-card-featured::before {
   content: "";
   position: absolute;
-  top: 22px;
-  right: 22px;
-  width: 78px;
-  height: 78px;
+  top: 18px;
+  right: 18px;
+  width: 96px;
+  height: 96px;
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(217, 111, 150, 0.16), transparent 68%);
+  background: radial-gradient(circle, rgba(255, 226, 215, 0.16), transparent 70%);
   pointer-events: none;
+}
+
+.event-card-featured::after {
+  content: "";
+  position: absolute;
+  inset: auto auto 18px 18px;
+  width: 112px;
+  height: 112px;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  background: radial-gradient(circle, rgba(217, 111, 150, 0.08), transparent 68%);
+  pointer-events: none;
+}
+
+.event-card-icon {
+  display: grid;
+  place-items: center;
+  width: 58px;
+  height: 58px;
+  margin: 0 auto 16px;
+  border-radius: 50%;
+  color: #f5eadf;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.16), rgba(255, 255, 255, 0.08));
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  box-shadow:
+    0 16px 30px rgba(24, 34, 30, 0.16),
+    inset 0 1px 0 rgba(255, 255, 255, 0.12);
+  font-size: 1.55rem;
+  line-height: 1;
 }
 
 .event-card-featured .time,
@@ -716,23 +746,23 @@ h3 {
   width: fit-content;
   margin: 28px auto 0;
   border-radius: 999px;
-  padding: 0 24px;
+  padding: 0 26px;
   color: var(--white);
-  background: linear-gradient(180deg, #d96f96, #c95d88);
-  border: 1px solid rgba(255, 255, 255, 0.14);
+  background: linear-gradient(135deg, #dd789d 0%, #c95d88 100%);
+  border: 1px solid rgba(255, 255, 255, 0.16);
   font-family: Arial, Helvetica, sans-serif;
   font-size: 0.82rem;
   font-weight: 800;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
   box-shadow:
-    0 14px 36px rgba(217, 111, 150, 0.24),
+    0 16px 38px rgba(217, 111, 150, 0.24),
     inset 0 1px 0 rgba(255, 255, 255, 0.18);
   transition: transform 180ms ease, box-shadow 180ms ease, background 180ms ease;
 }
 
 .map-link:hover {
-  background: linear-gradient(180deg, #d86c95, #b95880);
+  background: linear-gradient(135deg, #d86c95 0%, #b95880 100%);
   box-shadow:
     0 18px 44px rgba(217, 111, 150, 0.3),
     inset 0 1px 0 rgba(255, 255, 255, 0.18);
@@ -833,43 +863,60 @@ textarea {
 
 .pix-card {
   display: grid;
-  gap: 18px;
+  gap: 16px;
   position: relative;
   justify-items: center;
   text-align: center;
   overflow: hidden;
   background:
-    radial-gradient(circle at top right, rgba(104, 141, 127, 0.11), transparent 24%),
-    radial-gradient(circle at 18% 18%, rgba(217, 111, 150, 0.08), transparent 20%),
-    linear-gradient(180deg, rgba(255, 255, 255, 0.98), rgba(248, 250, 247, 0.97));
-  border: 1px solid rgba(111, 134, 109, 0.14);
+    radial-gradient(circle at top left, rgba(217, 111, 150, 0.08), transparent 24%),
+    radial-gradient(circle at 100% 8%, rgba(111, 134, 109, 0.12), transparent 20%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.99), rgba(247, 249, 243, 0.98));
+  border: 1px solid rgba(111, 134, 109, 0.12);
+}
+
+.pix-card::before {
+  content: "R$";
+  position: absolute;
+  top: 18px;
+  right: 18px;
+  display: grid;
+  place-items: center;
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  color: var(--sage);
+  background: linear-gradient(180deg, rgba(111, 134, 109, 0.16), rgba(217, 111, 150, 0.12));
+  border: 1px solid rgba(111, 134, 109, 0.15);
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 0.76rem;
+  font-weight: 900;
+  letter-spacing: 0.12em;
+  pointer-events: none;
 }
 
 .pix-card::after {
   content: "";
   position: absolute;
-  inset: auto -18% -20% auto;
-  width: 170px;
-  height: 170px;
+  inset: auto -18% -18% auto;
+  width: 190px;
+  height: 190px;
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(111, 134, 109, 0.12), transparent 68%);
+  background: radial-gradient(circle, rgba(217, 111, 150, 0.08), transparent 68%);
   pointer-events: none;
 }
 
-.pix-card > span {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  min-height: 30px;
-  padding: 0 12px;
-  border-radius: 999px;
-  color: #6a7f73;
-  background: rgba(111, 134, 109, 0.1);
-  font-family: Arial, Helvetica, sans-serif;
-  font-size: 0.75rem;
-  font-weight: 900;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
+.pix-card span {
+  color: var(--sage);
+}
+
+.pix-card strong {
+  margin-bottom: 10px;
+  font-size: 1.95rem;
+}
+
+.pix-card p {
+  max-width: 30ch;
 }
 
 .pix-qr-code {
@@ -878,16 +925,16 @@ textarea {
   justify-self: center;
   padding: 10px;
   border-radius: 18px;
-  background: linear-gradient(180deg, rgba(255, 255, 255, 0.98), rgba(247, 241, 232, 0.98));
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.99), rgba(248, 244, 237, 0.98));
   box-shadow:
-    inset 0 0 0 1px rgba(111, 134, 109, 0.18),
+    inset 0 0 0 1px rgba(111, 134, 109, 0.16),
     0 16px 38px rgba(111, 134, 109, 0.1);
 }
 
 .pix-details {
   display: grid;
   gap: 0;
-  width: min(100%, 240px);
+  width: min(100%, 260px);
   margin: 0;
   padding: 16px 18px;
   border: 1px solid rgba(111, 134, 109, 0.16);
@@ -947,7 +994,12 @@ textarea {
 
 .pix-copy-button {
   width: 100%;
+  background: linear-gradient(135deg, #6f8473 0%, #d96f96 100%);
   box-shadow: 0 14px 30px rgba(111, 134, 109, 0.16);
+}
+
+.pix-copy-button:hover {
+  background: linear-gradient(135deg, #5e7363 0%, #c95d88 100%);
 }
 
 .pix-copy-status {
@@ -957,6 +1009,7 @@ textarea {
   font-family: Arial, Helvetica, sans-serif;
   font-size: 0.9rem;
   font-weight: 700;
+  text-align: center;
 }
 
 .footer {
