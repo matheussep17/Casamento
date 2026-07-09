@@ -61,10 +61,9 @@ const weddingPages = {
         title: "Social elegante",
         text: "Para as madrinhas, sugerimos estas cores:",
         colors: [
-          { name: "Rosa bebê", color: "#FF8DC4" },
-          { name: "Rosa blush", color: "#F67BB6" },
-          { name: "Rosa chiclete", color: "#F163A8" },
-          { name: "Rosa pink", color: "#ED4D9A" },
+          { name: "Rosa Flamingo", color: "#F67BB6" },
+          { name: "Rosa Orquídea", color: "#F163A8" },
+          { name: "Rosa Fúcsia Claro", color: "#ED4D9A" },
         ],
         note: "Evite branco, off-white e tons de noiva.",
       },
