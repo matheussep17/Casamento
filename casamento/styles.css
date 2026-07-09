@@ -95,6 +95,7 @@ a {
 .hero-content {
   position: relative;
   width: min(760px, 100%);
+  text-align: center;
 }
 
 .eyebrow {
@@ -161,6 +162,7 @@ h3 {
   margin-bottom: 30px;
   font-size: clamp(1.08rem, 2vw, 1.35rem);
   line-height: 1.6;
+  margin-inline: auto;
 }
 
 .hero-actions,
@@ -405,8 +407,10 @@ h3 {
 }
 
 .attire-panel--padrinhos {
-  background: linear-gradient(180deg, rgba(247, 248, 250, 0.98), rgba(240, 243, 247, 0.94));
-  border-color: rgba(156, 164, 172, 0.35);
+  background:
+    radial-gradient(circle at top right, rgba(217, 111, 150, 0.14), transparent 30%),
+    linear-gradient(180deg, rgba(242, 244, 247, 0.99), rgba(229, 234, 241, 0.96));
+  border-color: rgba(136, 145, 155, 0.45);
 }
 
 .attire-panel-eyebrow {
@@ -458,6 +462,12 @@ h3 {
   justify-items: center;
 }
 
+.attire-panel--padrinhos .attire-palette:last-child .color-list--cards {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  max-width: 420px;
+  margin-inline: auto;
+}
+
 .attire-palette-label {
   margin: 0 0 12px;
   color: var(--ink);
@@ -477,6 +487,20 @@ h3 {
   font-size: 0.9rem;
   font-weight: 800;
   line-height: 1.15;
+}
+
+.attire-panel--padrinhos .color-name {
+  color: #39414d;
+}
+
+.attire-panel--padrinhos .attire-line {
+  color: #4f5966;
+}
+
+.attire-panel--padrinhos .color-swatch {
+  box-shadow:
+    0 12px 28px rgba(66, 74, 85, 0.18),
+    inset 0 0 0 1px rgba(0, 0, 0, 0.04);
 }
 
 .event-card address {
@@ -770,6 +794,8 @@ textarea {
   display: grid;
   gap: 6px;
   padding: 12px 0;
+  justify-items: center;
+  text-align: center;
 }
 
 .pix-row + .pix-row {
@@ -795,11 +821,17 @@ textarea {
   line-height: 1.4;
   font-weight: 800;
   overflow-wrap: anywhere;
+  text-align: center;
 }
 
 .pix-row--key dd {
   font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
   letter-spacing: 0.03em;
+}
+
+.pix-row--key dt,
+.pix-row--key dd {
+  text-align: center;
 }
 
 .pix-copy-button {
@@ -876,8 +908,10 @@ textarea {
     margin-inline: auto;
   }
 
-  .color-list--cards {
-    grid-template-columns: repeat(auto-fit, minmax(96px, 1fr));
+  .attire-panel--padrinhos .attire-palette:last-child .color-list--cards {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    max-width: 420px;
+    margin-inline: auto;
   }
 
   .color-swatch {
