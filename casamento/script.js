@@ -416,11 +416,11 @@ const renderEvent = () => {
 };
 
 const renderRsvp = () => {
-  const rsvpSection = document.querySelector("#rsvp");
+  const rsvpSection = document.querySelector("#presenca");
   if (!rsvpSection) return;
 
-  setText("#rsvp .eyebrow", currentWedding.rsvp.eyebrow);
-  setText("#rsvp h2", currentWedding.rsvp.title);
+  setText("#presenca .eyebrow", currentWedding.rsvp.eyebrow);
+  setText("#presenca h2", currentWedding.rsvp.title);
   setText(".rsvp-note", currentWedding.rsvp.note);
 
   if (guestsSelect) {
