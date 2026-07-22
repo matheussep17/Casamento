@@ -3,8 +3,8 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Abrir Casamento ou App Igreja</title>
-    <meta name="description" content="Página simples com links para Casamento e App Igreja." />
+    <title>Matheus Torres — QA Engineer</title>
+    <meta name="description" content="Portfólio de QA com destaque para automação, teste de API e engenharia de confiabilidade." />
     <style>
       :root {
         color-scheme: dark;
@@ -20,84 +20,194 @@
       }
       body {
         font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-        display: grid;
-        place-items: center;
-        padding: 24px;
         background: radial-gradient(circle at top left, rgba(62, 224, 232, 0.16), transparent 28%),
                     radial-gradient(circle at bottom right, rgba(167, 139, 250, 0.18), transparent 30%),
                     linear-gradient(180deg, #09121f 0%, #05111a 100%);
+        color: #edf2f7;
       }
-      .card {
-        width: min(100%, 520px);
-        padding: 32px 28px;
-        border-radius: 28px;
-        background: rgba(12, 18, 36, 0.88);
-        box-shadow: 0 30px 60px rgba(0, 0, 0, 0.34);
+      .page {
+        width: min(100%, 1080px);
+        margin: 0 auto;
+        padding: 40px 24px 60px;
+      }
+      .hero {
+        display: grid;
+        gap: 28px;
+        padding: 40px;
+        border-radius: 32px;
+        background: rgba(14, 25, 45, 0.92);
         border: 1px solid rgba(255, 255, 255, 0.06);
-        backdrop-filter: blur(16px);
+        box-shadow: 0 30px 80px rgba(0, 0, 0, 0.24);
       }
-      .title {
-        margin: 0 0 18px;
-        font-size: clamp(2rem, 4vw, 3rem);
-        line-height: 1.03;
-        letter-spacing: -0.04em;
+      .hero-top {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        gap: 24px;
+        flex-wrap: wrap;
       }
-      .description {
-        margin: 0 0 28px;
-        color: #b1c2d5;
-        font-size: 1rem;
+      .hero-copy {
+        max-width: 620px;
+      }
+      .hero-copy h1 {
+        margin: 0;
+        font-size: clamp(2.8rem, 5vw, 4.25rem);
+        line-height: 0.98;
+      }
+      .hero-copy p {
+        margin: 20px 0 0;
+        color: #b8c6dd;
+        font-size: 1.05rem;
         line-height: 1.8;
       }
-      .buttons {
+      .hero-actions {
         display: grid;
         gap: 16px;
+        width: min(100%, 280px);
       }
-      .button {
+      .hero-actions a {
         display: inline-flex;
         align-items: center;
         justify-content: center;
-        padding: 16px 20px;
+        padding: 16px 18px;
         border-radius: 18px;
-        text-decoration: none;
         font-weight: 700;
-        font-size: 1rem;
-        transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
+        text-decoration: none;
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
       }
-      .button.primary {
-        background: linear-gradient(135deg, #34d0ff, #4c7cff);
+      .hero-actions .primary {
+        background: linear-gradient(135deg, #34d0ff, #5c74ff);
         color: #07111f;
-        box-shadow: 0 18px 30px rgba(52, 208, 255, 0.2);
+        box-shadow: 0 18px 30px rgba(52, 208, 255, 0.22);
       }
-      .button.secondary {
+      .hero-actions .secondary {
         background: rgba(255, 255, 255, 0.08);
-        color: #e8f1fa;
+        color: #edf2f7;
         border: 1px solid rgba(255, 255, 255, 0.12);
       }
-      .button:hover {
+      .hero-actions a:hover {
         transform: translateY(-2px);
-        box-shadow: 0 22px 40px rgba(0, 0, 0, 0.25);
+        box-shadow: 0 22px 40px rgba(0, 0, 0, 0.22);
       }
-      .note {
+      .badges {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
         margin-top: 24px;
-        color: #8fa6c0;
+      }
+      .badge {
+        background: rgba(255, 255, 255, 0.08);
+        color: #cbd5e1;
+        padding: 10px 14px;
+        border-radius: 999px;
+        font-size: 0.95rem;
+        border: 1px solid rgba(255, 255, 255, 0.08);
+      }
+      .sections {
+        margin-top: 40px;
+        display: grid;
+        gap: 24px;
+      }
+      .section {
+        padding: 28px;
+        border-radius: 24px;
+        background: rgba(11, 18, 31, 0.92);
+        border: 1px solid rgba(255, 255, 255, 0.05);
+      }
+      .section h2 {
+        margin: 0 0 16px;
+        font-size: 1.5rem;
+      }
+      .section p {
+        margin: 0;
+        color: #cbd5e1;
+        line-height: 1.8;
+      }
+      .cards {
+        display: grid;
+        gap: 18px;
+        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      }
+      .card {
+        padding: 22px;
+        border-radius: 20px;
+        background: rgba(255, 255, 255, 0.03);
+        border: 1px solid rgba(255, 255, 255, 0.06);
+      }
+      .card h3 {
+        margin: 0 0 12px;
+        font-size: 1.1rem;
+      }
+      .card p {
+        margin: 0;
+        color: #a2b1cc;
+        line-height: 1.7;
+      }
+      .footer {
+        margin-top: 34px;
+        text-align: center;
+        color: #7f9bb3;
         font-size: 0.94rem;
       }
-      @media (max-width: 520px) {
-        .card {
-          padding: 24px 20px;
+      @media (max-width: 780px) {
+        .hero-top {
+          flex-direction: column;
+        }
+        .hero-actions {
+          width: 100%;
         }
       }
     </style>
   </head>
   <body>
-    <div class="card">
-      <h1 class="title">Bem-vindos</h1>
-      <p class="description">Abra direto o site de casamento ou o app da igreja. Apenas os links principais e um visual limpo para facilitar o acesso.</p>
-      <div class="buttons">
-        <a class="button primary" href="/casamento/">Abrir Casamento</a>
-        <a class="button secondary" href="/appigreja/">Abrir App Igreja</a>
+    <div class="page">
+      <section class="hero">
+        <div class="hero-top">
+          <div class="hero-copy">
+            <p class="eyebrow">Matheus Torres — Senior QA Engineer</p>
+            <h1>Qualidade de software com foco em automação, APIs e confiabilidade.</h1>
+            <p>Entrego resultados rápidos em ambientes reais com testes sólidos, integração contínua e visão prática de produto. Projetos pensados para reduzir riscos e acelerar releases.</p>
+            <div class="badges">
+              <span class="badge">Python</span>
+              <span class="badge">Playwright</span>
+              <span class="badge">Cypress</span>
+              <span class="badge">API Testing</span>
+              <span class="badge">CI/CD</span>
+            </div>
+          </div>
+          <div class="hero-actions">
+            <a class="primary" href="/casamento/">Abrir Casamento</a>
+            <a class="secondary" href="/appigreja/">Abrir App Igreja</a>
+          </div>
+        </div>
+      </section>
+
+      <div class="sections">
+        <section class="section">
+          <h2>O que faço</h2>
+          <p>Desenvolvo automação de testes para web e APIs, defino fluxos de qualidade e validos entregas contínuas. Meu foco é transformar incerteza em confiança com indicadores reais e processos claros.</p>
+        </section>
+
+        <section class="section">
+          <div class="cards">
+            <div class="card">
+              <h3>Automação de UI</h3>
+              <p>Construção de testes robustos em Playwright e Cypress, com padrões de Page Object e manutenção eficiente para times ágeis.</p>
+            </div>
+            <div class="card">
+              <h3>Testes de API</h3>
+              <p>Validação de contratos, cenários de integração e resposta, monitorando estabilidade de serviços e regressões em APIs REST.</p>
+            </div>
+            <div class="card">
+              <h3>Qualidade de Release</h3>
+              <p>Pipeline CI/CD, análise de risco e cobertura técnica que ajudam equipes a entregar com mais confiança e menos retrabalho.</p>
+            </div>
+          </div>
+        </section>
+
       </div>
-      <p class="note">Se quiser, posso deixar a página ainda mais simples com só um botão e texto reduzido.</p>
+
+      <div class="footer">Foco na carreira, nas ferramentas e nos resultados.</div>
     </div>
   </body>
 </html>
