@@ -2,22 +2,34 @@
 
 ## Live target
 - Public site: https://matheustorresqa.com/casamento/
-- This repository is the source of truth for the wedding site. The site content now lives at the repository root.
-- The content is synced to the deployment repository at https://github.com/matheussep17/site.
+- This repository is the single source of truth for the wedding site. The site content lives at the repository root.
 
-## Automatic sync
-- Every push to the `main` branch of this repository triggers an automatic sync to the deployment repository.
-- The sync uses the GitHub Actions workflow at `.github/workflows/sync-to-site.yml`.
+## Important: no more synchronization
+This repository no longer mirrors changes to a second repo. The previous automatic sync workflow has been removed — all future edits must be made directly in this repository.
 
-## Required repository secret
-Before the workflow can push to the deployment repo, create this secret in the source repository:
-- Name: `SITE_REPO_TOKEN`
-- Value: a personal access token with write access to the `matheussep17/site` repository.
+If you previously created a repository `matheussep17/site` for deploy mirroring, you can safely delete or archive it (recommended) to avoid confusion.
 
-## Manual fallback
-If you need to sync manually, run:
-- `git clone https://github.com/matheussep17/site.git`
-- Copy the updated files (root of this repo) into the clone
-- `git add -A`
-- `git commit -m "Sync from Casamento"`
-- `git push origin master`
+To delete the old repository on GitHub (do this only if you're sure):
+1. Open: https://github.com/matheussep17/site
+2. Settings → Scroll to **Danger Zone** → **Delete this repository**
+3. Type the repository name to confirm and delete.
+
+After deleting or archiving the old repo, remove the secret `SITE_REPO_TOKEN` from this repository to avoid stale credentials:
+1. Open: https://github.com/matheussep17/Casamento
+2. Settings → Secrets and variables → Actions
+3. Delete the `SITE_REPO_TOKEN` secret
+
+## Deploy (how to publish)
+- If you use GitHub Pages, set the Pages source to the `main` branch and root folder: Settings → Pages → Build and deployment → Branch: `main`, Folder: `/ (root)`.
+- If you use another hosting provider, update its deploy settings to pull from this repository (branch `main`).
+
+## Manual deploy fallback
+If you need to publish manually, clone the host repo and push the root files there as required by your host:
+```bash
+git clone <HOST_REPO_URL>
+cp -r ./* <cloned-repo>/
+cd <cloned-repo>
+git add -A
+git commit -m "Deploy: update site from Casamento repo"
+git push origin <branch>
+```
