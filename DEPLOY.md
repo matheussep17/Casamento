@@ -2,7 +2,7 @@
 
 ## Live target
 - Public site: https://matheustorresqa.com/casamento/
-- This repository is the source of truth for the wedding site.
+- This repository is the source of truth for the wedding site. The site content now lives at the repository root.
 - The content is synced to the deployment repository at https://github.com/matheussep17/site.
 
 ## Automatic sync
@@ -17,7 +17,7 @@ Before the workflow can push to the deployment repo, create this secret in the s
 ## Manual fallback
 If you need to sync manually, run:
 - `git clone https://github.com/matheussep17/site.git`
-- Copy the updated files into the clone
+- Copy the updated files (root of this repo) into the clone
 - `git add -A`
 - `git commit -m "Sync from Casamento"`
 - `git push origin master`
