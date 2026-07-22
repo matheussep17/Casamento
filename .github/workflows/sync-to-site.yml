@@ -9,7 +9,7 @@ jobs:
   sync:
     runs-on: ubuntu-latest
     permissions:
-      contents: read
+      contents: write
 
     steps:
       - name: Checkout source repository
@@ -36,4 +36,6 @@ jobs:
             exit 0
           fi
           git commit -m "Sync from Casamento"
-          git push origin HEAD:master
+          # Try pushing to both common default branches (master and main)
+          git push origin HEAD:master || echo "push to master failed or branch missing"
+          git push origin HEAD:main || echo "push to main failed or branch missing"
