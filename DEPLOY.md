@@ -1,18 +1,23 @@
 # Deploy Guide
 
 ## Live target
-- Public site: `https://matheustorresqa.com/casamento/`
-- This repository is the live repository for the wedding site.
-- Edit the live wedding site under `casamento/`.
+- Public site: https://matheustorresqa.com/casamento/
+- This repository is the source of truth for the wedding site.
+- The content is synced to the deployment repository at https://github.com/matheussep17/site.
 
-## Safe workflow
-1. Make changes only in `casamento/index.html`, `casamento/script.js`, and `casamento/styles.css` unless the change is intentionally shared elsewhere.
-2. Verify the result locally.
-3. Commit and push:
-   - `git add casamento/index.html casamento/script.js casamento/styles.css`
-   - `git commit -m "..."`
-   - `git push origin master`
+## Automatic sync
+- Every push to the `main` branch of this repository triggers an automatic sync to the deployment repository.
+- The sync uses the GitHub Actions workflow at `.github/workflows/sync-to-site.yml`.
 
-## Rule of thumb
-- If a change is meant for `matheustorresqa.com/casamento/`, edit and push this repository.
-- If a change is only a local experiment, keep it outside the live repo until it is ready.
+## Required repository secret
+Before the workflow can push to the deployment repo, create this secret in the source repository:
+- Name: `SITE_REPO_TOKEN`
+- Value: a personal access token with write access to the `matheussep17/site` repository.
+
+## Manual fallback
+If you need to sync manually, run:
+- `git clone https://github.com/matheussep17/site.git`
+- Copy the updated files into the clone
+- `git add -A`
+- `git commit -m "Sync from Casamento"`
+- `git push origin master`
