@@ -3,284 +3,74 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Matheus Torres QA — Home</title>
-    <meta name="description" content="Matheus Torres - QA, automação de testes e projetos." />
+    <title>Matheus Torres — Senior QA</title>
+    <meta name="description" content="Portfólio e trabalhos de QA de Matheus Torres." />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
     <style>
-      body{font-family:Inter,system-ui,Arial,sans-serif;display:flex;align-items:center;justify-content:center;min-height:100vh;margin:0;background:#07111f;color:#f4f8fc}
-      .wrap{max-width:920px;padding:40px;text-align:center}
-      h1{font-size:2.2rem;margin:0 0 8px}
-      p{color:#9eb0c3}
-      .links{display:flex;gap:12px;justify-content:center;margin-top:28px;flex-wrap:wrap}
-      a.btn{background:#46d7e8;color:#06121d;padding:12px 18px;border-radius:10px;text-decoration:none;font-weight:700}
-      a.ghost{background:transparent;border:1px solid rgba(255,255,255,0.06);color:#cfeef6;padding:10px 16px;border-radius:10px;text-decoration:none}
-      footer{margin-top:36px;color:#9eb0c3;font-size:0.9rem}
+      :root{--bg:#0b1220;--card:#081321;--muted:#9fb6c8;--accent:#3ee0e8}
+      *{box-sizing:border-box}
+      body{margin:0;font-family:Inter,system-ui,Arial,sans-serif;background:linear-gradient(180deg,#07111f 0%,#071827 100%);color:#eaf6fb;min-height:100vh;display:flex;align-items:center;justify-content:center}
+      .container{width:100%;max-width:1100px;padding:48px}
+      header{display:flex;align-items:center;justify-content:space-between;gap:16px}
+      .brand{display:flex;flex-direction:column}
+      .brand h1{margin:0;font-size:1.25rem;font-weight:800;letter-spacing:0.2px}
+      .brand p{margin:4px 0 0;color:var(--muted);font-size:0.95rem}
+      .hero{margin-top:36px;display:flex;align-items:center;gap:32px}
+      .intro{flex:1}
+      .intro h2{margin:0;font-size:2rem}
+      .intro p{color:var(--muted);margin-top:8px}
+      .cards{display:flex;gap:20px;margin-top:26px}
+      .card{background:var(--card);padding:18px;border-radius:12px;min-width:220px;flex:1;box-shadow:0 6px 18px rgba(4,9,14,0.6);transition:transform .16s ease,box-shadow .16s ease}
+      .card:hover{transform:translateY(-6px);box-shadow:0 18px 40px rgba(4,9,14,0.7)}
+      .card h3{margin:0;font-size:1.05rem}
+      .card p{color:var(--muted);margin-top:6px;font-size:0.95rem}
+      .cta{margin-top:14px;display:inline-block;padding:8px 12px;background:var(--accent);color:#041017;border-radius:8px;font-weight:700;text-decoration:none}
+      footer{margin-top:42px;color:var(--muted);text-align:center;font-size:0.9rem}
+      @media(max-width:720px){.hero{flex-direction:column}.cards{flex-direction:column}}
     </style>
   </head>
   <body>
-    <div class="wrap">
-      <h1>Matheus Torres — QA</h1>
-      <p>Bem-vindo. Aqui você encontra meus projetos, estudos e o site do casamento.</p>
+    <div class="container">
+      <header>
+        <div class="brand">
+          <h1>Matheus Torres</h1>
+          <p>Senior QA Engineer — Automação, Arquitetura de Testes e Confiabilidade</p>
+        </div>
+      </header>
 
-      <div class="links">
-        <a class="btn" href="/casamento/">Casamento</a>
-        <a class="ghost" href="/appigreja/">App Igreja (em breve)</a>
-      </div>
+      <main class="hero">
+        <section class="intro">
+          <h2>Garantia de Qualidade em Escala</h2>
+          <p>Sou engenheiro de QA com experiência em estratégias de teste, pipelines de CI/CD, testes automatizados (E2E, API, UI), revisão de arquitetura de testes e mentoring de times. Trabalho para reduzir risco de produção e acelerar entregas com qualidade.</p>
+
+          <ul style="color:var(--muted);margin-top:16px;line-height:1.6">
+            <li><strong>Automação:</strong> Playwright, Selenium, Cypress, frameworks internos.</li>
+            <li><strong>Backend/API:</strong> Testes de contrato, mocks, verificação de desempenho.</li>
+            <li><strong>CI/CD:</strong> Integração com GitHub Actions, pipelines e geração de relatórios.</li>
+            <li><strong>Qualidade de processo:</strong> revisão de requisitos, definição de critérios de aceitação e testes exploratórios dirigidos.</li>
+          </ul>
+
+          <div class="cards">
+            <article class="card">
+              <h3>Casamento</h3>
+              <p>Acesso ao site do casamento (conteúdo independente).</p>
+              <a class="cta" href="/casamento/">Abrir Casamento</a>
+            </article>
+
+            <article class="card">
+              <h3>App Igreja</h3>
+              <p>Acesse o projeto do aplicativo da igreja.</p>
+              <a class="cta" href="/appigreja/">Abrir App Igreja</a>
+            </article>
+          </div>
+        </section>
+      </main>
 
       <footer>
-        <head>
-          <meta charset="utf-8" />
-          <meta name="viewport" content="width=device-width, initial-scale=1" />
-          <title>Matheus Torres — QA Portfolio</title>
-          <meta name="description" content="Portfólio e trabalhos de QA de Matheus Torres." />
-          <link rel="preconnect" href="https://fonts.googleapis.com">
-          <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-          <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
-          <style>
-            :root{--bg:#0b1220;--card:#081321;--muted:#9fb6c8;--accent:#3ee0e8}
-            *{box-sizing:border-box}
-            body{margin:0;font-family:Inter,system-ui,Arial,sans-serif;background:linear-gradient(180deg,#07111f 0%,#071827 100%);color:#eaf6fb;min-height:100vh;display:flex;align-items:center;justify-content:center}
-            .container{width:100%;max-width:1100px;padding:48px}
-            header{display:flex;align-items:center;justify-content:space-between;gap:16px}
-            .brand{display:flex;flex-direction:column}
-            .brand h1{margin:0;font-size:1.25rem;font-weight:800;letter-spacing:0.2px}
-            .brand p{margin:4px 0 0;color:var(--muted);font-size:0.95rem}
-            .hero{margin-top:36px;display:flex;align-items:center;gap:32px}
-            .intro{flex:1}
-            .intro h2{margin:0;font-size:2rem}
-            .intro p{color:var(--muted);margin-top:8px}
-            .cards{display:flex;gap:20px;margin-top:26px}
-            .card{background:var(--card);padding:18px;border-radius:12px;min-width:220px;flex:1;box-shadow:0 6px 18px rgba(4,9,14,0.6);transition:transform .16s ease,box-shadow .16s ease}
-            .card:hover{transform:translateY(-6px);box-shadow:0 18px 40px rgba(4,9,14,0.7)}
-            .card h3{margin:0;font-size:1.05rem}
-            .card p{color:var(--muted);margin-top:6px;font-size:0.95rem}
-            .cta{margin-top:14px;display:inline-block;padding:8px 12px;background:var(--accent);color:#041017;border-radius:8px;font-weight:700;text-decoration:none}
-            footer{margin-top:42px;color:var(--muted);text-align:center;font-size:0.9rem}
-            @media(max-width:720px){.hero{flex-direction:column}.cards{flex-direction:column}}
-          </style>
-        </head>
-        <body>
-          <div class="container">
-            <header>
-              <div class="brand">
-                <h1>Matheus Torres</h1>
-                <p>Senior QA Engineer — Automação, Arquitetura de Testes e Confiabilidade</p>
-              </div>
-            </header>
-
-            <main class="hero">
-              <section class="intro">
-                <h2>Garantia de Qualidade em Escala</h2>
-                <p>Sou engenheiro de QA com experiência em estratégias de teste, pipelines de CI/CD, testes automatizados (E2E, API, UI), revisão de arquitetura de testes e mentoring de times. Trabalho para reduzir risco de produção e acelerar entregas com qualidade.</p>
-
-                <ul style="color:var(--muted);margin-top:16px;line-height:1.6">
-                  <li><strong>Automação:</strong> Playwright, Selenium, Cypress, frameworks internos.</li>
-                  <li><strong>Backend/API:</strong> Testes de contrato, mocks, verificação de desempenho.</li>
-                  <li><strong>CI/CD:</strong> Integração com GitHub Actions, pipelines e geração de relatórios.</li>
-                  <li><strong>Qualidade de processo:</strong> revisão de requisitos, definição de critérios de aceitação e testes exploratórios dirigidos.</li>
-                </ul>
-
-                <div class="cards">
-                  <article class="card">
-                    <h3>Casamento</h3>
-                    <p>Acesso ao site do casamento (conteúdo independente).</p>
-                    <a class="cta" href="/casamento/">Abrir Casamento</a>
-                  </article>
-
-                  <article class="card">
-                    <h3>App Igreja</h3>
-                    <p>Acesse o projeto do aplicativo da igreja.</p>
-                    <a class="cta" href="/appigreja/">Abrir App Igreja</a>
-                  </article>
-                </div>
-              </section>
-            </main>
-
-            <footer>
-              © Matheus Torres — Senior QA • <span style="color:var(--muted)">matheustorresqa.com</span>
-            </footer>
-          </div>
-        </body>
-      </html>
-      </section>
-
-      <section class="section intro" id="historia">
-        <div class="section-copy">
-          <p class="eyebrow">Nossa história</p>
-          <h2>Dois caminhos unidos pelo amor e uma história que seguirá para sempre.</h2>
-        </div>
-        <div class="story-grid">
-          <article>
-            <span>01</span>
-            <h3>O começo</h3>
-            <p>
-              Uma conversa virou companhia, a companhia virou escolha, e aos poucos
-              entendemos que Deus estava escrevendo uma história bonita em nós.
-            </p>
-          </article>
-          <article>
-            <span>02</span>
-            <h3>O pedido</h3>
-            <p>
-              O sim veio com a certeza tranquila de quem já sonhava junto: começar
-              uma nova família cercados de amor, fé e gratidão.
-            </p>
-          </article>
-          <article>
-            <span>03</span>
-            <h3>O grande dia</h3>
-            <p>
-              Agora queremos celebrar esse passo com pessoas especiais, pedindo a
-              bênção de Deus para a vida que vamos construir lado a lado.
-            </p>
-          </article>
-        </div>
-      </section>
-
-      <section class="section photo-section" aria-label="Fotos do casal">
-        <div class="photo-carousel" data-carousel aria-label="Carrossel de fotos do casal">
-          <div class="carousel-track">
-            <img class="carousel-slide is-active" src="fotos/foto-1.jpeg?v=photo-2" alt="Camila e Matheus juntos na foto 1" />
-            <img class="carousel-slide" src="fotos/foto-2.jpeg" alt="Camila e Matheus juntos na foto 2" />
-            <img class="carousel-slide" src="fotos/foto-3.jpeg" alt="Camila e Matheus juntos na foto 3" />
-            <img class="carousel-slide" src="fotos/foto-4.jpeg" alt="Camila e Matheus juntos na foto 4" />
-            <img class="carousel-slide" src="fotos/foto-5.jpeg" alt="Camila e Matheus juntos na foto 5" />
-          </div>
-          <button class="carousel-control prev" type="button" data-carousel-control="prev" aria-label="Foto anterior">
-            &#8249;
-          </button>
-          <button class="carousel-control next" type="button" data-carousel-control="next" aria-label="Próxima foto">
-            &#8250;
-          </button>
-          <div class="carousel-dots" aria-label="Selecionar foto">
-            <button class="is-active" type="button" data-carousel-dot="0" aria-label="Mostrar foto 1"></button>
-            <button type="button" data-carousel-dot="1" aria-label="Mostrar foto 2"></button>
-            <button type="button" data-carousel-dot="2" aria-label="Mostrar foto 3"></button>
-            <button type="button" data-carousel-dot="3" aria-label="Mostrar foto 4"></button>
-            <button type="button" data-carousel-dot="4" aria-label="Mostrar foto 5"></button>
-          </div>
-        </div>
-        <div class="quote-panel">
-          <p>
-            "Assim, eles já não são dois, mas sim uma só carne. Portanto, o que
-            Deus uniu, ninguém separe."
-          </p>
-          <span>Mateus 19:6</span>
-        </div>
-      </section>
-
-      <section class="section event" id="evento">
-        <div class="section-copy">
-          <p class="eyebrow">Programação</p>
-          <h2>Todos os detalhes para compartilhar esse dia tão especial conosco.</h2>
-        </div>
-        <div class="event-layout">
-          <div class="event-main">
-            <article class="event-card event-card-featured">
-              <span class="event-card-icon" aria-hidden="true">📍</span>
-              <p class="time">16:30 até 21:00</p>
-              <h3>Cerimônia & Recepção</h3>
-              <p class="event-location">Chácara do italiano</p>
-              <address class="event-address">BR-414 - Jardim Promissão, Anápolis - GO, 75073-815</address>
-            </article>
-            <a
-              class="map-link"
-              href="https://maps.app.goo.gl/Md8mdx3pKJH91gai7"
-              target="_blank"
-              rel="noreferrer"
-            >
-              Abrir local no mapa
-            </a>
-          </div>
-          <article class="event-card" id="traje">
-            <p class="time">Traje</p>
-            <h3>Social elegante</h3>
-            <div class="attire-groups"></div>
-          </article>
-        </div>
-      </section>
-
-      <section class="section rsvp" id="rsvp">
-        <div class="section-copy">
-          <p class="eyebrow">Confirme sua presença</p>
-          <h2>Sua resposta nos ajuda a cuidar de cada detalhe.</h2>
-        </div>
-        <form class="rsvp-form" aria-label="Formulário de confirmação">
-          <label>
-            Nome de quem está confirmando
-            <input type="text" name="responsavel" placeholder="Seu nome completo" required />
-          </label>
-          <label>
-            Pessoas confirmadas
-            <select name="convidados" data-guests-select required>
-              <option value="">Selecione</option>
-              <option value="1">1 pessoa</option>
-              <option value="2">2 pessoas</option>
-              <option value="3">3 pessoas</option>
-              <option value="4">4 pessoas</option>
-            </select>
-          </label>
-          <div class="guest-list" data-guest-list></div>
-          <p class="rsvp-note">
-            Para recebermos todos com conforto, confirme apenas as pessoas que já estão na lista de
-            convidados. Assim conseguimos organizar os lugares e evitar qualquer imprevisto no dia.
-          </p>
-          <label>
-            Mensagem para os noivos
-            <textarea
-              name="mensagem"
-              rows="4"
-              placeholder="Deixe uma mensagem carinhosa"
-            ></textarea>
-          </label>
-          <button class="button primary presence-button" type="submit">Enviar confirmação</button>
-          <p class="form-status" role="status" aria-live="polite"></p>
-        </form>
-      </section>
-
-      <section class="section gifts" id="presentes">
-        <div class="section-copy">
-          <p class="eyebrow">Lista de presentes</p>
-          <h2>Aos que desejarem nos presentear deixamos um link abaixo.</h2>
-        </div>
-        <div class="gift-grid">
-          <a class="gift-card" href="#" aria-label="Abrir lista de presentes">
-            <span>Casa nova</span>
-            <strong>Lista digital</strong>
-            <p>Itens para montar nosso lar com carinho.</p>
-          </a>
-          <article class="gift-card pix-card" aria-label="Dados para presente via Pix">
-            <span>Pix</span>
-            <strong>Cota livre</strong>
-            <p>Obrigado por fazer parte da nossa história!</p>
-            <img class="pix-qr-code" src="fotos/pix-qrcode.jpeg" alt="QR Code Pix de Matheus Torres Ribeiro" />
-            <dl class="pix-details">
-              <div class="pix-row pix-row--key">
-                <dt><strong>Chave Pix</strong></dt>
-                <dd>62992304054</dd>
-              </div>
-              <div class="pix-row">
-                <dt><strong>Nome</strong></dt>
-                <dd>Matheus Torres Ribeiro</dd>
-              </div>
-              <div class="pix-row">
-                <dt><strong>Banco</strong></dt>
-                <dd>Nubank</dd>
-              </div>
-            </dl>
-            <button class="button primary presence-button pix-copy-button" type="button" data-copy-pix="62992304054">
-              Copiar chave Pix
-            </button>
-            <p class="pix-copy-status" role="status" aria-live="polite"></p>
-          </article>
-        </div>
-      </section>
-    </main>
-
-    <footer class="footer">
-      <p>Com amor, Camila & Matheus</p>
-      <a href="#inicio">Voltar ao topo</a>
-    </footer>
-
-    <script src="script.js?v=attire-19"></script>
+        © Matheus Torres — Senior QA • <span style="color:var(--muted)">matheustorresqa.com</span>
+      </footer>
+    </div>
   </body>
 </html>
