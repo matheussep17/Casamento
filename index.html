@@ -28,6 +28,12 @@
       .skills{display:flex;flex-wrap:wrap;gap:10px;margin-top:12px}
       .skill{background:var(--glass);padding:8px 10px;border-radius:999px;color:var(--muted);font-weight:600;font-size:0.9rem}
       .cards{display:flex;gap:20px;margin-top:28px}
+      .pinned{display:grid;grid-template-columns:1fr 1fr;gap:28px;margin-top:24px;align-items:start}
+      .pinned-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+      .repo-card{background:linear-gradient(180deg,rgba(255,255,255,0.03),transparent);padding:14px;border-radius:12px;color:var(--muted);box-shadow:0 8px 24px rgba(4,9,14,0.45)}
+      .repo-card h4{margin:0 0 8px;color:#eaf6fb;font-size:1rem}
+      .repo-meta{font-size:0.9rem;display:flex;gap:10px;align-items:center;color:var(--muted)}
+      .heatmap img{width:100%;border-radius:10px;box-shadow:0 8px 20px rgba(0,0,0,0.45)}
       .card{background:linear-gradient(180deg,var(--glass),transparent);backdrop-filter: blur(6px);padding:20px;border-radius:14px;min-width:240px;flex:1;box-shadow:0 10px 30px rgba(4,9,14,0.6);transition:transform .18s cubic-bezier(.2,.9,.2,1),box-shadow .18s}
       .card:hover{transform:translateY(-8px) scale(1.01);box-shadow:0 26px 60px rgba(4,9,14,0.7)}
       .card h3{margin:0;font-size:1.1rem}
@@ -88,24 +94,61 @@
 
           <section style="margin-top:40px">
             <h3 style="margin:0 0 12px">Projetos em destaque</h3>
-            <div class="cards">
-              <article class="card">
-                <h3>playwright-actions</h3>
-                <p>Actions e exemplos para integração com Playwright e automações CI.</p>
-                <a class="cta" href="https://github.com/matheussep17/playwright-actions">Ver</a>
-              </article>
 
-              <article class="card">
-                <h3>Igreja</h3>
-                <p>Projeto relacionado ao app/infra da igreja — protótipo e testes.</p>
-                <a class="cta" href="https://github.com/matheussep17/Igreja">Ver</a>
-              </article>
+            <div class="pinned">
+              <div>
+                <div style="display:flex;gap:12px;margin-bottom:12px;align-items:center">
+                  <img src="https://avatars.githubusercontent.com/u/23708521?v=4" alt="avatar" style="width:56px;height:56px;border-radius:10px;object-fit:cover;box-shadow:0 8px 20px rgba(0,0,0,0.4)"/>
+                  <div>
+                    <div style="font-weight:800">matheussep17</div>
+                    <div style="color:var(--muted)">Senior QA • Automação • Playwright / Cypress</div>
+                  </div>
+                </div>
 
-              <article class="card">
-                <h3>BuscaGrafos</h3>
-                <p>Biblioteca/experimento em C++ sobre buscas em grafos.</p>
-                <a class="cta" href="https://github.com/matheussep17/BuscaGrafos">Ver</a>
-              </article>
+                <div style="display:flex;gap:12px;margin-bottom:12px;flex-wrap:wrap">
+                  <img src="https://github-readme-stats.vercel.app/api?username=matheussep17&show_icons=true&theme=dark&count_private=true" alt="GitHub stats" style="height:64px;border-radius:8px;box-shadow:0 8px 20px rgba(0,0,0,0.4)"/>
+                  <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=matheussep17&layout=compact&theme=dark" alt="Top languages" style="height:64px;border-radius:8px;box-shadow:0 8px 20px rgba(0,0,0,0.4)"/>
+                </div>
+
+                <div class="heatmap">
+                  <img src="https://ghchart.rshah.org/matheussep17" alt="Contributions heatmap"/>
+                </div>
+              </div>
+
+              <div>
+                <h4 style="margin-top:0;margin-bottom:10px">Repositórios fixados</h4>
+                <div class="pinned-grid">
+                  <a class="repo-card" href="https://github.com/matheussep17/playwright-pom">
+                    <h4>playwright-pom</h4>
+                    <div class="repo-meta"><span>Python</span><span>•</span><span>Exemplo POM para Playwright</span></div>
+                  </a>
+
+                  <a class="repo-card" href="https://github.com/matheussep17/playwright-pyton">
+                    <h4>Playwright-pyton</h4>
+                    <div class="repo-meta"><span>Python</span><span>•</span><span>Exemplos e utilitários</span></div>
+                  </a>
+
+                  <a class="repo-card" href="https://github.com/matheussep17/playwright-actions">
+                    <h4>playwright-actions</h4>
+                    <div class="repo-meta"><span>CI</span><span>•</span><span>Workflows de testes em Playwright</span></div>
+                  </a>
+
+                  <a class="repo-card" href="https://github.com/matheussep17/Casamento">
+                    <h4>Casamento</h4>
+                    <div class="repo-meta"><span>CSS</span><span>•</span><span>Site de casamento (este repositório)</span></div>
+                  </a>
+
+                  <a class="repo-card" href="https://github.com/matheussep17/Igreja">
+                    <h4>Igreja</h4>
+                    <div class="repo-meta"><span>Projeto</span><span>•</span><span>App / infra — protótipo e testes</span></div>
+                  </a>
+
+                  <a class="repo-card" href="https://github.com/matheussep17/BuscaGrafos">
+                    <h4>BuscaGrafos</h4>
+                    <div class="repo-meta"><span>C++</span><span>•</span><span>Experimentos sobre buscas em grafos</span></div>
+                  </a>
+                </div>
+              </div>
             </div>
           </section>
         </section>
