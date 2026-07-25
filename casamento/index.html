@@ -8,13 +8,19 @@
       name="description"
       content="Site de casamento com informações da cerimônia, recepção, confirmação de presença e lista de presentes."
     />
+    <meta property="og:title" content="Camila & Matheus | Casamento" />
+    <meta property="og:description" content="Todos os detalhes para celebrar esse dia especial conosco." />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="fotos/foto-1.jpeg" />
+    <meta name="theme-color" content="#34483f" />
     <link rel="icon" href="favicon.svg" type="image/svg+xml" />
     <link rel="stylesheet" href="styles.css?v=attire-24" />
   </head>
   <body>
     <header class="site-header" aria-label="Navegação principal">
       <a class="brand" href="#inicio">C & M</a>
-      <nav class="nav-links" aria-label="Seções do site">
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-navigation">Menu</button>
+      <nav class="nav-links" id="site-navigation" aria-label="Seções do site">
         <a href="#historia">História</a>
         <a href="#evento">Evento</a>
         <a href="#traje">Traje</a>
@@ -30,6 +36,11 @@
           <p class="eyebrow">Casamento</p>
           <h1>Camila & Matheus</h1>
           <p class="hero-date">14 de agosto de 2027</p>
+          <div class="hero-event-summary" aria-label="Resumo do evento">
+            <span><strong>16h30</strong> cerimônia e recepção</span>
+            <span><strong>Chácara do Italiano</strong> Anápolis - GO</span>
+            <span><strong>Chegada</strong> a partir das 16h</span>
+          </div>
           <p class="hero-text">
             Estamos preparando cada detalhe com muito carinho para celebrar o amor que Deus cultivou entre nós,
             unindo nossos corações e dando início aos sonhos que florescem em nossa nova jornada.
@@ -42,6 +53,7 @@
       </section>
 
       <section class="countdown-band" aria-label="Contagem regressiva">
+        <p class="countdown-intro">Faltam poucos dias para o nosso sim</p>
         <div class="countdown" data-wedding-date="2027-08-14T16:30:00-03:00">
           <div>
             <strong data-countdown="days">000</strong>
@@ -140,6 +152,10 @@
               <h3>Cerimônia & Recepção</h3>
               <p class="event-location">Chácara do italiano</p>
               <address class="event-address">BR-414 - Jardim Promissão, Anápolis - GO, 75073-815</address>
+              <div class="event-facts" aria-label="Informações importantes">
+                <span><strong>Chegada:</strong> a partir das 16h</span>
+                <span><strong>Estacionamento:</strong> disponível no local</span>
+              </div>
             </article>
             <a
               class="map-link"
@@ -155,6 +171,15 @@
             <h3>Social elegante</h3>
             <div class="attire-groups"></div>
           </article>
+        </div>
+        <div class="day-program" aria-label="Programação do dia">
+          <p class="eyebrow">Programação do dia</p>
+          <div class="program-grid">
+            <article><strong>16h</strong><span>Chegada dos convidados</span></article>
+            <article><strong>16h30</strong><span>Cerimônia</span></article>
+            <article><strong>18h</strong><span>Recepção e jantar</span></article>
+            <article><strong>21h</strong><span>Encerramento</span></article>
+          </div>
         </div>
       </section>
 
@@ -192,6 +217,7 @@
             ></textarea>
           </label>
           <button class="button primary presence-button" type="submit">Enviar confirmação</button>
+          <button class="button calendar-button" type="button">Adicionar ao calendário</button>
           <p class="form-status" role="status" aria-live="polite"></p>
         </form>
       </section>
@@ -239,6 +265,13 @@
       <p>Com amor, Camila & Matheus</p>
       <a href="#inicio">Voltar ao topo</a>
     </footer>
+
+    <button class="back-to-top" type="button" aria-label="Voltar ao topo">↑</button>
+
+    <dialog class="photo-lightbox" aria-label="Foto ampliada">
+      <button class="lightbox-close" type="button" aria-label="Fechar foto">×</button>
+      <img src="" alt="" />
+    </dialog>
 
     <script src="script.js?v=attire-22"></script>
   </body>

@@ -59,6 +59,8 @@ const weddingPages = {
       attire: {
         time: "Traje",
         title: "Social elegante",
+        arrival: "A cerimônia começa às 16h30. Sugerimos chegar a partir das 16h.",
+        parking: "Estacionamento disponível no local.",
         groups: [
           {
             title: "Madrinhas",
@@ -154,6 +156,7 @@ const currentWedding = weddingPages[getWeddingSlug()] ?? weddingPages.casamento;
 const assetBase = document.documentElement.dataset.assetBase || "./";
 
 const header = document.querySelector(".site-header");
+const menuToggle = document.querySelector(".menu-toggle");
 const countdown = document.querySelector(".countdown");
 const form = document.querySelector(".rsvp-form");
 const carousel = document.querySelector("[data-carousel]");
@@ -321,6 +324,15 @@ const renderEvent = () => {
   setText("h3", currentWedding.event.main.title, mainCard);
   setText(".event-location", currentWedding.event.main.location, mainCard);
   setText(".event-address", currentWedding.event.main.address, mainCard);
+  const eventFacts = mainCard.querySelector(".event-facts");
+  if (eventFacts) {
+    eventFacts.innerHTML = "";
+    [currentWedding.event.attire.arrival, currentWedding.event.attire.parking].forEach((fact) => {
+      const item = document.createElement("span");
+      item.textContent = fact;
+      eventFacts.append(item);
+    });
+  }
 
   setText(".time", currentWedding.event.attire.time, attireCard);
   setText("h3", currentWedding.event.attire.title, attireCard);
@@ -559,12 +571,78 @@ const handleSubmit = (event) => {
     .filter(Boolean)
     .join("\n");
 
-  if (status) status.textContent = currentWedding.rsvp.status;
+  const whatsappUrl = `https://wa.me/${currentWedding.whatsappNumber}?text=${encodeURIComponent(text)}`;
+  if (status) {
+    status.textContent = "Abrindo o WhatsApp para finalizar sua confirmação... ";
+    const fallbackLink = document.createElement("a");
+    fallbackLink.href = whatsappUrl;
+    fallbackLink.target = "_blank";
+    fallbackLink.rel = "noreferrer";
+    fallbackLink.textContent = "Abrir WhatsApp";
+    status.append(fallbackLink);
+  }
 
-  window.open(
-    `https://wa.me/${currentWedding.whatsappNumber}?text=${encodeURIComponent(text)}`,
-    "_blank",
-  );
+  const whatsappWindow = window.open(whatsappUrl, "_blank", "noopener,noreferrer");
+  if (!whatsappWindow && status) status.firstChild.textContent = "O navegador bloqueou a abertura automática. ";
+};
+
+const downloadCalendarEvent = () => {
+  const ics = [
+    "BEGIN:VCALENDAR",
+    "VERSION:2.0",
+    "PRODID:-//Camila e Matheus//Casamento//PT-BR",
+    "BEGIN:VEVENT",
+    "UID:camila-matheus-casamento-2027@example.com",
+    "DTSTAMP:20260725T120000Z",
+    "DTSTART:20270814T193000Z",
+    "DTEND:20270815T000000Z",
+    "SUMMARY:Casamento Camila e Matheus",
+    "LOCATION:Chácara do Italiano, BR-414, Jardim Promissão, Anápolis - GO",
+    "DESCRIPTION:Chegada a partir das 16h. Estacionamento disponível no local.",
+    "END:VEVENT",
+    "END:VCALENDAR",
+  ].join("\\r\\n");
+  const blob = new Blob([ics], { type: "text/calendar;charset=utf-8" });
+  const url = URL.createObjectURL(blob);
+  const link = document.createElement("a");
+  link.href = url;
+  link.download = "casamento-camila-matheus.ics";
+  link.style.display = "none";
+  document.body.append(link);
+  link.click();
+  window.setTimeout(() => {
+    link.remove();
+    URL.revokeObjectURL(url);
+  }, 1000);
+};
+
+const setupLightbox = () => {
+  const lightbox = document.querySelector(".photo-lightbox");
+  const lightboxImage = lightbox?.querySelector("img");
+  const closeButton = lightbox?.querySelector(".lightbox-close");
+  if (!lightbox || !lightboxImage) return;
+
+  carousel?.addEventListener("click", (event) => {
+    const slide = event.target.closest(".carousel-slide");
+    if (!slide) return;
+    lightboxImage.src = slide.currentSrc || slide.src;
+    lightboxImage.alt = slide.alt;
+    lightbox.showModal();
+  });
+
+  closeButton?.addEventListener("click", () => lightbox.close());
+  lightbox.addEventListener("click", (event) => {
+    if (event.target === lightbox) lightbox.close();
+  });
+};
+
+const setupBackToTop = () => {
+  const button = document.querySelector(".back-to-top");
+  if (!button) return;
+  const updateVisibility = () => button.classList.toggle("is-visible", window.scrollY > 500);
+  window.addEventListener("scroll", updateVisibility, { passive: true });
+  button.addEventListener("click", () => window.scrollTo({ top: 0, behavior: "smooth" }));
+  updateVisibility();
 };
 
 const setupCarousel = () => {
@@ -628,15 +706,26 @@ const copyPixKey = async (button) => {
 };
 
 window.addEventListener("scroll", updateHeader, { passive: true });
+menuToggle?.addEventListener("click", () => {
+  const isOpen = header?.classList.toggle("menu-open");
+  menuToggle.setAttribute("aria-expanded", String(Boolean(isOpen)));
+});
 form?.addEventListener("submit", handleSubmit);
 guestsSelect?.addEventListener("change", renderGuestFields);
 document.addEventListener("click", (event) => {
   const button = event.target.closest("[data-copy-pix]");
   if (button) copyPixKey(button);
+  if (event.target.closest(".calendar-button")) downloadCalendarEvent();
+  if (event.target.closest(".nav-links a")) {
+    header?.classList.remove("menu-open");
+    menuToggle?.setAttribute("aria-expanded", "false");
+  }
 });
 
 renderDocument();
 updateHeader();
 updateCountdown();
 setupCarousel();
+setupLightbox();
+setupBackToTop();
 window.setInterval(updateCountdown, 1000);
