@@ -3,101 +3,113 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Matheus Torres — QA Engineer</title>
-    <meta name="description" content="Portfólio de QA com destaque para automação, teste de API e engenharia de confiabilidade." />
-    <link rel="icon" href="favicon.svg" type="image/svg+xml" />
-    <style>
-      :root {
-        color-scheme: dark;
-        color: #f8fafc;
-        background: #07111f;
-      }
-      * {
-        box-sizing: border-box;
-      }
-      html, body {
-        margin: 0;
-        min-height: 100%;
-      }
-      body {
-        font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-        background: radial-gradient(circle at top left, rgba(62, 224, 232, 0.16), transparent 28%),
-                    radial-gradient(circle at bottom right, rgba(167, 139, 250, 0.18), transparent 30%),
-                    linear-gradient(180deg, #09121f 0%, #05111a 100%);
-        color: #edf2f7;
-      }
-      .page {
-        width: min(100%, 1080px);
-        margin: 0 auto;
-        padding: 40px 24px 60px;
-      }
-      .hero {
-        display: grid;
-        gap: 28px;
-        padding: 40px;
-        border-radius: 32px;
-        background: rgba(14, 25, 45, 0.92);
-        border: 1px solid rgba(255, 255, 255, 0.06);
-        box-shadow: 0 30px 80px rgba(0, 0, 0, 0.24);
-      }
-      .hero-top {
-        display: flex;
-        justify-content: space-between;
-        align-items: flex-start;
-        gap: 24px;
-        flex-wrap: wrap;
-      }
-      .hero-copy {
-        max-width: 620px;
-      }
-      .hero-copy h1 {
-        margin: 0;
-        font-size: clamp(2.8rem, 5vw, 4.25rem);
-        line-height: 0.98;
-      }
-      .hero-copy p {
-        margin: 20px 0 0;
-        color: #b8c6dd;
-        font-size: 1.05rem;
-        line-height: 1.8;
-      }
-      .hero-actions {
-        display: grid;
-        gap: 16px;
-        width: min(100%, 280px);
-      }
-      .hero-actions a {
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        padding: 16px 18px;
-        border-radius: 18px;
-        font-weight: 700;
-        text-decoration: none;
-        transition: transform 0.2s ease, box-shadow 0.2s ease;
-      }
-      .hero-actions .primary {
-        background: linear-gradient(135deg, #34d0ff, #5c74ff);
-        color: #07111f;
-        box-shadow: 0 18px 30px rgba(52, 208, 255, 0.22);
-      }
-      .hero-actions .secondary {
-        background: rgba(255, 255, 255, 0.08);
-        color: #edf2f7;
-        border: 1px solid rgba(255, 255, 255, 0.12);
-      }
-      .hero-actions a:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 22px 40px rgba(0, 0, 0, 0.22);
-      }
-      .badges {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 10px;
-        margin-top: 24px;
-      }
-      .badge {
-        background: rgba(255, 255, 255, 0.08);
+    <meta name="theme-color" content="#07111f" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <meta
+      name="description"
+      content="Matheus Torres QA - qualidade de software, automação de testes e produtos digitais confiáveis."
+    />
+    <title>Matheus Torres | QA & Software Quality</title>
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <div class="shell">
+      <header>
+        <a class="brand" href="#inicio" aria-label="Matheus Torres QA - início">
+          <span class="brand-mark">MT</span>
+          <span>Matheus Torres</span>
+        </a>
+        <nav aria-label="Navegação principal">
+          <a href="#qualidade">Qualidade</a>
+          <a href="#projetos">Projetos</a>
+          <a href="https://github.com/matheussep17" target="_blank" rel="noreferrer">GitHub</a>
+        </nav>
+      </header>
+
+      <main>
+        <section class="hero" id="inicio">
+          <div>
+            <p class="eyebrow">Quality assurance online</p>
+            <h1>Software bom precisa ser <span>confiável.</span></h1>
+            <p class="lead">
+              Qualidade de software com olhar técnico, testes inteligentes e automação para encontrar riscos antes
+              que eles cheguem ao usuário.
+            </p>
+            <div class="actions">
+              <a class="button primary" href="#qualidade">Conhecer a abordagem</a>
+              <a class="button" href="https://github.com/matheussep17" target="_blank" rel="noreferrer">Ver GitHub</a>
+            </div>
+          </div>
+
+          <div class="terminal" aria-label="Exemplo de execução de testes">
+            <div class="terminal-bar"><i></i><i></i><i></i></div>
+            <pre><span class="comment">// quality-gate.spec.ts</span>
+<span class="prompt">$</span> npx playwright test
+
+  login-flow ........ <span class="success">passed</span>
+  checkout .......... <span class="success">passed</span>
+  responsive-ui ..... <span class="success">passed</span>
+  api-contract ...... <span class="success">passed</span>
+
+<span class="success">4 passed</span> · release ready
+<span class="prompt">$</span> _</pre>
+          </div>
+        </section>
+
+        <section class="section" id="qualidade">
+          <div class="section-head">
+            <h2>Qualidade em cada camada do produto.</h2>
+            <p>Da descoberta do risco ao monitoramento da entrega, testes devem ajudar o time a decidir melhor.</p>
+          </div>
+          <div class="grid">
+            <article class="card">
+              <span class="card-number">01 / STRATEGY</span>
+              <h3>Estratégia de testes</h3>
+              <p>Cenários orientados a risco, cobertura objetiva e critérios claros para cada entrega.</p>
+            </article>
+            <article class="card">
+              <span class="card-number">02 / AUTOMATION</span>
+              <h3>Automação</h3>
+              <p>Testes de interface e API sustentáveis, rápidos e integrados ao fluxo de desenvolvimento.</p>
+            </article>
+            <article class="card">
+              <span class="card-number">03 / EXPERIENCE</span>
+              <h3>Experiência real</h3>
+              <p>Validação funcional, responsividade, acessibilidade e atenção ao que o usuário realmente percebe.</p>
+            </article>
+          </div>
+        </section>
+
+        <section class="section" id="projetos">
+          <div class="section-head">
+            <h2>Projetos e ambientes.</h2>
+          </div>
+          <div class="projects">
+            <a class="project" href="/appigreja/admin">
+              <small>Aplicação</small>
+              <div>
+                <h3>App Igreja</h3>
+                <p>Ambiente administrativo do sistema de licenças do aplicativo.</p>
+              </div>
+            </a>
+            <a class="project" href="/casamento/">
+              <small>Projeto pessoal</small>
+              <div>
+                <h3>Camila & Matheus</h3>
+                <p>Site do casamento, com os detalhes e informações para os convidados.</p>
+              </div>
+            </a>
+          </div>
+        </section>
+      </main>
+
+      <footer>
+        <span>Matheus Torres · QA & Software Quality</span>
+        <a href="mailto:matheussep17@gmail.com">matheussep17@gmail.com</a>
+      </footer>
+    </div>
+  </body>
+</html>
         color: #cbd5e1;
         padding: 10px 14px;
         border-radius: 999px;
