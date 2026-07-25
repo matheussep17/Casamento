@@ -211,6 +211,9 @@ const renderGuestFields = () => {
   if (!guestsSelect || !guestList) return;
 
   const guestCount = Number(guestsSelect.value || 0);
+  guestsSelect.setCustomValidity(
+    guestCount ? "" : "Escolha pelo menos 1 pessoa para confirmar a presença.",
+  );
   guestList.replaceChildren();
 
   for (let index = 1; index <= guestCount; index += 1) {
@@ -552,6 +555,17 @@ const renderDocument = () => {
 const handleSubmit = (event) => {
   event.preventDefault();
 
+  if (!guestsSelect?.value) {
+    guestsSelect?.setCustomValidity("Escolha pelo menos 1 pessoa para confirmar a presença.");
+    guestsSelect?.reportValidity();
+    guestsSelect?.focus();
+    const status = form.querySelector(".form-status");
+    if (status) status.textContent = "Escolha pelo menos 1 pessoa para confirmar a presença.";
+    return;
+  }
+
+  guestsSelect.setCustomValidity("");
+
   const data = new FormData(form);
   const responsible = data.get("responsavel")?.toString().trim() || "Convidado";
   const guestNames = data
@@ -586,34 +600,15 @@ const handleSubmit = (event) => {
   if (!whatsappWindow && status) status.firstChild.textContent = "O navegador bloqueou a abertura automática. ";
 };
 
-const downloadCalendarEvent = () => {
-  const ics = [
-    "BEGIN:VCALENDAR",
-    "VERSION:2.0",
-    "PRODID:-//Camila e Matheus//Casamento//PT-BR",
-    "BEGIN:VEVENT",
-    "UID:camila-matheus-casamento-2027@example.com",
-    "DTSTAMP:20260725T120000Z",
-    "DTSTART:20270814T193000Z",
-    "DTEND:20270815T000000Z",
-    "SUMMARY:Casamento Camila e Matheus",
-    "LOCATION:Chácara do Italiano, BR-414, Jardim Promissão, Anápolis - GO",
-    "DESCRIPTION:Chegada a partir das 16h. Estacionamento disponível no local.",
-    "END:VEVENT",
-    "END:VCALENDAR",
-  ].join("\\r\\n");
-  const blob = new Blob([ics], { type: "text/calendar;charset=utf-8" });
-  const url = URL.createObjectURL(blob);
-  const link = document.createElement("a");
-  link.href = url;
-  link.download = "casamento-camila-matheus.ics";
-  link.style.display = "none";
-  document.body.append(link);
-  link.click();
-  window.setTimeout(() => {
-    link.remove();
-    URL.revokeObjectURL(url);
-  }, 1000);
+const openGoogleCalendar = () => {
+  const params = new URLSearchParams({
+    action: "TEMPLATE",
+    text: "Casamento Camila e Matheus",
+    dates: "20270814T193000Z/20270815T000000Z",
+    details: "Chegada a partir das 16h. Estacionamento disponível no local.",
+    location: "Chácara do Italiano, BR-414, Jardim Promissão, Anápolis - GO",
+  });
+  window.open(`https://calendar.google.com/calendar/render?${params.toString()}`, "_blank", "noopener,noreferrer");
 };
 
 const setupLightbox = () => {
@@ -715,7 +710,7 @@ guestsSelect?.addEventListener("change", renderGuestFields);
 document.addEventListener("click", (event) => {
   const button = event.target.closest("[data-copy-pix]");
   if (button) copyPixKey(button);
-  if (event.target.closest(".calendar-button")) downloadCalendarEvent();
+  if (event.target.closest(".calendar-button")) openGoogleCalendar();
   if (event.target.closest(".nav-links a")) {
     header?.classList.remove("menu-open");
     menuToggle?.setAttribute("aria-expanded", "false");
