@@ -23,7 +23,9 @@ html {
 body {
   margin: 0;
   color: var(--ink);
-  background: var(--paper);
+  background:
+    radial-gradient(circle at 12% 8%, rgba(217, 111, 150, 0.08), transparent 24%),
+    var(--paper);
   font-family: Georgia, "Times New Roman", serif;
 }
 
@@ -133,7 +135,7 @@ h1 {
 
 h2 {
   margin-bottom: 0;
-  max-width: 920px;
+  max-width: 760px;
   font-size: clamp(2.15rem, 5vw, 5rem);
   line-height: 1;
   font-weight: 400;
@@ -149,6 +151,8 @@ h3 {
 
 .section-copy {
   display: grid;
+  max-width: 920px;
+  margin-inline: auto;
   justify-items: center;
   text-align: center;
 }
@@ -193,6 +197,17 @@ h3 {
   letter-spacing: 0.08em;
   text-transform: uppercase;
   cursor: pointer;
+  transition: transform 180ms ease, box-shadow 180ms ease, filter 180ms ease, background 180ms ease;
+}
+
+.button:hover {
+  transform: translateY(-2px);
+  filter: brightness(0.96);
+  box-shadow: 0 14px 30px rgba(31, 39, 35, 0.18);
+}
+
+.button:active {
+  transform: translateY(0);
 }
 
 .button.primary {
@@ -283,13 +298,15 @@ h3 {
   display: flex;
   flex-direction: column;
   gap: 18px;
+  width: min(100%, 980px);
+  margin-inline: auto;
 }
 
 .story-grid article,
 .event-card,
 .gift-card,
 .rsvp-form {
-  border-radius: 8px;
+  border-radius: 22px;
   background: var(--white);
   box-shadow: var(--shadow);
 }
@@ -321,6 +338,16 @@ h3 {
   box-shadow:
     0 30px 84px rgba(24, 34, 30, 0.2),
     inset 0 1px 0 rgba(255, 255, 255, 0.07);
+}
+
+#traje {
+  width: min(100%, 980px);
+  min-height: 0;
+  margin-inline: auto;
+  border: 1px solid rgba(93, 118, 106, 0.14);
+  background:
+    radial-gradient(circle at 92% 8%, rgba(217, 111, 150, 0.1), transparent 22%),
+    linear-gradient(180deg, #ffffff 0%, #fbfaf6 100%);
 }
 
 .event-card-featured::before {
@@ -849,6 +876,12 @@ textarea {
   background: var(--linen);
 }
 
+.gift-grid {
+  max-width: 1180px;
+  margin-inline: auto;
+  gap: 26px;
+}
+
 .gift-card {
   color: var(--ink);
   transition: transform 180ms ease, box-shadow 180ms ease;
@@ -878,6 +911,10 @@ textarea {
     radial-gradient(circle at 100% 8%, rgba(111, 134, 109, 0.12), transparent 20%),
     linear-gradient(180deg, rgba(255, 255, 255, 0.99), rgba(247, 249, 243, 0.98));
   border: 1px solid rgba(111, 134, 109, 0.12);
+}
+
+.pix-card .pix-copy-button {
+  min-height: 54px;
 }
 
 .pix-card::after {
