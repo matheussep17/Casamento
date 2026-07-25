@@ -274,8 +274,9 @@ h3 {
 }
 
 .event-layout {
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-columns: 1fr;
   align-items: stretch;
+  gap: clamp(32px, 5vw, 56px);
 }
 
 .event-main {
@@ -928,14 +929,15 @@ textarea {
   font-family: Arial, Helvetica, sans-serif;
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.7);
   justify-items: start;
-  text-align: left;
+  text-align: left !important;
 }
 
 .pix-row {
-  display: grid;
+  display: flex;
+  flex-direction: column;
   gap: 6px;
   padding: 12px 0;
-  justify-items: start;
+  align-items: flex-start;
   text-align: left;
   width: 100%;
 }
@@ -950,10 +952,15 @@ textarea {
   font-weight: 900;
   letter-spacing: 0.12em;
   text-transform: uppercase;
+  text-align: left !important;
+  justify-self: start;
 }
 
 .pix-details dt strong {
-  font-weight: inherit;
+  display: inline;
+  margin: 0;
+  font-size: inherit;
+  font-weight: 900;
 }
 
 .pix-details dd {
@@ -963,8 +970,9 @@ textarea {
   line-height: 1.4;
   font-weight: 800;
   overflow-wrap: anywhere;
-  text-align: left;
-  width: 100%;
+  text-align: left !important;
+  align-self: flex-start;
+  width: auto;
 }
 
 .pix-row--key dd {
