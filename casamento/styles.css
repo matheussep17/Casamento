@@ -265,8 +265,12 @@ h3 {
 .event-layout,
 .gift-grid {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 18px;
+}
+
+.story-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
 }
 
 .event-layout {
@@ -876,22 +880,7 @@ textarea {
 }
 
 .pix-card::before {
-  content: "R$";
-  position: absolute;
-  top: 18px;
-  right: 18px;
-  display: grid;
-  place-items: center;
-  width: 46px;
-  height: 46px;
-  border-radius: 50%;
-  color: var(--sage);
-  background: linear-gradient(180deg, rgba(111, 134, 109, 0.16), rgba(217, 111, 150, 0.12));
-  border: 1px solid rgba(111, 134, 109, 0.15);
-  font-family: Arial, Helvetica, sans-serif;
-  font-size: 0.76rem;
-  font-weight: 900;
-  letter-spacing: 0.12em;
+  content: "";
   pointer-events: none;
 }
 
