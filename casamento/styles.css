@@ -854,7 +854,12 @@ h3 {
 
 .day-program {
   width: min(980px, 100%);
-  margin: 54px auto 0;
+  margin: 58px auto 0;
+  padding: 34px clamp(18px, 4vw, 44px) 38px;
+  border: 1px solid rgba(93, 118, 106, 0.16);
+  border-radius: 24px;
+  background: linear-gradient(145deg, #fff 0%, #fbf7ef 100%);
+  box-shadow: 0 18px 48px rgba(31, 39, 35, 0.08);
   text-align: center;
 }
 
@@ -865,22 +870,25 @@ h3 {
 .program-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 12px;
+  gap: 0;
 }
 
 .program-grid article {
   display: grid;
   gap: 8px;
-  padding: 20px 14px;
-  border: 1px solid rgba(93, 118, 106, 0.18);
-  border-radius: 16px;
-  background: var(--white);
-  box-shadow: 0 12px 34px rgba(31, 39, 35, 0.08);
+  position: relative;
+  padding: 0 18px;
+  border-left: 1px solid rgba(93, 118, 106, 0.24);
+}
+
+.program-grid article:first-child {
+  border-left: 0;
 }
 
 .program-grid strong {
   color: var(--terracotta);
-  font-size: 1.35rem;
+  font-size: clamp(1.2rem, 2.5vw, 1.55rem);
+  line-height: 1;
 }
 
 .program-grid span {
@@ -1223,18 +1231,18 @@ dl.pix-details dd {
 
 .back-to-top {
   position: fixed;
-  right: 18px;
-  bottom: 18px;
+  right: 20px;
+  bottom: 20px;
   z-index: 8;
   display: none;
-  width: 46px;
-  height: 46px;
-  border: 0;
-  border-radius: 50%;
+  width: 42px;
+  height: 42px;
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  border-radius: 12px;
   color: var(--white);
   background: #d96f96;
-  box-shadow: 0 12px 28px rgba(31, 39, 35, 0.24);
-  font-size: 1.5rem;
+  box-shadow: 0 8px 22px rgba(31, 39, 35, 0.18);
+  font-size: 1.25rem;
   cursor: pointer;
 }
 
@@ -1347,6 +1355,12 @@ dl.pix-details dd {
 
   .program-grid {
     grid-template-columns: repeat(2, 1fr);
+  }
+
+  .program-grid article,
+  .program-grid article:first-child {
+    border-left: 0;
+    padding: 14px 8px;
   }
 
   .event-main {
