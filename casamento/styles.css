@@ -892,7 +892,7 @@ textarea {
   box-shadow: 0 28px 80px rgba(31, 39, 35, 0.2);
 }
 
-.gift-card strong {
+.gift-card > strong {
   display: block;
   margin-bottom: 16px;
   font-size: 1.8rem;
@@ -901,9 +901,12 @@ textarea {
 
 .pix-card {
   display: grid;
-  gap: 16px;
+  grid-template-columns: minmax(190px, 210px) minmax(0, 1fr);
+  gap: 18px 28px;
   position: relative;
-  justify-items: center;
+  align-items: start;
+  justify-items: stretch;
+  padding: clamp(28px, 4vw, 42px);
   text-align: center;
   overflow: hidden;
   background:
@@ -929,22 +932,33 @@ textarea {
 }
 
 .pix-card span {
+  grid-column: 1 / -1;
+  justify-self: center;
   color: var(--sage);
 }
 
-.pix-card strong {
+.pix-card > strong {
+  grid-column: 1 / -1;
+  justify-self: center;
   margin-bottom: 10px;
   font-size: 1.95rem;
 }
 
 .pix-card p {
+  grid-column: 1 / -1;
+  justify-self: center;
   max-width: 30ch;
 }
 
 .pix-qr-code {
+  display: block;
   width: min(210px, 100%);
   aspect-ratio: 1;
+  grid-column: 1;
   justify-self: center;
+  margin-inline: auto;
+  object-fit: contain;
+  object-position: center;
   padding: 10px;
   border-radius: 18px;
   background: linear-gradient(180deg, rgba(255, 255, 255, 0.99), rgba(248, 244, 237, 0.98));
@@ -955,8 +969,10 @@ textarea {
 
 .pix-details {
   display: grid;
+  grid-column: 2;
+  grid-row: 4 / span 2;
   gap: 0;
-  width: min(100%, 260px);
+  width: 100%;
   justify-self: start;
   margin: 0;
   padding: 16px 18px;
@@ -973,6 +989,7 @@ textarea {
   display: flex;
   flex-direction: column;
   gap: 6px;
+  margin: 0;
   padding: 12px 0;
   align-items: flex-start;
   text-align: left;
@@ -984,6 +1001,7 @@ textarea {
 }
 
 .pix-details dt {
+  margin: 0;
   color: var(--sage);
   font-size: 0.7rem;
   font-weight: 900;
@@ -1000,8 +1018,12 @@ textarea {
   font-weight: 900;
 }
 
-.pix-details dd {
-  margin: 0;
+.pix-details dd,
+dl.pix-details dd {
+  display: block;
+  margin: 0 !important;
+  margin-inline-start: 0;
+  padding: 0;
   color: var(--ink);
   font-size: 1rem;
   line-height: 1.4;
@@ -1023,6 +1045,7 @@ textarea {
 }
 
 .pix-copy-button {
+  grid-column: 1 / -1;
   width: 100%;
   background: linear-gradient(135deg, #6f8473 0%, #d96f96 100%);
   box-shadow: 0 14px 30px rgba(111, 134, 109, 0.16);
@@ -1033,6 +1056,7 @@ textarea {
 }
 
 .pix-copy-status {
+  grid-column: 1 / -1;
   min-height: 22px;
   margin: 0;
   color: var(--sage);
@@ -1138,6 +1162,23 @@ textarea {
 }
 
 @media (max-width: 520px) {
+  .pix-card {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .pix-qr-code,
+  .pix-details,
+  .pix-copy-button,
+  .pix-copy-status {
+    grid-column: 1;
+    grid-row: auto;
+  }
+
+  .pix-details {
+    width: 100%;
+  }
+
   .button {
     width: 100%;
   }
