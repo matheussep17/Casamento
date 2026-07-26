@@ -170,7 +170,6 @@ const carousel = document.querySelector("[data-carousel]");
 const guestsSelect = form?.querySelector("[data-guests-select]");
 const guestList = form?.querySelector("[data-guest-list]");
 const phoneInput = form?.querySelector("[data-phone-input]");
-const responsibleBirthInput = form?.querySelector("[data-birth-input]");
 
 const resolveAssetPath = (path) => new URL(path, new URL(assetBase, document.baseURI)).href;
 
@@ -231,8 +230,6 @@ const renderGuestFields = () => {
     const title = document.createElement("p");
     const nameLabel = document.createElement("label");
     const nameInput = document.createElement("input");
-    const birthLabel = document.createElement("label");
-    const birthInput = document.createElement("input");
 
     guest.className = "guest-fields";
     title.className = "guest-fields__title";
@@ -245,26 +242,9 @@ const renderGuestFields = () => {
     nameInput.required = true;
     nameLabel.append(nameInput);
 
-    birthLabel.textContent = "Data de nascimento";
-    birthInput.type = "date";
-    birthInput.name = "nascimentosAcompanhantes";
-    birthInput.autocomplete = "bday";
-    birthInput.max = getToday();
-    birthInput.required = true;
-    birthLabel.append(birthInput);
-
-    guest.append(title, nameLabel, birthLabel);
+    guest.append(title, nameLabel);
     guestList.append(guest);
   }
-};
-
-const getToday = () => {
-  const today = new Date();
-  return [
-    today.getFullYear(),
-    String(today.getMonth() + 1).padStart(2, "0"),
-    String(today.getDate()).padStart(2, "0"),
-  ].join("-");
 };
 
 const formatPhone = (value) => {
@@ -621,23 +601,10 @@ const handleSubmit = (event) => {
     .getAll("nomesAcompanhantes")
     .map((guest) => guest.toString().trim())
     .filter(Boolean);
-  const birthDates = [
-    data.get("nascimentoResponsavel")?.toString() || "",
-    ...data.getAll("nascimentosAcompanhantes").map((date) => date.toString()),
-  ];
   const confirmedPeople = [responsible, ...companionNames];
   const message = data.get("mensagem")?.toString().trim();
   const status = form.querySelector(".form-status");
-  const formatBirthDate = (date) => {
-    const [year, month, day] = date.split("-");
-    return day && month && year ? `${day}/${month}/${year}` : date;
-  };
-  const guestListText = confirmedPeople
-    .map(
-      (guest, index) =>
-        `${index + 1}. ${guest} — data de nascimento: ${formatBirthDate(birthDates[index])}`,
-    )
-    .join("\n");
+  const guestListText = confirmedPeople.map((guest, index) => `${index + 1}. ${guest}`).join("\n");
 
   const text = [
     `Oi! Aqui \u00e9 ${responsible}.`,
@@ -772,7 +739,6 @@ menuToggle?.addEventListener("click", () => {
 form?.addEventListener("submit", handleSubmit);
 guestsSelect?.addEventListener("change", renderGuestFields);
 phoneInput?.addEventListener("input", handlePhoneInput);
-if (responsibleBirthInput) responsibleBirthInput.max = getToday();
 document.addEventListener("click", (event) => {
   const button = event.target.closest("[data-copy-pix]");
   if (button) copyPixKey(button);
