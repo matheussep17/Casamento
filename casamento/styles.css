@@ -954,6 +954,23 @@ h3 {
   gap: 14px;
 }
 
+.guest-fields {
+  display: grid;
+  gap: 14px;
+  padding: 16px;
+  border: 1px solid rgba(109, 95, 84, 0.2);
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.55);
+}
+
+.guest-fields__title {
+  margin: 0;
+  color: var(--olive);
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 0.86rem;
+  font-weight: 800;
+}
+
 .rsvp-note {
   margin: -2px 0 2px;
   border-left: 3px solid var(--rose);

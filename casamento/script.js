@@ -103,9 +103,16 @@ const weddingPages = {
       eyebrow: "Confirme sua presença",
       title: "Sua resposta nos ajuda a cuidar de cada detalhe.",
       note:
-        "Para recebermos todos com conforto, confirme apenas as pessoas que já estão na lista de convidados. Assim conseguimos organizar os lugares e evitar qualquer imprevisto no dia.",
+        "Para recebermos todos com conforto, pedimos que confirme somente as pessoas que já foram convidadas. Apenas os nomes incluídos nesta confirmação farão parte da lista oficial do evento e, no dia, a entrada será liberada pela equipe de cerimonial somente às pessoas confirmadas. Agradecemos pela compreensão e pelo carinho em nos ajudar a organizar este momento especial.",
       status: "Abrindo WhatsApp para concluir a confirma\u00e7\u00e3o...",
-      selectOptions: ["1 pessoa", "2 pessoas", "3 pessoas", "4 pessoas"],
+      selectOptions: [
+        "Somente eu",
+        "Eu e mais 1 pessoa",
+        "Eu e mais 2 pessoas",
+        "Eu e mais 3 pessoas",
+        "Eu e mais 4 pessoas",
+        "Eu e mais 5 pessoas",
+      ],
     },
     gifts: {
       eyebrow: "Lista de presentes",
@@ -162,6 +169,8 @@ const form = document.querySelector(".rsvp-form");
 const carousel = document.querySelector("[data-carousel]");
 const guestsSelect = form?.querySelector("[data-guests-select]");
 const guestList = form?.querySelector("[data-guest-list]");
+const phoneInput = form?.querySelector("[data-phone-input]");
+const responsibleBirthInput = form?.querySelector("[data-birth-input]");
 
 const resolveAssetPath = (path) => new URL(path, new URL(assetBase, document.baseURI)).href;
 
@@ -214,21 +223,60 @@ const renderGuestFields = () => {
   guestsSelect.setCustomValidity(
     guestCount ? "" : "Escolha pelo menos 1 pessoa para confirmar a presença.",
   );
+  const guestOrdinals = ["Primeiro", "Segundo", "Terceiro", "Quarto", "Quinto"];
   guestList.replaceChildren();
 
-  for (let index = 1; index <= guestCount; index += 1) {
-    const label = document.createElement("label");
-    const input = document.createElement("input");
+  for (let index = 2; index <= guestCount; index += 1) {
+    const guest = document.createElement("div");
+    const title = document.createElement("p");
+    const nameLabel = document.createElement("label");
+    const nameInput = document.createElement("input");
+    const birthLabel = document.createElement("label");
+    const birthInput = document.createElement("input");
 
-    label.textContent = `Nome do convidado ${index}`;
-    input.type = "text";
-    input.name = "nomesConvidados";
-    input.placeholder = index === 1 ? "Nome completo" : "Nome de quem vai junto";
-    input.required = true;
+    guest.className = "guest-fields";
+    title.className = "guest-fields__title";
+    title.textContent = `${guestOrdinals[index - 2]} convidado`;
+    nameLabel.textContent = "Nome completo";
+    nameInput.type = "text";
+    nameInput.name = "nomesAcompanhantes";
+    nameInput.placeholder = "Nome de quem vai junto";
+    nameInput.autocomplete = "name";
+    nameInput.required = true;
+    nameLabel.append(nameInput);
 
-    label.append(input);
-    guestList.append(label);
+    birthLabel.textContent = "Data de nascimento";
+    birthInput.type = "date";
+    birthInput.name = "nascimentosAcompanhantes";
+    birthInput.autocomplete = "bday";
+    birthInput.max = getToday();
+    birthInput.required = true;
+    birthLabel.append(birthInput);
+
+    guest.append(title, nameLabel, birthLabel);
+    guestList.append(guest);
   }
+};
+
+const getToday = () => {
+  const today = new Date();
+  return [
+    today.getFullYear(),
+    String(today.getMonth() + 1).padStart(2, "0"),
+    String(today.getDate()).padStart(2, "0"),
+  ].join("-");
+};
+
+const formatPhone = (value) => {
+  const digits = value.replace(/\D/g, "").slice(0, 11);
+
+  if (digits.length <= 2) return digits ? `(${digits}` : "";
+  if (digits.length <= 7) return `(${digits.slice(0, 2)}) ${digits.slice(2)}`;
+  return `(${digits.slice(0, 2)}) ${digits.slice(2, 7)}-${digits.slice(7)}`;
+};
+
+const handlePhoneInput = (event) => {
+  event.target.value = formatPhone(event.target.value);
 };
 
 const renderNavigation = () => {
@@ -568,17 +616,33 @@ const handleSubmit = (event) => {
 
   const data = new FormData(form);
   const responsible = data.get("responsavel")?.toString().trim() || "Convidado";
-  const guestNames = data
-    .getAll("nomesConvidados")
+  const phone = data.get("telefone")?.toString().trim() || "";
+  const companionNames = data
+    .getAll("nomesAcompanhantes")
     .map((guest) => guest.toString().trim())
     .filter(Boolean);
+  const birthDates = [
+    data.get("nascimentoResponsavel")?.toString() || "",
+    ...data.getAll("nascimentosAcompanhantes").map((date) => date.toString()),
+  ];
+  const confirmedPeople = [responsible, ...companionNames];
   const message = data.get("mensagem")?.toString().trim();
   const status = form.querySelector(".form-status");
-  const guestListText = guestNames.map((guest, index) => `${index + 1}. ${guest}`).join("\n");
+  const formatBirthDate = (date) => {
+    const [year, month, day] = date.split("-");
+    return day && month && year ? `${day}/${month}/${year}` : date;
+  };
+  const guestListText = confirmedPeople
+    .map(
+      (guest, index) =>
+        `${index + 1}. ${guest} — data de nascimento: ${formatBirthDate(birthDates[index])}`,
+    )
+    .join("\n");
 
   const text = [
     `Oi! Aqui \u00e9 ${responsible}.`,
-    `Confirmo presen\u00e7a no casamento para ${guestNames.length} pessoa(s):`,
+    `WhatsApp para contato: ${phone}.`,
+    `Confirmo presen\u00e7a no casamento para ${confirmedPeople.length} pessoa(s):`,
     guestListText,
     message ? `Mensagem: ${message}` : "",
   ]
@@ -707,6 +771,8 @@ menuToggle?.addEventListener("click", () => {
 });
 form?.addEventListener("submit", handleSubmit);
 guestsSelect?.addEventListener("change", renderGuestFields);
+phoneInput?.addEventListener("input", handlePhoneInput);
+if (responsibleBirthInput) responsibleBirthInput.max = getToday();
 document.addEventListener("click", (event) => {
   const button = event.target.closest("[data-copy-pix]");
   if (button) copyPixKey(button);
