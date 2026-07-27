@@ -1343,6 +1343,20 @@ dl.pix-details dd {
 @media (max-width: 820px) {
   .site-header {
     align-items: flex-start;
+    color: var(--white);
+    background: rgba(52, 72, 63, 0.98);
+    box-shadow: 0 8px 26px rgba(36, 48, 43, 0.16);
+    backdrop-filter: blur(14px);
+  }
+
+  .site-header.is-scrolled {
+    color: var(--white);
+    background: rgba(52, 72, 63, 0.98);
+  }
+
+  .menu-toggle {
+    border-color: rgba(255, 255, 255, 0.56);
+    background: rgba(255, 255, 255, 0.08);
   }
 
   .nav-links {
@@ -1354,13 +1368,14 @@ dl.pix-details dd {
   }
 
   .site-header.menu-open {
-    background: rgba(255, 250, 241, 0.98);
-    color: var(--ink);
+    background: rgba(52, 72, 63, 0.98);
+    color: var(--white);
   }
 
   .site-header.menu-open .menu-toggle {
-    border-color: rgba(36, 48, 43, 0.2);
-    background: transparent;
+    border-color: var(--rose);
+    background: var(--rose);
+    color: var(--white);
   }
 
   .site-header.menu-open .nav-links {
