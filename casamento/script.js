@@ -731,6 +731,22 @@ const copyPixKey = async (button) => {
   }
 };
 
+const navigateWithoutHash = (event) => {
+  const link = event.target.closest('a[href^="#"]');
+  if (!link) return;
+
+  const targetId = link.getAttribute("href")?.slice(1);
+  const target = targetId ? document.getElementById(targetId) : null;
+  if (!target) return;
+
+  event.preventDefault();
+  const headerOffset = header?.offsetHeight ?? 0;
+  const targetTop = Math.max(target.getBoundingClientRect().top + window.scrollY - headerOffset - 16, 0);
+
+  window.scrollTo({ top: targetTop, behavior: "smooth" });
+  window.history.replaceState(null, "", `${window.location.pathname}${window.location.search}`);
+};
+
 window.addEventListener("scroll", updateHeader, { passive: true });
 menuToggle?.addEventListener("click", () => {
   const isOpen = header?.classList.toggle("menu-open");
@@ -740,6 +756,7 @@ form?.addEventListener("submit", handleSubmit);
 guestsSelect?.addEventListener("change", renderGuestFields);
 phoneInput?.addEventListener("input", handlePhoneInput);
 document.addEventListener("click", (event) => {
+  navigateWithoutHash(event);
   const button = event.target.closest("[data-copy-pix]");
   if (button) copyPixKey(button);
   if (event.target.closest(".calendar-button")) openGoogleCalendar();
