@@ -754,26 +754,24 @@ const closeMenu = () => {
 };
 
 const setupActiveNavigation = () => {
-  if (!("IntersectionObserver" in window)) return;
-
   const links = [...document.querySelectorAll('.nav-links a[href^="#"]')];
   const sections = links
     .map((link) => document.getElementById(link.getAttribute("href").slice(1)))
     .filter(Boolean);
 
-  const observer = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((entry) => {
-        if (!entry.isIntersecting) return;
-        links.forEach((link) => link.classList.remove("is-active"));
-        const activeLink = links.find((link) => link.getAttribute("href") === `#${entry.target.id}`);
-        activeLink?.classList.add("is-active");
-      });
-    },
-    { rootMargin: "-35% 0px -55% 0px", threshold: 0 },
-  );
+  const updateActiveNavigation = () => {
+    const activationLine = (header?.offsetHeight ?? 0) + 32;
+    const currentSection = sections
+      .filter((section) => section.getBoundingClientRect().top <= activationLine)
+      .slice(-1)[0];
 
-  sections.forEach((section) => observer.observe(section));
+    links.forEach((link) => {
+      link.classList.toggle("is-active", link.getAttribute("href") === `#${currentSection?.id}`);
+    });
+  };
+
+  window.addEventListener("scroll", updateActiveNavigation, { passive: true });
+  updateActiveNavigation();
 };
 
 window.addEventListener("scroll", updateHeader, { passive: true });
