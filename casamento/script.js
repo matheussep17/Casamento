@@ -7,7 +7,7 @@ const weddingPages = {
     },
     heroImage: "https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=1800&q=85",
     brand: "C & M",
-    nav: ["Hist\u00f3ria", "Evento", "Traje", "Presen\u00e7a", "Presentes"],
+    nav: ["Hist\u00f3ria", "Evento", "Programa\u00e7\u00e3o", "Traje", "Presen\u00e7a", "Presentes"],
     hero: {
       eyebrow: "Casamento",
       coupleName: "Camila & Matheus",
@@ -745,6 +745,10 @@ document.addEventListener("click", (event) => {
   if (event.target.closest(".calendar-button")) openGoogleCalendar();
   if (event.target.closest(".nav-links a")) {
     header?.classList.remove("menu-open");
+    menuToggle?.setAttribute("aria-expanded", "false");
+  }
+  if (header?.classList.contains("menu-open") && !event.target.closest(".site-header")) {
+    header.classList.remove("menu-open");
     menuToggle?.setAttribute("aria-expanded", "false");
   }
 });
