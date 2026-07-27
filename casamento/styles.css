@@ -122,6 +122,30 @@ textarea {
   text-transform: uppercase;
 }
 
+.nav-links a {
+  position: relative;
+  padding-block: 6px;
+}
+
+.nav-links a::after {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  height: 2px;
+  border-radius: 999px;
+  background: currentColor;
+  content: "";
+  transform: scaleX(0);
+  transform-origin: center;
+  transition: transform 180ms ease;
+}
+
+.nav-links a:hover::after,
+.nav-links a.is-active::after {
+  transform: scaleX(1);
+}
+
 .hero .eyebrow {
   color: #ffd7cd;
   font-size: clamp(1.25rem, 2vw, 1.8rem);
@@ -274,6 +298,13 @@ h3 {
 
 .button.presence-button {
   background: #d96f96;
+  box-shadow: 0 10px 26px rgba(217, 111, 150, 0.28);
+}
+
+.hero-actions .presence-button {
+  min-height: 54px;
+  padding-inline: 28px;
+  font-size: 0.88rem;
 }
 
 .button.secondary {
@@ -1353,6 +1384,14 @@ dl.pix-details dd {
   .hero {
     min-height: 90vh;
     padding-top: 96px;
+  }
+
+  .hero h1 {
+    font-size: clamp(3.5rem, 17vw, 6.8rem);
+  }
+
+  .hero-actions .presence-button {
+    width: min(100%, 340px);
   }
 
   .countdown {

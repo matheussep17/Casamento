@@ -41,14 +41,14 @@ const weddingPages = {
       ],
     },
     photos: [
-      { src: "fotos/foto-1.jpeg?v=photo-2", alt: "Camila e Matheus juntos na foto 1" },
-      { src: "fotos/foto-2.jpeg", alt: "Camila e Matheus juntos na foto 2" },
-      { src: "fotos/foto-3.jpeg", alt: "Camila e Matheus juntos na foto 3" },
-      { src: "fotos/foto-4.jpeg", alt: "Camila e Matheus juntos na foto 4" },
-      { src: "fotos/foto-5.jpeg", alt: "Camila e Matheus juntos na foto 5" },
+      { src: "fotos/foto-1.webp", alt: "Camila e Matheus juntos na foto 1" },
+      { src: "fotos/foto-2.webp", alt: "Camila e Matheus juntos na foto 2" },
+      { src: "fotos/foto-3.webp", alt: "Camila e Matheus juntos na foto 3" },
+      { src: "fotos/foto-4.webp", alt: "Camila e Matheus juntos na foto 4" },
+      { src: "fotos/foto-5.webp", alt: "Camila e Matheus juntos na foto 5" },
     ],
     event: {
-      eyebrow: "Programa\u00e7\u00e3o",
+      eyebrow: "Evento",
       title: "Todos os detalhes para compartilhar esse dia t\u00e3o especial conosco.",
       main: {
         time: "16:30 at\u00e9 21:00",
@@ -329,6 +329,7 @@ const renderCarousel = () => {
     slide.className = `carousel-slide${index === 0 ? " is-active" : ""}`;
     slide.src = resolveAssetPath(photo.src);
     slide.alt = photo.alt;
+    slide.decoding = "async";
     if (index !== 0) slide.loading = "lazy";
 
     dot.type = "button";
@@ -747,10 +748,41 @@ const navigateWithoutHash = (event) => {
   window.history.replaceState(null, "", `${window.location.pathname}${window.location.search}`);
 };
 
+const closeMenu = () => {
+  header?.classList.remove("menu-open");
+  menuToggle?.setAttribute("aria-expanded", "false");
+};
+
+const setupActiveNavigation = () => {
+  if (!("IntersectionObserver" in window)) return;
+
+  const links = [...document.querySelectorAll('.nav-links a[href^="#"]')];
+  const sections = links
+    .map((link) => document.getElementById(link.getAttribute("href").slice(1)))
+    .filter(Boolean);
+
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+        links.forEach((link) => link.classList.remove("is-active"));
+        const activeLink = links.find((link) => link.getAttribute("href") === `#${entry.target.id}`);
+        activeLink?.classList.add("is-active");
+      });
+    },
+    { rootMargin: "-35% 0px -55% 0px", threshold: 0 },
+  );
+
+  sections.forEach((section) => observer.observe(section));
+};
+
 window.addEventListener("scroll", updateHeader, { passive: true });
 menuToggle?.addEventListener("click", () => {
   const isOpen = header?.classList.toggle("menu-open");
   menuToggle.setAttribute("aria-expanded", String(Boolean(isOpen)));
+});
+document.addEventListener("keydown", (event) => {
+  if (event.key === "Escape") closeMenu();
 });
 form?.addEventListener("submit", handleSubmit);
 guestsSelect?.addEventListener("change", renderGuestFields);
@@ -761,12 +793,10 @@ document.addEventListener("click", (event) => {
   if (button) copyPixKey(button);
   if (event.target.closest(".calendar-button")) openGoogleCalendar();
   if (event.target.closest(".nav-links a")) {
-    header?.classList.remove("menu-open");
-    menuToggle?.setAttribute("aria-expanded", "false");
+    closeMenu();
   }
   if (header?.classList.contains("menu-open") && !event.target.closest(".site-header")) {
-    header.classList.remove("menu-open");
-    menuToggle?.setAttribute("aria-expanded", "false");
+    closeMenu();
   }
 });
 
@@ -776,4 +806,5 @@ updateCountdown();
 setupCarousel();
 setupLightbox();
 setupBackToTop();
+setupActiveNavigation();
 window.setInterval(updateCountdown, 1000);
