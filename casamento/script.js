@@ -11,8 +11,8 @@ const weddingPages = {
     hero: {
       eyebrow: "Casamento",
       coupleName: "Camila & Matheus",
-      dateLabel: "14 de agosto de 2027",
-      weddingDate: "2027-08-14T16:30:00-03:00",
+      dateLabel: "07 de agosto de 2027",
+      weddingDate: "2027-08-07T16:30:00-03:00",
       text:
         "Estamos preparando cada detalhe com muito carinho para celebrar o amor que Deus cultivou entre n\u00f3s, unindo nossos cora\u00e7\u00f5es e dando in\u00edcio aos sonhos que florescem em nossa nova jornada.",
     },
@@ -636,7 +636,7 @@ const openGoogleCalendar = () => {
   const params = new URLSearchParams({
     action: "TEMPLATE",
     text: "Casamento Camila e Matheus",
-    dates: "20270814T193000Z/20270815T000000Z",
+    dates: "20270807T193000Z/20270808T000000Z",
     details: "Chegada a partir das 16h. Estacionamento disponível no local.",
     location: "Chácara do Italiano, BR-414, Jardim Promissão, Anápolis - GO",
   });
