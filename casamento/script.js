@@ -661,17 +661,12 @@ const handleSubmit = (event) => {
   });
 
   if (status) {
-    status.textContent = "Abrindo o WhatsApp para finalizar sua confirmação... ";
-    const fallbackLink = document.createElement("a");
-    fallbackLink.href = whatsappUrl;
-    fallbackLink.target = "_blank";
-    fallbackLink.rel = "noreferrer";
-    fallbackLink.textContent = "Abrir WhatsApp";
-    status.append(fallbackLink);
+    status.textContent = "Confirmação registrada. Abrindo o WhatsApp...";
   }
 
-  const whatsappWindow = window.open(whatsappUrl, "_blank", "noopener,noreferrer");
-  if (!whatsappWindow && status) status.firstChild.textContent = "O navegador bloqueou a abertura automática. ";
+  form.reset();
+  renderGuestFields();
+  window.location.assign(whatsappUrl);
 };
 
 const openGoogleCalendar = () => {
