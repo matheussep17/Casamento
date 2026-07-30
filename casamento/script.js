@@ -143,6 +143,11 @@ const weddingPages = {
       text: "Com amor, Camila & Matheus",
     },
     whatsappNumber: "5562992304054",
+    // URL da automacao que grava as confirmacoes na planilha online.
+    // Ex.: endpoint de um fluxo do Power Automate ou Google Apps Script.
+    rsvpSpreadsheetEndpoint:
+      "https://script.google.com/macros/s/AKfycbyOgcnHOYuJGL6jx2D_N_pG5YNd5eJrKLxCy0VlycSnPztWZy5Q43rd2-fXH8NvBF_PLg/exec",
+    rsvpSpreadsheetToken: "casamento-2027",
   },
 };
 const getWeddingSlug = () => {
@@ -581,6 +586,34 @@ const renderDocument = () => {
   renderGuestFields();
 };
 
+const sendRsvpToSpreadsheet = async ({ confirmedPeople, responsible, phone, message }) => {
+  const endpoint = currentWedding.rsvpSpreadsheetEndpoint?.trim();
+  if (!endpoint) return false;
+
+  const rows = confirmedPeople.map((name, index) => ({
+    numero: index + 1,
+    nome: name,
+    confirmado: "Sim",
+    whatsapp: index === 0 ? phone : "",
+  }));
+
+  await fetch(endpoint, {
+    method: "POST",
+    mode: "no-cors",
+    headers: { "Content-Type": "text/plain;charset=utf-8" },
+    body: JSON.stringify({
+      token: currentWedding.rsvpSpreadsheetToken,
+      responsavel: responsible,
+      telefone: phone,
+      mensagem: message || "",
+      convidados: rows,
+    }),
+    keepalive: true,
+  });
+
+  return true;
+};
+
 const handleSubmit = (event) => {
   event.preventDefault();
 
@@ -618,6 +651,15 @@ const handleSubmit = (event) => {
     .join("\n");
 
   const whatsappUrl = `https://wa.me/${currentWedding.whatsappNumber}?text=${encodeURIComponent(text)}`;
+  sendRsvpToSpreadsheet({
+    confirmedPeople,
+    responsible,
+    phone,
+    message,
+  }).catch((error) => {
+    console.error("Nao foi possivel enviar a confirmacao para a planilha.", error);
+  });
+
   if (status) {
     status.textContent = "Abrindo o WhatsApp para finalizar sua confirmação... ";
     const fallbackLink = document.createElement("a");
