@@ -35,7 +35,7 @@ const weddingPages = {
           step: "01",
           title: "O come\u00e7o",
           text:
-            "Uma conversa virou companhia, a companhia virou escolha, e aos poucos entendemos que Deus estava escrevendo uma hist\u00f3ria bonita em n\u00f3s.",
+            "Uma conversa virou companhia, a companhia virou escolha, e aos poucos entendemos que Deus estava escrevendo uma linda hist\u00f3ria em n\u00f3s.",
         },
         {
           step: "02",
