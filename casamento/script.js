@@ -14,40 +14,40 @@ const weddingPages = {
     meta: {
       title: "Camila & Matheus | Casamento",
       description:
-        "Site de casamento com informa\u00e7\u00f5es da cerim\u00f4nia, recep\u00e7\u00e3o, confirma\u00e7\u00e3o de presen\u00e7a e lista de presentes.",
+        "Site de casamento com informações da cerimônia, recepção, confirmação de presença e lista de presentes.",
     },
     heroImage: "https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=1800&q=85",
     brand: "C & M",
-    nav: ["Hist\u00f3ria", "Evento", "Traje", "Programa\u00e7\u00e3o", "Presen\u00e7a", "Presentes"],
+    nav: ["História", "Evento", "Traje", "Programação", "Presença", "Presentes"],
     hero: {
       eyebrow: "Casamento",
       coupleName: "Camila & Matheus",
       dateLabel: "07 de agosto de 2027",
       weddingDate: "2027-08-07T16:30:00-03:00",
       text:
-        "Estamos preparando cada detalhe com muito carinho para celebrar o amor que Deus cultivou entre n\u00f3s, unindo nossos cora\u00e7\u00f5es e dando in\u00edcio aos sonhos que florescem em nossa nova jornada.",
+        "Estamos preparando cada detalhe com muito carinho para celebrar o amor que Deus cultivou entre nós, unindo nossos corações e dando início aos sonhos que florescem em nossa nova jornada.",
     },
     story: {
-      eyebrow: "Nossa hist\u00f3ria",
-      title: "Dois caminhos unidos pelo amor e uma hist\u00f3ria que seguir\u00e1 para sempre.",
+      eyebrow: "Nossa história",
+      title: "Dois caminhos unidos pelo amor e uma história que seguirá para sempre.",
       cards: [
         {
           step: "01",
-          title: "O come\u00e7o",
+          title: "O começo",
           text:
-            "Uma conversa virou companhia, a companhia virou escolha, e aos poucos entendemos que Deus estava escrevendo uma linda hist\u00f3ria em n\u00f3s.",
+            "Uma conversa virou companhia, a companhia virou escolha, e aos poucos entendemos que Deus estava escrevendo uma linda história em nós.",
         },
         {
           step: "02",
           title: "O pedido",
           text:
-            "O sim veio com a certeza tranquila de quem j\u00e1 sonhava junto: come\u00e7ar uma nova fam\u00edlia cercados de amor, f\u00e9 e gratid\u00e3o.",
+            "O sim veio com a certeza tranquila de quem já sonhava junto: começar uma nova família cercados de amor, fé e gratidão.",
         },
         {
           step: "03",
           title: "O grande dia",
           text:
-            "Agora queremos celebrar esse passo com pessoas especiais, pedindo a b\u00ean\u00e7\u00e3o de Deus para a vida que vamos construir lado a lado.",
+            "Agora queremos celebrar esse passo com pessoas especiais, pedindo a bênção de Deus para a vida que vamos construir lado a lado.",
         },
       ],
     },
@@ -60,12 +60,12 @@ const weddingPages = {
     ],
     event: {
       eyebrow: "Evento",
-      title: "Todos os detalhes para compartilhar esse dia t\u00e3o especial conosco.",
+      title: "Todos os detalhes para compartilhar esse dia tão especial conosco.",
       main: {
-        time: "16:30 at\u00e9 21:00",
-        title: "Cerim\u00f4nia & Recep\u00e7\u00e3o",
-        location: "Ch\u00e1cara do italiano",
-        address: "BR-414 - Jardim Promiss\u00e3o, An\u00e1polis - GO, 75073-815",
+        time: "16:30 até 21:00",
+        title: "Cerimônia & Recepção",
+        location: "Chácara do italiano",
+        address: "BR-414 - Jardim Promissão, Anápolis - GO, 75073-815",
       },
       attire: {
         time: "Traje",
@@ -76,12 +76,12 @@ const weddingPages = {
           {
             title: "Madrinhas",
             lines: [
-              "Para tornar esse dia ainda mais especial, escolhemos uma paleta de tons de rosa que traduz a ess\u00eancia do nosso casamento.",
-              "Como a cerim\u00f4nia acontecer\u00e1 em um espa\u00e7o ao ar livre, sobre a grama, sugerimos o uso de saltos blocados (quadrados) ou adaptadores de salto, garantindo mais conforto e seguran\u00e7a durante toda a celebra\u00e7\u00e3o.",
-              "Cada madrinha poder\u00e1 escolher o vestido no tom que mais gostar, dentro da nossa paleta:",
+              "Para tornar esse dia ainda mais especial, escolhemos uma paleta de tons de rosa que traduz a essência do nosso casamento.",
+              "Como a cerimônia acontecerá em um espaço ao ar livre, sobre a grama, sugerimos o uso de saltos blocados (quadrados) ou adaptadores de salto, garantindo mais conforto e segurança durante toda a celebração.",
+              "Cada madrinha poderá escolher o vestido no tom que mais gostar, dentro da nossa paleta:",
             ],
             colors: [
-              { name: "Rosa Beb\u00ea", color: "#F3B2D4" },
+              { name: "Rosa Bebê", color: "#F3B2D4" },
               { name: "Rosa Ballet", color: "#F68FC0" },
               { name: "Rosa Chiclete", color: "#F163A8" },
               { name: "Rosa Flamingo", color: "#ED4D9A" },
@@ -108,6 +108,12 @@ const weddingPages = {
           },
         ],
       },
+      program: [
+        { time: "16h", label: "Chegada dos convidados" },
+        { time: "16h30", label: "Cerimônia" },
+        { time: "18h", label: "Recepção e jantar" },
+        { time: "21h", label: "Encerramento" },
+      ],
       mapLink: "https://maps.app.goo.gl/Md8mdx3pKJH91gai7",
     },
     rsvp: {
@@ -115,7 +121,7 @@ const weddingPages = {
       title: "Sua resposta nos ajuda a cuidar de cada detalhe.",
       note:
         "Para recebermos todos com conforto, pedimos que confirme somente as pessoas que já foram convidadas. Apenas os nomes incluídos nesta confirmação farão parte da lista oficial do evento e, no dia, a entrada será liberada pela equipe de cerimonial somente às pessoas confirmadas. Agradecemos pela compreensão e pelo carinho em nos ajudar a organizar este momento especial.",
-      status: "Abrindo WhatsApp para concluir a confirma\u00e7\u00e3o...",
+      status: "Abrindo WhatsApp para concluir a confirmação...",
       selectOptions: [
         "Somente eu",
         "Eu e mais 1 pessoa",
@@ -473,6 +479,24 @@ const renderEvent = () => {
 
   const mapLink = eventSection.querySelector(".map-link");
   if (mapLink) mapLink.href = currentWedding.event.mapLink;
+
+  const program = document.querySelector("#programacao");
+  const programGrid = program?.querySelector(".program-grid");
+  if (program && programGrid) {
+    setText(".eyebrow", "Programação do dia", program);
+    programGrid.replaceChildren();
+
+    currentWedding.event.program.forEach((item) => {
+      const card = document.createElement("article");
+      const time = document.createElement("strong");
+      const label = document.createElement("span");
+
+      time.textContent = item.time;
+      label.textContent = item.label;
+      card.append(time, label);
+      programGrid.append(card);
+    });
+  }
 };
 
 const renderRsvp = () => {
@@ -652,9 +676,9 @@ const handleSubmit = (event) => {
   const guestListText = confirmedPeople.map((guest, index) => `${index + 1}. ${guest}`).join("\n");
 
   const text = [
-    `Oi! Aqui \u00e9 ${responsible}.`,
+    `Oi! Aqui é ${responsible}.`,
     `WhatsApp para contato: ${phone}.`,
-    `Confirmo presen\u00e7a no casamento para ${confirmedPeople.length} pessoa(s):`,
+    `Confirmo presença no casamento para ${confirmedPeople.length} pessoa(s):`,
     guestListText,
     message ? `Mensagem: ${message}` : "",
   ]
