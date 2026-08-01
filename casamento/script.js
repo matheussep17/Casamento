@@ -846,6 +846,18 @@ const setupCarousel = () => {
     });
   });
 
+  document.addEventListener("keydown", (event) => {
+    const isArrowKey = event.key === "ArrowLeft" || event.key === "ArrowRight";
+    const isTyping = event.target.matches("input, textarea, select, [contenteditable='true']");
+    const isLightboxOpen = document.querySelector(".photo-lightbox[open]");
+
+    if (!isArrowKey || isTyping || isLightboxOpen || event.altKey || event.ctrlKey || event.metaKey) return;
+
+    event.preventDefault();
+    showSlide(activeIndex + (event.key === "ArrowRight" ? 1 : -1));
+    startAutoplay();
+  });
+
   showSlide(0);
   startAutoplay();
 };
