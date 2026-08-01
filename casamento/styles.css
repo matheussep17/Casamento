@@ -1311,10 +1311,11 @@ dl.pix-details dd {
   border: 0;
   border-radius: 18px;
   background: rgba(20, 27, 24, 0.96);
+  box-shadow: 0 0 0 100vmax rgba(8, 12, 10, 0.68), var(--shadow);
 }
 
 .photo-lightbox::backdrop {
-  background: rgba(8, 12, 10, 0.68);
+  background: transparent;
 }
 
 .photo-lightbox img {
