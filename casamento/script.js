@@ -724,6 +724,11 @@ const setupLightbox = () => {
 
   const getSlides = () => [...(carousel?.querySelectorAll(".carousel-slide") ?? [])];
   let activeIndex = 0;
+  let pageScrollY = 0;
+
+  const restorePageScroll = () => {
+    window.scrollTo(0, pageScrollY);
+  };
 
   const showLightboxPhoto = (index) => {
     const slides = getSlides();
@@ -742,7 +747,9 @@ const setupLightbox = () => {
     const slides = getSlides();
     activeIndex = slides.indexOf(slide);
     showLightboxPhoto(activeIndex);
+    pageScrollY = window.scrollY;
     lightbox.showModal();
+    window.requestAnimationFrame(restorePageScroll);
   });
 
   lightboxControls.forEach((control) => {
@@ -755,6 +762,7 @@ const setupLightbox = () => {
   lightbox.addEventListener("click", (event) => {
     if (event.target === lightbox) lightbox.close();
   });
+  lightbox.addEventListener("close", restorePageScroll);
 
   lightbox.addEventListener("keydown", (event) => {
     if (event.key === "ArrowRight") showLightboxPhoto(activeIndex + 1);
