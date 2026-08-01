@@ -1302,6 +1302,8 @@ dl.pix-details dd {
 
 .photo-lightbox {
   position: relative;
+  z-index: 10;
+  isolation: isolate;
   width: min(92vw, 1100px);
   max-width: none;
   max-height: 92vh;
@@ -1312,13 +1314,15 @@ dl.pix-details dd {
 }
 
 .photo-lightbox::backdrop {
-  background: rgba(8, 12, 10, 0.82);
+  background: rgba(8, 12, 10, 0.68);
 }
 
 .photo-lightbox img {
   display: block;
   width: 100%;
   max-height: calc(92vh - 36px);
+  opacity: 1;
+  filter: none;
   object-fit: contain;
 }
 
