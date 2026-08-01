@@ -736,7 +736,7 @@ const setupLightbox = () => {
 
     activeIndex = (index + slides.length) % slides.length;
     const slide = slides[activeIndex];
-    lightboxImage.src = slide.currentSrc || slide.src;
+    lightboxImage.src = slide.getAttribute("src") || slide.currentSrc || slide.src;
     lightboxImage.alt = slide.alt;
   };
 
@@ -749,7 +749,7 @@ const setupLightbox = () => {
     showLightboxPhoto(activeIndex);
     pageScrollY = window.scrollY;
     lightbox.showModal();
-    window.requestAnimationFrame(restorePageScroll);
+    restorePageScroll();
   });
 
   lightboxControls.forEach((control) => {
