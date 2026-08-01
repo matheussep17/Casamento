@@ -719,19 +719,46 @@ const setupLightbox = () => {
   const lightbox = document.querySelector(".photo-lightbox");
   const lightboxImage = lightbox?.querySelector("img");
   const closeButton = lightbox?.querySelector(".lightbox-close");
+  const lightboxControls = [...(lightbox?.querySelectorAll("[data-lightbox-control]") ?? [])];
   if (!lightbox || !lightboxImage) return;
+
+  const getSlides = () => [...(carousel?.querySelectorAll(".carousel-slide") ?? [])];
+  let activeIndex = 0;
+
+  const showLightboxPhoto = (index) => {
+    const slides = getSlides();
+    if (!slides.length) return;
+
+    activeIndex = (index + slides.length) % slides.length;
+    const slide = slides[activeIndex];
+    lightboxImage.src = slide.currentSrc || slide.src;
+    lightboxImage.alt = slide.alt;
+  };
 
   carousel?.addEventListener("click", (event) => {
     const slide = event.target.closest(".carousel-slide");
     if (!slide) return;
-    lightboxImage.src = slide.currentSrc || slide.src;
-    lightboxImage.alt = slide.alt;
+
+    const slides = getSlides();
+    activeIndex = slides.indexOf(slide);
+    showLightboxPhoto(activeIndex);
     lightbox.showModal();
+  });
+
+  lightboxControls.forEach((control) => {
+    control.addEventListener("click", () => {
+      showLightboxPhoto(activeIndex + (control.dataset.lightboxControl === "next" ? 1 : -1));
+    });
   });
 
   closeButton?.addEventListener("click", () => lightbox.close());
   lightbox.addEventListener("click", (event) => {
     if (event.target === lightbox) lightbox.close();
+  });
+
+  lightbox.addEventListener("keydown", (event) => {
+    if (event.key === "ArrowRight") showLightboxPhoto(activeIndex + 1);
+    if (event.key === "ArrowLeft") showLightboxPhoto(activeIndex - 1);
   });
 };
 
