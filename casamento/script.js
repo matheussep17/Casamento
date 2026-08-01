@@ -719,6 +719,7 @@ const setupLightbox = () => {
   const lightbox = document.querySelector(".photo-lightbox");
   const lightboxImage = lightbox?.querySelector("img");
   const closeButton = lightbox?.querySelector(".lightbox-close");
+  const fullscreenButton = lightbox?.querySelector(".lightbox-fullscreen");
   const lightboxControls = [...(lightbox?.querySelectorAll("[data-lightbox-control]") ?? [])];
   if (!lightbox || !lightboxImage) return;
 
@@ -759,10 +760,34 @@ const setupLightbox = () => {
   });
 
   closeButton?.addEventListener("click", () => lightbox.close());
+  fullscreenButton?.addEventListener("click", async () => {
+    try {
+      if (document.fullscreenElement) {
+        await document.exitFullscreen();
+      } else if (lightbox.requestFullscreen) {
+        await lightbox.requestFullscreen();
+      }
+    } catch {
+      lightbox.classList.toggle("is-fullscreen-fallback");
+    }
+  });
+
+  document.addEventListener("fullscreenchange", () => {
+    const isFullscreen = document.fullscreenElement === lightbox;
+    fullscreenButton?.setAttribute(
+      "aria-label",
+      isFullscreen ? "Sair da tela cheia" : "Entrar em tela cheia",
+    );
+  });
+
   lightbox.addEventListener("click", (event) => {
     if (event.target === lightbox) lightbox.close();
   });
-  lightbox.addEventListener("close", restorePageScroll);
+  lightbox.addEventListener("close", () => {
+    lightbox.classList.remove("is-fullscreen-fallback");
+    if (document.fullscreenElement) document.exitFullscreen?.();
+    restorePageScroll();
+  });
 
   lightbox.addEventListener("keydown", (event) => {
     if (event.key === "ArrowRight") showLightboxPhoto(activeIndex + 1);

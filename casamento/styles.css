@@ -1348,6 +1348,37 @@ dl.pix-details dd {
   outline-offset: -4px;
 }
 
+.lightbox-fullscreen {
+  position: absolute;
+  top: 10px;
+  right: 58px;
+  z-index: 2;
+  display: grid;
+  width: 42px;
+  height: 42px;
+  place-items: center;
+  border: 0;
+  border-radius: 10px;
+  color: var(--white);
+  background: transparent;
+  font-size: 1.55rem;
+  cursor: pointer;
+}
+
+.photo-lightbox:fullscreen,
+.photo-lightbox.is-fullscreen-fallback {
+  width: 100vw;
+  height: 100vh;
+  max-height: none;
+  padding: 24px 72px;
+  border-radius: 0;
+}
+
+.photo-lightbox:fullscreen img,
+.photo-lightbox.is-fullscreen-fallback img {
+  max-height: calc(100vh - 48px);
+}
+
 .lightbox-control {
   position: absolute;
   top: 50%;
@@ -1544,6 +1575,11 @@ dl.pix-details dd {
   .lightbox-close {
     top: 6px;
     right: 6px;
+  }
+
+  .lightbox-fullscreen {
+    top: 6px;
+    right: 52px;
   }
 
   .lightbox-control {
