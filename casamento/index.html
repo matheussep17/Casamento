@@ -14,7 +14,7 @@
     <meta property="og:image" content="fotos/foto-1.jpeg" />
     <meta name="theme-color" content="#34483f" />
     <link rel="icon" href="favicon-casamento.svg" type="image/svg+xml" />
-    <link rel="stylesheet" href="styles.css?v=attire-28" />
+    <link rel="stylesheet" href="styles.css?v=gift-list-qr-1" />
   </head>
   <body>
     <header class="site-header" aria-label="Navegação principal">
@@ -223,14 +223,27 @@
       <section class="section gifts" id="presentes">
         <div class="section-copy">
           <p class="eyebrow">Lista de presentes</p>
-          <h2>Aos que desejarem nos presentear deixamos um link abaixo.</h2>
+          <h2>Aos que desejarem nos presentear, preparamos duas opções com carinho.</h2>
         </div>
         <div class="gift-grid">
-          <a class="gift-card" href="#" aria-label="Abrir lista de presentes">
-            <span>Casa nova</span>
-            <strong>Lista digital</strong>
-            <p>Itens para montar nosso lar com carinho.</p>
-          </a>
+          <article class="gift-card gift-list-card" aria-label="Lista de presentes online">
+            <span>Lista de presentes</span>
+            <strong>Quero de Casamento</strong>
+            <p>Acesse pelo botão ou escaneie o QR Code para escolher um presente.</p>
+            <img
+              class="gift-list-qr-code"
+              src="fotos/lista-presentes-qrcode.png"
+              alt="QR Code para acessar a lista de presentes de Camila e Matheus"
+            />
+            <a
+              class="button primary gift-list-button"
+              href="https://www.querodecasamento.com.br/lista-de-casamento/matheus-torres-ribeiro-camila-souza-rodrigues/info/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Acessar lista de presentes
+            </a>
+          </article>
           <article class="gift-card pix-card" aria-label="Dados para presente via Pix">
             <span>Pix</span>
             <strong>Cota livre</strong>
@@ -278,6 +291,6 @@
       </button>
     </dialog>
 
-    <script src="script.js?v=carousel-keyboard-1"></script>
+    <script src="script.js?v=gift-list-qr-1"></script>
   </body>
 </html>
