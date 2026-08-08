@@ -138,8 +138,8 @@ const weddingPages = {
         label: "Lista de presentes",
         title: "Quero de Casamento",
         text: "Acesse pelo botão ou escaneie o QR Code para escolher um presente.",
-        href: "https://www.querodecasamento.com.br/lista-de-casamento/matheus-torres-ribeiro-camila-souza-rodrigues/info/",
-        qrSrc: "fotos/lista-presentes-qrcode.png?v=2",
+        href: "https://www.querodecasamento.com.br/lista-de-casamento/matheus-torres-ribeiro-camila-souza-rodrigues",
+        qrSrc: "fotos/lista-presentes-qrcode.png?v=3",
         qrAlt: "QR Code para acessar a lista de presentes de Camila e Matheus",
         buttonText: "Acessar lista de presentes",
       },
@@ -553,7 +553,7 @@ const renderGifts = () => {
   linkImage.className = "gift-list-qr-code";
   linkImage.src = resolveAssetPath(currentWedding.gifts.listCard.qrSrc);
   linkImage.alt = currentWedding.gifts.listCard.qrAlt;
-  linkButton.className = "button primary gift-list-button";
+  linkButton.className = "button primary presence-button gift-list-button";
   linkButton.href = currentWedding.gifts.listCard.href;
   linkButton.target = "_blank";
   linkButton.rel = "noopener noreferrer";

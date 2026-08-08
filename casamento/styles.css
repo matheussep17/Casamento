@@ -1078,6 +1078,8 @@ textarea {
 
 .gift-list-card {
   gap: 18px;
+  position: relative;
+  padding-bottom: 130px;
 }
 
 .gift-list-card > span,
@@ -1088,20 +1090,21 @@ textarea {
 
 .gift-list-qr-code {
   display: block;
-  width: min(230px, 100%);
+  width: min(210px, 100%);
   aspect-ratio: 1;
   margin: 4px auto 0;
   object-fit: contain;
+  padding: 10px;
+  border: 2px solid #a855d6;
   border-radius: 18px;
+  box-sizing: border-box;
   background: #fff;
   box-shadow:
-    inset 0 0 0 1px rgba(111, 134, 109, 0.16),
     0 16px 38px rgba(111, 134, 109, 0.1);
 }
 
 .gift-list-button {
-  width: min(100%, 310px);
-  margin-top: auto;
+  margin: 0;
 }
 
 .pix-card {
@@ -1112,6 +1115,7 @@ textarea {
   align-items: start;
   justify-items: stretch;
   padding: clamp(28px, 4vw, 42px);
+  padding-bottom: 130px;
   text-align: center;
   overflow: hidden;
   background:
@@ -1165,10 +1169,11 @@ textarea {
   object-fit: contain;
   object-position: center;
   padding: 10px;
+  border: 2px solid #a855d6;
   border-radius: 18px;
+  box-sizing: border-box;
   background: linear-gradient(180deg, rgba(255, 255, 255, 0.99), rgba(248, 244, 237, 0.98));
   box-shadow:
-    inset 0 0 0 1px rgba(111, 134, 109, 0.16),
     0 16px 38px rgba(111, 134, 109, 0.1);
 }
 
@@ -1249,19 +1254,28 @@ dl.pix-details dd {
   text-align: left;
 }
 
+.gift-list-button,
 .pix-copy-button {
-  grid-column: 1 / -1;
-  width: 100%;
-  background: linear-gradient(135deg, #6f8473 0%, #d96f96 100%);
-  box-shadow: 0 14px 30px rgba(111, 134, 109, 0.16);
+  position: absolute;
+  right: clamp(22px, 4vw, 42px);
+  bottom: 48px;
+  left: clamp(22px, 4vw, 42px);
+  width: auto;
+  min-height: 54px;
+  background: #d96f96;
+  box-shadow: 0 10px 26px rgba(217, 111, 150, 0.28);
 }
 
+.gift-list-button:hover,
 .pix-copy-button:hover {
-  background: linear-gradient(135deg, #5e7363 0%, #c95d88 100%);
+  background: #c95d88;
 }
 
 .pix-copy-status {
-  grid-column: 1 / -1;
+  position: absolute;
+  right: 20px;
+  bottom: 14px;
+  left: 20px;
   min-height: 22px;
   margin: 0;
   color: var(--sage);
