@@ -149,7 +149,7 @@ const weddingPages = {
         label: "Pix",
         title: "Cota livre",
         text: "Obrigado por fazer parte da nossa história!",
-        qrSrc: "fotos/pix-qrcode.jpeg",
+        qrSrc: "fotos/pix-qrcode-centralizado.png",
         qrAlt: "QR Code Pix de Matheus Torres Ribeiro",
         keyLabel: "Chave Pix",
         keyValue: "62992304054",
