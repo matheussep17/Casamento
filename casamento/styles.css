@@ -1123,6 +1123,8 @@ textarea {
   object-fit: contain;
   padding: 10px;
   border: 2px solid #a855d6;
+  outline: 2px solid #a855d6;
+  outline-offset: -12px;
   border-radius: 18px;
   box-sizing: border-box;
   background: #fff;
