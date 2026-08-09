@@ -1092,7 +1092,7 @@ textarea {
   display: block;
   width: min(210px, 100%);
   aspect-ratio: 1;
-  margin: 4px auto 0;
+  margin: 108px auto 0;
   object-fit: contain;
   padding: 10px;
   border: 2px solid #a855d6;
@@ -1543,6 +1543,10 @@ dl.pix-details dd {
   .photo-section,
   .rsvp {
     grid-template-columns: 1fr;
+  }
+
+  .gift-list-qr-code {
+    margin-top: 4px;
   }
 
   .program-grid {
