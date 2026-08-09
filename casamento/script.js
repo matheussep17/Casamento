@@ -136,8 +136,10 @@ const weddingPages = {
       title: "Aos que desejarem nos presentear, preparamos duas opções com carinho.",
       listCard: {
         label: "Lista de presentes",
-        title: "Quero de Casamento",
-        text: "Acesse pelo botão ou escaneie o QR Code para escolher um presente.",
+        title: "Um carinho para o nosso lar",
+        text: "Escolha a forma mais prática para acessar nossa lista.",
+        detailsTitle: "Lista online",
+        detailsText: "Escaneie o QR Code ao lado ou use o botão abaixo para conhecer as opções de presentes.",
         href: "https://www.querodecasamento.com.br/lista-de-casamento/matheus-torres-ribeiro-camila-souza-rodrigues",
         qrSrc: "fotos/lista-presentes-qrcode.png?v=3",
         qrAlt: "QR Code para acessar a lista de presentes de Camila e Matheus",
@@ -546,6 +548,9 @@ const renderGifts = () => {
   const linkStrong = document.createElement("strong");
   const linkParagraph = document.createElement("p");
   const linkImage = document.createElement("img");
+  const linkDetails = document.createElement("div");
+  const linkDetailsTitle = document.createElement("strong");
+  const linkDetailsText = document.createElement("p");
   const linkButton = document.createElement("a");
   linkSpan.textContent = currentWedding.gifts.listCard.label;
   linkStrong.textContent = currentWedding.gifts.listCard.title;
@@ -553,12 +558,16 @@ const renderGifts = () => {
   linkImage.className = "gift-list-qr-code";
   linkImage.src = resolveAssetPath(currentWedding.gifts.listCard.qrSrc);
   linkImage.alt = currentWedding.gifts.listCard.qrAlt;
+  linkDetails.className = "gift-list-details";
+  linkDetailsTitle.textContent = currentWedding.gifts.listCard.detailsTitle;
+  linkDetailsText.textContent = currentWedding.gifts.listCard.detailsText;
+  linkDetails.append(linkDetailsTitle, linkDetailsText);
   linkButton.className = "button primary presence-button gift-list-button";
   linkButton.href = currentWedding.gifts.listCard.href;
   linkButton.target = "_blank";
   linkButton.rel = "noopener noreferrer";
   linkButton.textContent = currentWedding.gifts.listCard.buttonText;
-  linkCard.append(linkSpan, linkStrong, linkParagraph, linkImage, linkButton);
+  linkCard.append(linkSpan, linkStrong, linkParagraph, linkImage, linkDetails, linkButton);
 
   const pixCard = document.createElement("article");
   pixCard.className = "gift-card pix-card";
