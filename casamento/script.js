@@ -139,7 +139,7 @@ const weddingPages = {
         title: "Um carinho para o nosso lar",
         text: "Escolha a forma mais prática para acessar nossa lista.",
         detailsTitle: "Lista online",
-        detailsText: "Escaneie o QR Code ao lado ou use o botão abaixo para conhecer as opções de presentes.",
+        detailsText: "Escaneie o QR Code ou use o botão abaixo para conhecer as opções de presentes.",
         href: "https://www.querodecasamento.com.br/lista-de-casamento/matheus-torres-ribeiro-camila-souza-rodrigues",
         qrSrc: "fotos/lista-presentes-qrcode.png?v=3",
         qrAlt: "QR Code para acessar a lista de presentes de Camila e Matheus",
