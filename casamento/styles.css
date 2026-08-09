@@ -1080,6 +1080,7 @@ textarea {
   gap: 18px;
   position: relative;
   padding-bottom: 130px;
+  overflow: hidden;
 }
 
 .gift-list-card > span,
@@ -1092,7 +1093,7 @@ textarea {
   display: block;
   width: min(210px, 100%);
   aspect-ratio: 1;
-  margin: 108px auto 0;
+  margin: 87px auto 0;
   object-fit: contain;
   padding: 10px;
   border: 2px solid #a855d6;
@@ -1547,6 +1548,27 @@ dl.pix-details dd {
 
   .gift-list-qr-code {
     margin-top: 4px;
+  }
+
+  .gift-list-card,
+  .pix-card {
+    padding-bottom: clamp(22px, 4vw, 42px);
+  }
+
+  .gift-list-button,
+  .pix-copy-button {
+    position: static;
+    width: 100%;
+    margin-top: auto;
+  }
+
+  .pix-copy-button,
+  .pix-copy-status {
+    grid-column: 1 / -1;
+  }
+
+  .pix-copy-status {
+    position: static;
   }
 
   .program-grid {
