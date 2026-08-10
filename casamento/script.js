@@ -825,8 +825,14 @@ const setupLightbox = () => {
 
 const setupBackToTop = () => {
   const button = document.querySelector(".back-to-top");
+  const footer = document.querySelector(".footer");
   if (!button) return;
-  const updateVisibility = () => button.classList.toggle("is-visible", window.scrollY > 500);
+
+  const updateVisibility = () => {
+    const footerVisible = footer && footer.getBoundingClientRect().top < window.innerHeight;
+    button.classList.toggle("is-visible", window.scrollY > 500 && !footerVisible);
+  };
+
   window.addEventListener("scroll", updateVisibility, { passive: true });
   button.addEventListener("click", () => window.scrollTo({ top: 0, behavior: "smooth" }));
   updateVisibility();
@@ -974,7 +980,7 @@ renderDocument();
 updateHeader();
 updateCountdown();
 setupCarousel();
-setupLightbox();
 setupBackToTop();
+setupLightbox();
 setupActiveNavigation();
 window.setInterval(updateCountdown, 1000);
