@@ -577,6 +577,7 @@ const renderGifts = () => {
   const pixStrong = document.createElement("strong");
   const pixParagraph = document.createElement("p");
   const pixImage = document.createElement("img");
+  const pixInfoPanel = document.createElement("div");
   const pixDetails = document.createElement("dl");
   const pixButton = document.createElement("button");
   const pixStatus = document.createElement("p");
@@ -587,6 +588,10 @@ const renderGifts = () => {
   pixImage.className = "pix-qr-code";
   pixImage.src = resolveAssetPath(currentWedding.gifts.pixCard.qrSrc);
   pixImage.alt = currentWedding.gifts.pixCard.qrAlt;
+  pixInfoPanel.className = "pix-info-panel";
+  pixInfoPanel.style.cssText =
+    "background:#f7f3ed;border:1px solid #e2ddd4;border-radius:18px;box-sizing:border-box;min-height:210px;padding:16px 20px;";
+  pixDetails.className = "pix-details";
 
   const detailRows = [
     [currentWedding.gifts.pixCard.keyLabel, currentWedding.gifts.pixCard.keyValue],
@@ -610,6 +615,8 @@ const renderGifts = () => {
     pixDetails.append(row);
   });
 
+  pixInfoPanel.append(pixDetails);
+
   pixButton.className = "button primary presence-button pix-copy-button";
   pixButton.type = "button";
   pixButton.dataset.copyPix = currentWedding.gifts.pixCard.keyValue;
@@ -619,7 +626,7 @@ const renderGifts = () => {
   pixStatus.setAttribute("role", "status");
   pixStatus.setAttribute("aria-live", "polite");
 
-  pixCard.append(pixSpan, pixStrong, pixParagraph, pixImage, pixDetails, pixButton, pixStatus);
+  pixCard.append(pixSpan, pixStrong, pixParagraph, pixImage, pixInfoPanel, pixButton, pixStatus);
   giftGrid.append(linkCard, pixCard);
 };
 
