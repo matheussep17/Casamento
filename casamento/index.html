@@ -42,7 +42,7 @@
       }
     </script>
     <link rel="icon" href="favicon-casamento.svg" type="image/svg+xml" />
-    <link rel="stylesheet" href="styles.css?v=site-refactor-1" />
+    <link rel="stylesheet" href="styles.css?v=site-refactor-2" />
   </head>
   <body
     data-whatsapp="5562992304054"
@@ -319,15 +319,16 @@
             momento especial.
           </p>
           <label>
-            Mensagem para os noivos
+            <span data-message-label>Mensagem para os noivos</span>
             <textarea
               name="mensagem"
               rows="4"
               placeholder="Deixe uma mensagem carinhosa"
+              data-message-input
             ></textarea>
           </label>
           <button class="button primary presence-button" type="submit">Enviar confirmação</button>
-          <button class="button calendar-button" type="button">Adicionar ao Google Agenda</button>
+          <button class="button calendar-button" type="button" data-attending-action>Adicionar ao Google Agenda</button>
           <p class="form-status" role="status" aria-live="polite"></p>
         </form>
       </section>
@@ -413,6 +414,6 @@
       </button>
     </dialog>
 
-    <script src="script.js?v=site-refactor-1"></script>
+    <script src="script.js?v=site-refactor-2"></script>
   </body>
 </html>

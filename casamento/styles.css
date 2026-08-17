@@ -438,7 +438,13 @@ h3 {
 
 .attendance-choice input {
   width: auto;
-  accent-color: var(--rose);
+  accent-color: #d96f96;
+}
+
+.attendance-choice label:has(input:checked) {
+  border-color: #d96f96;
+  background: #fff5f9;
+  box-shadow: 0 0 0 1px rgba(217, 111, 150, 0.18);
 }
 
 .rsvp-deadline {
@@ -649,6 +655,18 @@ h3 {
   justify-items: center;
   justify-content: center;
   width: 100%;
+}
+
+.color-list--cards > li {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  min-width: 0;
+  color: var(--ink);
+  font-size: 0.98rem;
+  font-weight: 600;
 }
 
 .color-item {

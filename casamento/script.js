@@ -38,6 +38,11 @@ const updateAttendanceFields = () => {
   if (!form || !guestsSelect) return;
   const attending = form.elements.presenca?.value !== "nao";
   form.querySelectorAll("[data-attending-field]").forEach((node) => { node.hidden = !attending; });
+  form.querySelectorAll("[data-attending-action]").forEach((node) => { node.hidden = !attending; });
+  const messageLabel = form.querySelector("[data-message-label]");
+  const messageInput = form.querySelector("[data-message-input]");
+  if (messageLabel) messageLabel.textContent = attending ? "Mensagem para os noivos" : "Se quiser, conte o motivo de não poder ir";
+  if (messageInput) messageInput.placeholder = attending ? "Deixe uma mensagem carinhosa" : "Conte brevemente o motivo (opcional)";
   guestsSelect.required = attending;
   if (!attending) { guestsSelect.value = ""; guestList?.replaceChildren(); }
 };
@@ -68,7 +73,7 @@ const submitRsvp = (event) => {
   const lines = attendance === "sim"
     ? [`Oi! Aqui é ${responsible}.`, `WhatsApp para contato: ${phone}.`, `Confirmo presença no casamento para ${people.length} pessoa(s):`, ...people.map((name, index) => `${index + 1}. ${name}`)]
     : [`Oi! Aqui é ${responsible}.`, `WhatsApp para contato: ${phone}.`, "Infelizmente não poderei comparecer ao casamento."];
-  if (message) lines.push(`Mensagem: ${message}`);
+  if (message) lines.push(`${attendance === "sim" ? "Mensagem" : "Motivo"}: ${message}`);
   sendRsvp({ people, responsible, phone, message, attendance });
   const status = form.querySelector(".form-status");
   if (status) status.textContent = "Abrindo o WhatsApp para você concluir a confirmação…";
