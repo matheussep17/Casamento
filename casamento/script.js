@@ -23,10 +23,11 @@ const updateCountdown = () => {
 const renderGuestFields = () => {
   if (!guestList || !guestsSelect) return;
   guestList.replaceChildren();
+  const attending = form?.elements.presenca?.value !== "nao";
   const labels = ["Primeiro", "Segundo", "Terceiro", "Quarto", "Quinto"];
   for (let index = 2; index <= Number(guestsSelect.value || 0); index += 1) {
     const label = document.createElement("label");
-    label.textContent = `${labels[index - 2]} acompanhante`;
+    label.textContent = attending ? `${labels[index - 2]} acompanhante` : `Nome da ${index}ª pessoa que está cancelando`;
     const input = document.createElement("input");
     Object.assign(input, { type: "text", name: "nomesAcompanhantes", placeholder: "Nome completo", required: true });
     label.append(input);
@@ -39,12 +40,22 @@ const updateAttendanceFields = () => {
   const attending = form.elements.presenca?.value !== "nao";
   form.querySelectorAll("[data-attending-field]").forEach((node) => { node.hidden = !attending; });
   form.querySelectorAll("[data-attending-action]").forEach((node) => { node.hidden = !attending; });
+  const responsibleLabel = form.querySelector("[data-responsible-label]");
+  const partyLabel = form.querySelector("[data-party-label]");
   const messageLabel = form.querySelector("[data-message-label]");
   const messageInput = form.querySelector("[data-message-input]");
+  if (responsibleLabel) responsibleLabel.textContent = attending ? "Nome de quem está confirmando" : "Nome de quem está cancelando";
+  if (partyLabel) partyLabel.textContent = attending ? "Quem você deseja confirmar?" : "Quantas pessoas você deseja cancelar?";
+  [...guestsSelect.options].slice(1).forEach((option, index) => {
+    const count = index + 1;
+    option.textContent = attending
+      ? (count === 1 ? "Somente eu" : `Eu e mais ${count - 1} pessoa${count > 2 ? "s" : ""}`)
+      : (count === 1 ? "Somente eu" : `${count} pessoas`);
+  });
   if (messageLabel) messageLabel.textContent = attending ? "Mensagem para os noivos" : "Se quiser, conte o motivo de não poder ir";
   if (messageInput) messageInput.placeholder = attending ? "Deixe uma mensagem carinhosa" : "Conte brevemente o motivo (opcional)";
-  guestsSelect.required = attending;
-  if (!attending) { guestsSelect.value = ""; guestList?.replaceChildren(); }
+  guestsSelect.required = true;
+  renderGuestFields();
 };
 
 const sendRsvp = ({ people, responsible, phone, message, attendance }) => {
@@ -67,17 +78,17 @@ const submitRsvp = (event) => {
   const attendance = String(data.get("presenca") || "sim");
   const responsible = String(data.get("responsavel") || "Convidado").trim();
   const phone = String(data.get("telefone") || "").trim();
-  const companions = attendance === "sim" ? data.getAll("nomesAcompanhantes").map(String).map((name) => name.trim()).filter(Boolean) : [];
+  const companions = data.getAll("nomesAcompanhantes").map(String).map((name) => name.trim()).filter(Boolean);
   const people = [responsible, ...companions];
   const message = String(data.get("mensagem") || "").trim();
   const lines = attendance === "sim"
     ? [`Oi! Aqui é ${responsible}.`, `WhatsApp para contato: ${phone}.`, `Confirmo presença no casamento para ${people.length} pessoa(s):`, ...people.map((name, index) => `${index + 1}. ${name}`)]
-    : [`Oi! Aqui é ${responsible}.`, `WhatsApp para contato: ${phone}.`, "Infelizmente não poderei comparecer ao casamento."];
+    : [`Oi! Aqui é ${responsible}.`, `WhatsApp para contato: ${phone}.`, `Gostaria de cancelar a presença de ${people.length} pessoa(s):`, ...people.map((name, index) => `${index + 1}. ${name}`)];
   if (message) lines.push(`${attendance === "sim" ? "Mensagem" : "Motivo"}: ${message}`);
   sendRsvp({ people, responsible, phone, message, attendance });
   const status = form.querySelector(".form-status");
-  if (status) status.textContent = "Abrindo o WhatsApp para você concluir a confirmação…";
-  location.assign(`https://wa.me/${body.dataset.whatsapp}?text=${encodeURIComponent(lines.join("\n"))}`);
+  if (status) status.textContent = "O WhatsApp foi aberto em uma nova guia para você concluir o envio.";
+  window.open(`https://wa.me/${body.dataset.whatsapp}?text=${encodeURIComponent(lines.join("\n"))}`, "_blank", "noopener,noreferrer");
 };
 
 const setupCarousel = () => {
