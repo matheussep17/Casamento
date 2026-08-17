@@ -34,6 +34,10 @@ a {
   text-decoration: none;
 }
 
+.mobile-only {
+  display: none;
+}
+
 button,
 input,
 select,
@@ -1799,10 +1803,23 @@ dl.pix-details dd {
   .footer {
     align-items: flex-start;
     flex-direction: column;
+    width: 100%;
+  }
+
+  .footer a {
+    align-self: flex-end;
   }
 }
 
 @media (max-width: 520px) {
+
+  .desktop-only {
+    display: none;
+  }
+
+  .mobile-only {
+    display: inline;
+  }
 
   .hero {
     min-height: 82svh;

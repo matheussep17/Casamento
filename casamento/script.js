@@ -59,8 +59,8 @@ const updateAttendanceFields = () => {
 };
 
 const sendRsvp = ({ people, responsible, phone, message, attendance }) => {
-  if (!body.dataset.rsvpEndpoint) return;
-  fetch(body.dataset.rsvpEndpoint, {
+  if (!body.dataset.rsvpEndpoint) return Promise.resolve();
+  return fetch(body.dataset.rsvpEndpoint, {
     method: "POST", mode: "no-cors", keepalive: true,
     headers: { "Content-Type": "text/plain;charset=utf-8" },
     body: JSON.stringify({
@@ -68,10 +68,10 @@ const sendRsvp = ({ people, responsible, phone, message, attendance }) => {
       presenca: attendance,
       convidados: people.map((name, index) => ({ numero: index + 1, nome: name, confirmado: attendance === "sim" ? "Sim" : "Não", whatsapp: index ? "" : phone })),
     }),
-  }).catch((error) => console.error("Não foi possível enviar o RSVP para a planilha.", error));
+  });
 };
 
-const submitRsvp = (event) => {
+const submitRsvp = async (event) => {
   event.preventDefault();
   if (!form.reportValidity()) return;
   const data = new FormData(form);
@@ -85,10 +85,24 @@ const submitRsvp = (event) => {
     ? [`Oi! Aqui é ${responsible}.`, `WhatsApp para contato: ${phone}.`, `Confirmo presença no casamento para ${people.length} pessoa(s):`, ...people.map((name, index) => `${index + 1}. ${name}`)]
     : [`Oi! Aqui é ${responsible}.`, `WhatsApp para contato: ${phone}.`, `Gostaria de cancelar a presença de ${people.length} pessoa(s):`, ...people.map((name, index) => `${index + 1}. ${name}`)];
   if (message) lines.push(`${attendance === "sim" ? "Mensagem" : "Motivo"}: ${message}`);
-  sendRsvp({ people, responsible, phone, message, attendance });
   const status = form.querySelector(".form-status");
-  if (status) status.textContent = "O WhatsApp foi aberto em uma nova guia para você concluir o envio.";
+  const submitButton = form.querySelector('button[type="submit"]');
+  if (status) status.textContent = "Enviando sua resposta…";
+  if (submitButton) submitButton.disabled = true;
   window.open(`https://wa.me/${body.dataset.whatsapp}?text=${encodeURIComponent(lines.join("\n"))}`, "_blank", "noopener,noreferrer");
+
+  try {
+    await sendRsvp({ people, responsible, phone, message, attendance });
+    form.reset();
+    updateAttendanceFields();
+    if (status) status.textContent = attendance === "sim" ? "Presença confirmada com sucesso." : "Cancelamento registrado com sucesso.";
+    window.setTimeout(() => { if (status) status.textContent = ""; }, 6000);
+  } catch (error) {
+    console.error("Não foi possível enviar o RSVP para a planilha.", error);
+    if (status) status.textContent = "O WhatsApp foi aberto, mas não conseguimos registrar na planilha. Seus dados foram mantidos para tentar novamente.";
+  } finally {
+    if (submitButton) submitButton.disabled = false;
+  }
 };
 
 const setupCarousel = () => {
@@ -150,7 +164,15 @@ form?.querySelector("[data-phone-input]")?.addEventListener("input", (event) => 
 document.querySelector(".calendar-button")?.addEventListener("click", () => { const params = new URLSearchParams({ action: "TEMPLATE", text: "Casamento Camila e Matheus", dates: "20270807T193000Z/20270808T000000Z", details: "Chegada a partir das 16h. Estacionamento disponível no local.", location: "Chácara do Italiano, BR-414, Jardim Promissão, Anápolis - GO" }); window.open(`https://calendar.google.com/calendar/render?${params}`, "_blank", "noopener,noreferrer"); });
 menuToggle?.addEventListener("click", () => { const open = header?.classList.toggle("menu-open"); menuToggle.setAttribute("aria-expanded", String(Boolean(open))); });
 document.querySelector(".back-to-top")?.addEventListener("click", () => scrollTo({ top: 0, behavior: "smooth" }));
-addEventListener("scroll", () => { header?.classList.toggle("is-scrolled", scrollY > 24); document.querySelector(".back-to-top")?.classList.toggle("is-visible", scrollY > innerHeight); }, { passive: true });
+const updateFloatingUi = () => {
+  const footer = document.querySelector(".footer");
+  const backToTop = document.querySelector(".back-to-top");
+  const footerIsVisible = footer && footer.getBoundingClientRect().top < innerHeight;
+  header?.classList.toggle("is-scrolled", scrollY > 24);
+  backToTop?.classList.toggle("is-visible", scrollY > innerHeight && !footerIsVisible);
+};
+addEventListener("scroll", updateFloatingUi, { passive: true });
+addEventListener("resize", updateFloatingUi, { passive: true });
 document.addEventListener("keydown", (event) => { if (event.key === "Escape") closeMenu(); });
 
-updateCountdown(); setInterval(updateCountdown, 1000); renderGuestFields(); updateAttendanceFields(); setupCarousel(); setupLightbox(); setupNavigation();
+updateCountdown(); setInterval(updateCountdown, 1000); renderGuestFields(); updateAttendanceFields(); setupCarousel(); setupLightbox(); setupNavigation(); updateFloatingUi();
