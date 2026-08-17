@@ -89,17 +89,13 @@ const submitRsvp = async (event) => {
   const submitButton = form.querySelector('button[type="submit"]');
   if (status) status.textContent = attendance === "sim" ? "Enviando sua confirmação…" : "Abrindo o WhatsApp para o cancelamento…";
   if (submitButton) submitButton.disabled = true;
-  const whatsappWindow = window.open(`https://wa.me/${body.dataset.whatsapp}?text=${encodeURIComponent(lines.join("\n"))}`, "_blank", "noopener,noreferrer");
+  window.open(`https://wa.me/${body.dataset.whatsapp}?text=${encodeURIComponent(lines.join("\n"))}`, "_blank", "noopener,noreferrer");
 
   if (attendance === "nao") {
-    if (whatsappWindow) {
-      form.reset();
-      updateAttendanceFields();
-      if (status) status.textContent = "O WhatsApp foi aberto para você concluir o cancelamento.";
-      window.setTimeout(() => { if (status) status.textContent = ""; }, 6000);
-    } else if (status) {
-      status.textContent = "Não foi possível abrir o WhatsApp. Permita pop-ups e tente novamente.";
-    }
+    form.reset();
+    updateAttendanceFields();
+    if (status) status.textContent = "O WhatsApp foi aberto para você concluir o cancelamento.";
+    window.setTimeout(() => { if (status) status.textContent = ""; }, 6000);
     if (submitButton) submitButton.disabled = false;
     return;
   }

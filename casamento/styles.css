@@ -38,6 +38,18 @@ a {
   display: none;
 }
 
+.gift-list-details p > span {
+  margin: 0;
+  color: inherit;
+  font: inherit;
+  letter-spacing: inherit;
+  text-transform: none;
+}
+
+.gift-list-details .mobile-only {
+  display: none;
+}
+
 button,
 input,
 select,
@@ -1640,11 +1652,13 @@ dl.pix-details dd {
 }
 
 @media (max-width: 820px) {
-  .desktop-only {
+  .desktop-only,
+  .gift-list-details .desktop-only {
     display: none;
   }
 
-  .mobile-only {
+  .mobile-only,
+  .gift-list-details .mobile-only {
     display: inline;
   }
 
