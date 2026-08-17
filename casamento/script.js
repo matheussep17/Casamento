@@ -87,15 +87,28 @@ const submitRsvp = async (event) => {
   if (message) lines.push(`${attendance === "sim" ? "Mensagem" : "Motivo"}: ${message}`);
   const status = form.querySelector(".form-status");
   const submitButton = form.querySelector('button[type="submit"]');
-  if (status) status.textContent = "Enviando sua resposta…";
+  if (status) status.textContent = attendance === "sim" ? "Enviando sua confirmação…" : "Abrindo o WhatsApp para o cancelamento…";
   if (submitButton) submitButton.disabled = true;
-  window.open(`https://wa.me/${body.dataset.whatsapp}?text=${encodeURIComponent(lines.join("\n"))}`, "_blank", "noopener,noreferrer");
+  const whatsappWindow = window.open(`https://wa.me/${body.dataset.whatsapp}?text=${encodeURIComponent(lines.join("\n"))}`, "_blank", "noopener,noreferrer");
+
+  if (attendance === "nao") {
+    if (whatsappWindow) {
+      form.reset();
+      updateAttendanceFields();
+      if (status) status.textContent = "O WhatsApp foi aberto para você concluir o cancelamento.";
+      window.setTimeout(() => { if (status) status.textContent = ""; }, 6000);
+    } else if (status) {
+      status.textContent = "Não foi possível abrir o WhatsApp. Permita pop-ups e tente novamente.";
+    }
+    if (submitButton) submitButton.disabled = false;
+    return;
+  }
 
   try {
     await sendRsvp({ people, responsible, phone, message, attendance });
     form.reset();
     updateAttendanceFields();
-    if (status) status.textContent = attendance === "sim" ? "Presença confirmada com sucesso." : "Cancelamento registrado com sucesso.";
+    if (status) status.textContent = "Presença confirmada com sucesso.";
     window.setTimeout(() => { if (status) status.textContent = ""; }, 6000);
   } catch (error) {
     console.error("Não foi possível enviar o RSVP para a planilha.", error);
@@ -146,7 +159,15 @@ const setupLightbox = () => {
 const closeMenu = () => { header?.classList.remove("menu-open"); menuToggle?.setAttribute("aria-expanded", "false"); };
 const setupNavigation = () => {
   const links = [...document.querySelectorAll('.nav-links a[href^="#"]')];
-  const update = () => { const line = (header?.offsetHeight || 0) + 32; const current = [...links].reverse().find((link) => document.querySelector(link.hash)?.getBoundingClientRect().top <= line); links.forEach((link) => link.classList.toggle("is-active", link === current)); };
+  const items = links
+    .map((link) => ({ link, section: document.querySelector(link.hash) }))
+    .filter((item) => item.section)
+    .sort((a, b) => a.section.offsetTop - b.section.offsetTop);
+  const update = () => {
+    const line = (header?.offsetHeight || 0) + 32;
+    const current = [...items].reverse().find((item) => item.section.getBoundingClientRect().top <= line);
+    links.forEach((link) => link.classList.toggle("is-active", link === current?.link));
+  };
   addEventListener("scroll", update, { passive: true }); update();
 };
 
