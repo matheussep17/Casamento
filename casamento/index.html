@@ -12,11 +12,43 @@
     <meta property="og:description" content="Todos os detalhes para celebrar esse dia especial conosco." />
     <meta property="og:type" content="website" />
     <meta property="og:image" content="fotos/foto-1.jpeg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:locale" content="pt_BR" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="robots" content="noindex, nofollow, noarchive" />
     <meta name="theme-color" content="#34483f" />
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Event",
+        "name": "Casamento Camila e Matheus",
+        "startDate": "2027-08-07T16:30:00-03:00",
+        "endDate": "2027-08-07T21:00:00-03:00",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "eventStatus": "https://schema.org/EventScheduled",
+        "location": {
+          "@type": "Place",
+          "name": "Chácara do Italiano",
+          "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "BR-414 - Jardim Promissão",
+            "addressLocality": "Anápolis",
+            "addressRegion": "GO",
+            "postalCode": "75073-815",
+            "addressCountry": "BR"
+          }
+        }
+      }
+    </script>
     <link rel="icon" href="favicon-casamento.svg" type="image/svg+xml" />
-    <link rel="stylesheet" href="styles.css?v=gift-list-layout-10" />
+    <link rel="stylesheet" href="styles.css?v=site-refactor-1" />
   </head>
-  <body>
+  <body
+    data-whatsapp="5562992304054"
+    data-rsvp-endpoint="https://script.google.com/macros/s/AKfycbyOgcnHOYuJGL6jx2D_N_pG5YNd5eJrKLxCy0VlycSnPztWZy5Q43rd2-fXH8NvBF_PLg/exec"
+    data-rsvp-token="casamento-2027"
+  >
     <header class="site-header" aria-label="Navegação principal">
       <a class="brand" href="#inicio">C & M</a>
       <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-navigation">Menu</button>
@@ -42,13 +74,13 @@
             <span><strong>Chácara do Italiano</strong> Anápolis - GO</span>
             <span><strong>Chegada</strong> a partir das 16h</span>
           </div>
-          <p class="hero-text">
+          <p class="hero-text" data-mobile-secondary>
             Estamos preparando cada detalhe com muito carinho para celebrar o amor que Deus cultivou entre nós,
             unindo nossos corações e dando início aos sonhos que florescem em nossa nova jornada.
           </p>
           <div class="hero-actions">
             <a class="button primary presence-button" href="#presenca">Confirmar Presença</a>
-            <a class="button secondary" href="#evento">Ver detalhes</a>
+            <a class="button secondary hero-details-button" href="#evento">Ver detalhes</a>
           </div>
         </div>
       </section>
@@ -81,17 +113,32 @@
           <h2>Dois caminhos unidos pelo amor e uma história que seguirá para sempre.</h2>
         </div>
         <div class="story-grid">
+          <article>
+            <span>01</span>
+            <h3>O começo</h3>
+            <p>Uma conversa virou companhia, a companhia virou escolha, e aos poucos entendemos que Deus estava escrevendo uma linda história em nós.</p>
+          </article>
+          <article>
+            <span>02</span>
+            <h3>O pedido</h3>
+            <p>O sim veio com a certeza tranquila de quem já sonhava junto: começar uma nova família cercados de amor, fé e gratidão.</p>
+          </article>
+          <article>
+            <span>03</span>
+            <h3>O grande dia</h3>
+            <p>Agora queremos celebrar esse passo com pessoas especiais, pedindo a bênção de Deus para a vida que vamos construir lado a lado.</p>
+          </article>
         </div>
       </section>
 
       <section class="section photo-section" aria-label="Fotos do casal">
         <div class="photo-carousel" data-carousel aria-label="Carrossel de fotos do casal">
           <div class="carousel-track">
-            <img class="carousel-slide is-active" src="fotos/foto-1.webp" alt="Camila e Matheus juntos na foto 1" />
-            <img class="carousel-slide" src="fotos/foto-2.webp" alt="Camila e Matheus juntos na foto 2" />
-            <img class="carousel-slide" src="fotos/foto-3.webp" alt="Camila e Matheus juntos na foto 3" />
-            <img class="carousel-slide" src="fotos/foto-4.webp" alt="Camila e Matheus juntos na foto 4" />
-            <img class="carousel-slide" src="fotos/foto-5.webp" alt="Camila e Matheus juntos na foto 5" />
+            <img class="carousel-slide is-active" src="fotos/foto-1.webp" alt="Camila e Matheus juntos" decoding="async" />
+            <img class="carousel-slide" src="fotos/foto-2.webp" alt="Camila e Matheus juntos" loading="lazy" decoding="async" />
+            <img class="carousel-slide" src="fotos/foto-3.webp" alt="Camila e Matheus juntos" loading="lazy" decoding="async" />
+            <img class="carousel-slide" src="fotos/foto-4.webp" alt="Camila e Matheus juntos" loading="lazy" decoding="async" />
+            <img class="carousel-slide" src="fotos/foto-5.webp" alt="Camila e Matheus juntos" loading="lazy" decoding="async" />
           </div>
           <button class="carousel-control prev" type="button" data-carousel-control="prev" aria-label="Foto anterior">
             &#8249;
@@ -125,10 +172,10 @@
           <div class="event-main">
             <article class="event-card event-card-featured">
               <span class="event-card-icon" aria-hidden="true">📍</span>
-              <p class="time"></p>
-              <h3></h3>
-              <p class="event-location"></p>
-              <address class="event-address"></address>
+              <p class="time">16:30 até 21:00</p>
+              <h3>Cerimônia &amp; Recepção</h3>
+              <p class="event-location">Chácara do Italiano</p>
+              <address class="event-address">BR-414 - Jardim Promissão, Anápolis - GO, 75073-815</address>
               <div class="event-facts" aria-label="Informações importantes">
                 <span><strong>Chegada:</strong> a partir das 16h</span>
                 <span><strong>Estacionamento:</strong> disponível no local</span>
@@ -144,14 +191,73 @@
             </a>
           </div>
           <article class="event-card" id="traje">
-            <p class="time"></p>
-            <h3></h3>
-            <div class="attire-groups"></div>
+            <p class="time">Traje</p>
+            <h3>Social elegante</h3>
+            <div class="attire-groups">
+              <section class="attire-panel attire-panel--madrinhas">
+                <h4>Madrinhas</h4>
+                <div class="attire-lines">
+                  <p>Escolhemos uma paleta de tons de rosa para harmonizar com a essência do casamento.</p>
+                  <p>Como a cerimônia será ao ar livre, sobre a grama, sugerimos saltos blocados ou adaptadores de salto.</p>
+                  <p>Cada madrinha poderá escolher o tom que mais gostar dentro da paleta:</p>
+                </div>
+                <ul class="color-list color-list--cards" aria-label="Paleta das madrinhas">
+                  <li><span class="color-swatch" style="--swatch-color:#F3B2D4"></span><span>Rosa Bebê</span></li>
+                  <li><span class="color-swatch" style="--swatch-color:#F68FC0"></span><span>Rosa Ballet</span></li>
+                  <li><span class="color-swatch" style="--swatch-color:#F163A8"></span><span>Rosa Chiclete</span></li>
+                  <li><span class="color-swatch" style="--swatch-color:#ED4D9A"></span><span>Rosa Flamingo</span></li>
+                </ul>
+              </section>
+              <section class="attire-panel attire-panel--padrinhos">
+                <h4>Padrinhos</h4>
+                <div class="attire-lines"><p>Sugerimos terno em cinza claro, camisa branca e gravata prata tradicional.</p></div>
+                <div class="attire-palette"><p>Gravata</p><ul class="color-list color-list--cards"><li><span class="color-swatch" style="--swatch-color:#C0C0C0"></span><span>Prata Tradicional</span></li></ul></div>
+                <div class="attire-palette"><p>Terno</p><ul class="color-list color-list--cards"><li><span class="color-swatch" style="--swatch-color:#D3D3D3"></span><span>Cinza Gelo / Claro</span></li><li><span class="color-swatch" style="--swatch-color:#C0C0C0"></span><span>Cinza Médio / Prata</span></li></ul></div>
+              </section>
+            </div>
           </article>
         </div>
         <div class="day-program" id="programacao" aria-label="Programação do dia">
-          <p class="eyebrow"></p>
-          <div class="program-grid"></div>
+          <p class="eyebrow">Programação do dia</p>
+          <div class="program-grid">
+            <article><strong>16h</strong><span>Chegada dos convidados</span></article>
+            <article><strong>16h30</strong><span>Cerimônia</span></article>
+            <article><strong>18h</strong><span>Recepção e jantar</span></article>
+            <article><strong>21h</strong><span>Encerramento</span></article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section practical-info" id="informacoes">
+        <div class="section-copy">
+          <p class="eyebrow">Informações práticas</p>
+          <h2>Respostas rápidas para aproveitar o dia com tranquilidade.</h2>
+        </div>
+        <div class="faq-grid">
+          <details>
+            <summary>Que horas devo chegar?</summary>
+            <p>A chegada dos convidados começa às 16h e a cerimônia, às 16h30.</p>
+          </details>
+          <details>
+            <summary>Há estacionamento?</summary>
+            <p>Sim. Haverá estacionamento disponível no local.</p>
+          </details>
+          <details>
+            <summary>Qual é o traje?</summary>
+            <p>O traje sugerido é social elegante. Madrinhas e padrinhos encontram orientações específicas na seção de traje.</p>
+          </details>
+          <details>
+            <summary>O espaço tem gramado?</summary>
+            <p>Sim. Para maior conforto, sugerimos saltos blocados ou adaptadores de salto.</p>
+          </details>
+          <details>
+            <summary>Quem devo incluir na confirmação?</summary>
+            <p>Confirme somente as pessoas que já foram convidadas e informe o nome completo de cada acompanhante.</p>
+          </details>
+          <details>
+            <summary>Como acesso a lista de presentes?</summary>
+            <p>Use o botão da lista online ou, se preferir, a opção de presente via Pix na seção de presentes.</p>
+          </details>
         </div>
       </section>
 
@@ -161,6 +267,12 @@
           <h2>Sua resposta nos ajuda a cuidar de cada detalhe.</h2>
         </div>
         <form class="rsvp-form" aria-label="Formulário de confirmação">
+          <p class="rsvp-deadline"><strong>Confirme sua resposta até 7 de julho de 2027.</strong></p>
+          <fieldset class="attendance-choice">
+            <legend>Você poderá comparecer?</legend>
+            <label><input type="radio" name="presenca" value="sim" checked /> Sim, estarei presente</label>
+            <label><input type="radio" name="presenca" value="nao" /> Não poderei comparecer</label>
+          </fieldset>
           <label>
             Nome de quem está confirmando
             <input
@@ -186,7 +298,7 @@
               required
             />
           </label>
-          <label>
+          <label data-attending-field>
             Quem voc&ecirc; deseja confirmar?
             <select name="convidados" data-guests-select required>
               <option value="">Selecione</option>
@@ -199,7 +311,7 @@
             </select>
           </label>
           <div class="guest-list" data-guest-list></div>
-          <p class="rsvp-note">
+          <p class="rsvp-note" data-attending-field>
             Para recebermos todos com conforto, pedimos que confirme somente as pessoas que já foram
             convidadas. Apenas os nomes incluídos nesta confirmação farão parte da lista oficial do
             evento e, no dia, a entrada será liberada pela equipe de cerimonial somente às pessoas
@@ -257,7 +369,7 @@
               src="fotos/pix-qrcode-centralizado.png"
               alt="QR Code Pix de Matheus Torres Ribeiro"
             />
-            <div class="pix-info-panel" style="background:#f7f3ed;border:1px solid #e2ddd4;border-radius:18px;box-sizing:border-box;min-height:210px;padding:16px 20px;">
+            <div class="pix-info-panel">
               <dl class="pix-details">
                 <div class="pix-row pix-row--key">
                   <dt><strong>Chave Pix</strong></dt>
@@ -301,6 +413,6 @@
       </button>
     </dialog>
 
-    <script src="script.js?v=gift-list-layout-8"></script>
+    <script src="script.js?v=site-refactor-1"></script>
   </body>
 </html>

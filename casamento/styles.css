@@ -408,6 +408,84 @@ h3 {
   box-shadow: var(--shadow);
 }
 
+.attendance-choice {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+.attendance-choice legend {
+  grid-column: 1 / -1;
+  margin-bottom: 8px;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 0.86rem;
+  font-weight: 700;
+}
+
+.attendance-choice label {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px;
+  border: 1px solid rgba(52, 72, 63, 0.2);
+  border-radius: 14px;
+  background: #fffdfa;
+  cursor: pointer;
+}
+
+.attendance-choice input {
+  width: auto;
+  accent-color: var(--rose);
+}
+
+.rsvp-deadline {
+  margin: 0;
+  color: var(--olive);
+}
+
+[hidden] { display: none !important; }
+
+.practical-info {
+  background: var(--linen);
+}
+
+.faq-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+  width: min(980px, 100%);
+  margin-inline: auto;
+}
+
+.faq-grid details {
+  padding: 20px 22px;
+  border: 1px solid rgba(52, 72, 63, 0.12);
+  border-radius: 16px;
+  background: var(--white);
+}
+
+.faq-grid summary {
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.faq-grid p {
+  margin: 12px 0 0;
+  line-height: 1.65;
+}
+
+.pix-info-panel {
+  box-sizing: border-box;
+  min-height: 210px;
+  padding: 16px 20px;
+  border: 1px solid #e2ddd4;
+  border-radius: 18px;
+  background: #f7f3ed;
+}
+
 .story-grid article,
 .event-card,
 .gift-card {
@@ -591,6 +669,7 @@ h3 {
   box-shadow:
     0 10px 26px rgba(60, 40, 52, 0.14),
     inset 0 0 0 1px rgba(0, 0, 0, 0.05);
+  background: var(--swatch-color);
 }
 
 .color-name {
@@ -1619,7 +1698,8 @@ dl.pix-details dd {
   .event-layout,
   .gift-grid,
   .photo-section,
-  .rsvp {
+  .rsvp,
+  .faq-grid {
     grid-template-columns: 1fr;
   }
 
@@ -1705,6 +1785,38 @@ dl.pix-details dd {
 }
 
 @media (max-width: 520px) {
+
+  .hero {
+    min-height: 82svh;
+    padding-top: 82px;
+    padding-bottom: 28px;
+  }
+
+  .hero [data-mobile-secondary] {
+    display: none;
+  }
+
+  .hero-details-button {
+    min-height: 44px;
+    padding: 10px 4px;
+    border: 0;
+    text-decoration: underline;
+    text-underline-offset: 4px;
+  }
+
+  .hero-event-summary span:first-child,
+  .hero-event-summary span:last-child {
+    display: none;
+  }
+
+  .attendance-choice {
+    grid-template-columns: 1fr;
+  }
+
+  .gift-list-qr-code,
+  .pix-qr-code {
+    display: none;
+  }
   .photo-lightbox {
     width: calc(100vw - 24px);
     padding: 12px 44px;
