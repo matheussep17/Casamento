@@ -42,11 +42,13 @@ const updateAttendanceFields = () => {
   form.querySelectorAll("[data-attending-action]").forEach((node) => { node.hidden = !attending; });
   const responsibleLabel = form.querySelector("[data-responsible-label]");
   const phoneLabel = form.querySelector("[data-phone-label]");
+  const phoneInput = form.querySelector('[name="telefone"]');
   const partyLabel = form.querySelector("[data-party-label]");
   const messageLabel = form.querySelector("[data-message-label]");
   const messageInput = form.querySelector("[data-message-input]");
+  if (phoneInput) phoneInput.required = attending;
   if (responsibleLabel) responsibleLabel.textContent = attending ? "Nome de quem está confirmando" : "Nome de quem está cancelando";
-  if (phoneLabel) phoneLabel.textContent = attending ? "WhatsApp de quem está confirmando" : "WhatsApp de quem está cancelando";
+  if (phoneLabel) phoneLabel.textContent = attending ? "WhatsApp de quem está confirmando" : "WhatsApp de quem está cancelando (opcional)";
   if (partyLabel) partyLabel.textContent = attending ? "Quem você deseja confirmar?" : "Quantas pessoas você deseja cancelar?";
   [...guestsSelect.options].slice(1).forEach((option, index) => {
     const count = index + 1;
