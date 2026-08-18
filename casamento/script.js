@@ -94,11 +94,18 @@ const submitRsvp = async (event) => {
   window.open(`https://wa.me/${body.dataset.whatsapp}?text=${encodeURIComponent(lines.join("\n"))}`, "_blank", "noopener,noreferrer");
 
   if (attendance === "nao") {
-    form.reset();
-    updateAttendanceFields();
-    if (status) status.textContent = "O WhatsApp foi aberto para você concluir o cancelamento.";
-    window.setTimeout(() => { if (status) status.textContent = ""; }, 6000);
-    if (submitButton) submitButton.disabled = false;
+    try {
+      await sendRsvp({ people, responsible, phone, message, attendance });
+      form.reset();
+      updateAttendanceFields();
+      if (status) status.textContent = "Cancelamento registrado e WhatsApp aberto para você concluir.";
+      window.setTimeout(() => { if (status) status.textContent = ""; }, 6000);
+    } catch (error) {
+      console.error("Não foi possível registrar o cancelamento na planilha.", error);
+      if (status) status.textContent = "O WhatsApp foi aberto, mas não conseguimos atualizar a planilha.";
+    } finally {
+      if (submitButton) submitButton.disabled = false;
+    }
     return;
   }
 
