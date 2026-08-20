@@ -175,6 +175,9 @@ const setupNavigation = () => {
 };
 
 document.addEventListener("click", async (event) => {
+  if (header?.classList.contains("menu-open") && !event.target.closest(".site-header")) {
+    closeMenu();
+  }
   const anchor = event.target.closest('a[href^="#"]');
   if (anchor) { const target = document.querySelector(anchor.hash); if (target) { event.preventDefault(); scrollTo({ top: Math.max(target.offsetTop - (header?.offsetHeight || 0) - 16, 0), behavior: "smooth" }); closeMenu(); } }
   const copy = event.target.closest("[data-copy-pix]");
