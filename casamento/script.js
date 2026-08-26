@@ -77,6 +77,7 @@ const sendRsvp = ({ people, responsible, phone, message, attendance }) => {
 
 const submitRsvp = async (event) => {
   event.preventDefault();
+  if (form.elements.website?.value) return;
   if (!form.reportValidity()) return;
   const data = new FormData(form);
   const attendance = String(data.get("presenca") || "sim");
@@ -101,7 +102,7 @@ const submitRsvp = async (event) => {
 
     form.reset();
     updateAttendanceFields();
-    if (status) status.textContent = "Cancelamento enviado e WhatsApp aberto para você concluir.";
+    if (status) status.textContent = "Dados preparados. Conclua o envio na conversa do WhatsApp que foi aberta.";
     window.setTimeout(() => { if (status) status.textContent = ""; }, 6000);
     if (submitButton) submitButton.disabled = false;
     return;
@@ -111,7 +112,7 @@ const submitRsvp = async (event) => {
     await sendRsvp({ people, responsible, phone, message, attendance });
     form.reset();
     updateAttendanceFields();
-    if (status) status.textContent = "Presença confirmada com sucesso.";
+    if (status) status.textContent = "Dados preparados. Conclua o envio na conversa do WhatsApp que foi aberta.";
     window.setTimeout(() => { if (status) status.textContent = ""; }, 6000);
   } catch (error) {
     console.error("Não foi possível enviar o RSVP para a planilha.", error);
@@ -129,7 +130,14 @@ const setupCarousel = () => {
   let active = 0, timer, startX;
   const show = (index) => {
     active = (index + slides.length) % slides.length;
-    slides.forEach((slide, i) => { slide.classList.toggle("is-active", i === active); slide.setAttribute("aria-hidden", String(i !== active)); });
+    slides.forEach((slide, i) => {
+      const isActive = i === active;
+      slide.classList.toggle("is-active", isActive);
+      slide.setAttribute("aria-hidden", String(!isActive));
+      slide.tabIndex = isActive ? 0 : -1;
+      slide.setAttribute("role", "button");
+      slide.setAttribute("aria-label", `${slide.alt}. Abrir foto ampliada`);
+    });
     dots.forEach((dot, i) => { dot.classList.toggle("is-active", i === active); i === active ? dot.setAttribute("aria-current", "true") : dot.removeAttribute("aria-current"); });
   };
   const stop = () => { clearInterval(timer); timer = null; };
@@ -152,6 +160,14 @@ const setupLightbox = () => {
   const slides = [...carousel.querySelectorAll(".carousel-slide")]; let active = 0;
   const show = (index) => { active = (index + slides.length) % slides.length; image.src = slides[active].src; image.alt = slides[active].alt; };
   carousel.addEventListener("click", (event) => { const slide = event.target.closest(".carousel-slide"); if (slide) { show(slides.indexOf(slide)); dialog.showModal(); } });
+  carousel.addEventListener("keydown", (event) => {
+    const slide = event.target.closest(".carousel-slide");
+    if (slide && (event.key === "Enter" || event.key === " ")) {
+      event.preventDefault();
+      show(slides.indexOf(slide));
+      dialog.showModal();
+    }
+  });
   dialog.querySelector(".lightbox-close")?.addEventListener("click", () => dialog.close());
   dialog.querySelectorAll("[data-lightbox-control]").forEach((button) => button.addEventListener("click", () => show(active + (button.dataset.lightboxControl === "next" ? 1 : -1))));
   dialog.querySelector(".lightbox-fullscreen")?.addEventListener("click", () => document.fullscreenElement ? document.exitFullscreen() : dialog.requestFullscreen?.());

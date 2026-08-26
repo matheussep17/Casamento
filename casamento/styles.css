@@ -1133,6 +1133,42 @@ h3 {
   line-height: 1.55;
 }
 
+.privacy-note {
+  margin: -4px 0 0;
+  color: #6d5f54;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 0.82rem;
+  line-height: 1.5;
+}
+
+.form-trap {
+  position: absolute !important;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+.invitation-confirmation {
+  grid-template-columns: auto 1fr;
+  align-items: start;
+  gap: 10px;
+  color: #514a43;
+  font-size: 0.84rem;
+  letter-spacing: 0;
+  line-height: 1.45;
+  text-transform: none;
+}
+
+.invitation-confirmation input {
+  width: 18px;
+  height: 18px;
+  margin-top: 1px;
+  accent-color: var(--olive);
+}
+
 label {
   display: grid;
   gap: 8px;

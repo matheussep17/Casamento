@@ -13,7 +13,9 @@
     <meta property="og:type" content="website" />
     <meta property="og:image" content="fotos/foto-1.jpeg" />
     <meta property="og:image:width" content="1200" />
-    <meta property="og:image:height" content="630" />
+    <meta property="og:image:height" content="1600" />
+    <meta property="og:image:type" content="image/jpeg" />
+    <meta property="og:image:alt" content="Camila e Matheus juntos" />
     <meta property="og:locale" content="pt_BR" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="robots" content="noindex, nofollow, noarchive" />
@@ -42,7 +44,7 @@
       }
     </script>
     <link rel="icon" href="favicon-casamento.svg" type="image/svg+xml" />
-    <link rel="stylesheet" href="styles.css?v=site-refactor-11" />
+    <link rel="stylesheet" href="styles.css?v=site-refactor-12" />
   </head>
   <body
     data-whatsapp="5562992304054"
@@ -135,11 +137,11 @@
       <section class="section photo-section" aria-label="Fotos do casal">
         <div class="photo-carousel" data-carousel aria-label="Carrossel de fotos do casal">
           <div class="carousel-track">
-            <img class="carousel-slide is-active" src="fotos/foto-1.webp" alt="Camila e Matheus juntos" decoding="async" />
-            <img class="carousel-slide" src="fotos/foto-2.webp" alt="Camila e Matheus juntos" loading="lazy" decoding="async" />
-            <img class="carousel-slide" src="fotos/foto-3.webp" alt="Camila e Matheus juntos" loading="lazy" decoding="async" />
-            <img class="carousel-slide" src="fotos/foto-4.webp" alt="Camila e Matheus juntos" loading="lazy" decoding="async" />
-            <img class="carousel-slide" src="fotos/foto-5.webp" alt="Camila e Matheus juntos" loading="lazy" decoding="async" />
+            <img class="carousel-slide is-active" src="fotos/foto-1.webp" alt="Camila e Matheus sorrindo juntos" width="1200" height="1600" loading="lazy" decoding="async" />
+            <img class="carousel-slide" src="fotos/foto-2.webp" alt="Camila e Matheus em um momento a dois" width="959" height="1280" loading="lazy" decoding="async" />
+            <img class="carousel-slide" src="fotos/foto-3.webp" alt="Camila e Matheus durante o ensaio do casal" width="900" height="1600" loading="lazy" decoding="async" />
+            <img class="carousel-slide" src="fotos/foto-4.webp" alt="Camila e Matheus celebrando seu amor" width="1200" height="1600" loading="lazy" decoding="async" />
+            <img class="carousel-slide" src="fotos/foto-5.webp" alt="Retrato de Camila e Matheus juntos" width="1200" height="1600" loading="lazy" decoding="async" />
           </div>
           <button class="carousel-control prev" type="button" data-carousel-control="prev" aria-label="Foto anterior">
             &#8249;
@@ -267,7 +269,7 @@
           <p class="eyebrow">Confirme sua presença</p>
           <h2>Sua resposta nos ajuda a cuidar de cada detalhe.</h2>
         </div>
-        <form class="rsvp-form" aria-label="Formulário de confirmação">
+        <form class="rsvp-form" aria-label="Formulário de confirmação" novalidate>
           <p class="rsvp-deadline"><strong>Confirme sua presença até 7 de julho de 2027</strong></p>
           <fieldset class="attendance-choice">
             <legend>Você poderá comparecer?</legend>
@@ -283,6 +285,10 @@
               autocomplete="name"
               required
             />
+          </label>
+          <label class="form-trap" aria-hidden="true">
+            Não preencha este campo
+            <input type="text" name="website" tabindex="-1" autocomplete="off" />
           </label>
           <label>
             <span data-phone-label>WhatsApp de quem está confirmando</span>
@@ -328,6 +334,13 @@
               data-message-input
             ></textarea>
           </label>
+          <p class="privacy-note">
+            Usaremos seu nome e WhatsApp somente para organizar a lista de convidados e entrar em contato sobre o casamento.
+          </p>
+          <label class="invitation-confirmation">
+            <input type="checkbox" name="conviteConfirmado" required />
+            <span>Confirmo que informei somente pessoas incluídas no convite.</span>
+          </label>
           <button class="button primary presence-button" type="submit">Enviar confirmação</button>
           <button class="button calendar-button" type="button" data-attending-action>Adicionar ao Google Agenda</button>
           <p class="form-status" role="status" aria-live="polite"></p>
@@ -348,6 +361,10 @@
               class="gift-list-qr-code"
               src="fotos/lista-presentes-qrcode.png?v=3"
               alt="QR Code para acessar a lista de presentes de Camila e Matheus"
+              width="912"
+              height="912"
+              loading="lazy"
+              decoding="async"
             />
             <div class="gift-list-details">
               <strong>Lista online</strong>
@@ -373,6 +390,10 @@
               class="pix-qr-code"
               src="fotos/pix-qrcode-centralizado.png"
               alt="QR Code Pix de Matheus Torres Ribeiro"
+              width="370"
+              height="370"
+              loading="lazy"
+              decoding="async"
             />
             <div class="pix-info-panel">
               <dl class="pix-details">
@@ -418,6 +439,6 @@
       </button>
     </dialog>
 
-    <script src="script.js?v=site-refactor-13"></script>
+    <script src="script.js?v=site-refactor-14"></script>
   </body>
 </html>
