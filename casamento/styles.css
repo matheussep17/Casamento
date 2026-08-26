@@ -9,7 +9,7 @@
   --terracotta: #a95d4c;
   --white: #ffffff;
   --shadow: 0 22px 70px rgba(31, 39, 35, 0.16);
-  --hero-image: url("fotos/capa-casamento-v2.jpg");
+  --hero-image: url("https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=1800&q=85");
 }
 
 * {
@@ -118,7 +118,7 @@ textarea {
   position: absolute;
   inset: 0;
   background:
-    linear-gradient(90deg, rgba(21, 30, 26, 0.72) 0%, rgba(21, 30, 26, 0.48) 42%, rgba(21, 30, 26, 0.12) 72%),
+    linear-gradient(90deg, rgba(21, 30, 26, 0.78), rgba(21, 30, 26, 0.34)),
     linear-gradient(0deg, rgba(21, 30, 26, 0.32), rgba(21, 30, 26, 0));
 }
 
@@ -1133,20 +1133,6 @@ h3 {
   line-height: 1.55;
 }
 
-@media (min-width: 821px) {
-  .hero {
-    background-position: center;
-  }
-
-  .hero-content {
-    width: min(620px, 47vw);
-  }
-
-  .hero h1 {
-    font-size: clamp(4.25rem, 8vw, 7.25rem);
-  }
-}
-
 .privacy-note {
   margin: -4px 0 0;
   color: #6d5f54;
@@ -1805,7 +1791,6 @@ dl.pix-details dd {
   .hero {
     min-height: 90vh;
     padding-top: 96px;
-    background-position: 70% center;
   }
 
   .hero h1 {
