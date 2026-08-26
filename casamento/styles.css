@@ -9,7 +9,7 @@
   --terracotta: #a95d4c;
   --white: #ffffff;
   --shadow: 0 22px 70px rgba(31, 39, 35, 0.16);
-  --hero-image: url("https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=1800&q=85");
+  --hero-image: url("fotos/capa-floral-candidata.jpg");
 }
 
 * {
@@ -1706,6 +1706,38 @@ dl.pix-details dd {
 
 .lightbox-control.next {
   right: 10px;
+}
+
+@media (min-width: 821px) {
+  .hero-content {
+    width: min(1180px, 100%);
+    margin-inline: auto;
+  }
+
+  .hero h1 {
+    font-size: clamp(4.5rem, 7vw, 8.25rem);
+    white-space: nowrap;
+  }
+
+  .hero-event-summary {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    width: min(900px, 100%);
+    gap: 14px;
+  }
+
+  .hero-event-summary span {
+    min-width: 0;
+    padding: 14px 20px;
+  }
+
+  .hero-text {
+    max-width: 760px;
+  }
+
+  .hero-actions {
+    gap: 18px;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
