@@ -157,22 +157,61 @@ const setupCarousel = () => {
 const setupLightbox = () => {
   const dialog = document.querySelector(".photo-lightbox"), image = dialog?.querySelector("img");
   if (!dialog || !image || !carousel) return;
-  const slides = [...carousel.querySelectorAll(".carousel-slide")]; let active = 0;
+  const slides = [...carousel.querySelectorAll(".carousel-slide")];
+  const fullscreenButton = dialog.querySelector(".lightbox-fullscreen");
+  let active = 0;
   const show = (index) => { active = (index + slides.length) % slides.length; image.src = slides[active].src; image.alt = slides[active].alt; };
-  carousel.addEventListener("click", (event) => { const slide = event.target.closest(".carousel-slide"); if (slide) { show(slides.indexOf(slide)); dialog.showModal(); } });
+  const open = (index) => {
+    show(index);
+    dialog.showModal();
+    dialog.querySelector(".lightbox-close")?.focus({ preventScroll: true });
+  };
+  const setFullscreenLabel = (activeFullscreen) => {
+    if (fullscreenButton) fullscreenButton.setAttribute("aria-label", activeFullscreen ? "Sair da tela cheia" : "Entrar em tela cheia");
+  };
+  const toggleFullscreen = async () => {
+    if (document.fullscreenElement) {
+      await document.exitFullscreen();
+      return;
+    }
+    if (dialog.classList.contains("is-fullscreen-fallback")) {
+      dialog.classList.remove("is-fullscreen-fallback");
+      setFullscreenLabel(false);
+      return;
+    }
+    try {
+      if (!dialog.requestFullscreen) throw new Error("Fullscreen API indisponível");
+      await dialog.requestFullscreen();
+    } catch {
+      dialog.classList.add("is-fullscreen-fallback");
+      setFullscreenLabel(true);
+    }
+  };
+  carousel.addEventListener("click", (event) => { const slide = event.target.closest(".carousel-slide"); if (slide) open(slides.indexOf(slide)); });
   carousel.addEventListener("keydown", (event) => {
     const slide = event.target.closest(".carousel-slide");
     if (slide && (event.key === "Enter" || event.key === " ")) {
       event.preventDefault();
-      show(slides.indexOf(slide));
-      dialog.showModal();
+      open(slides.indexOf(slide));
     }
   });
   dialog.querySelector(".lightbox-close")?.addEventListener("click", () => dialog.close());
   dialog.querySelectorAll("[data-lightbox-control]").forEach((button) => button.addEventListener("click", () => show(active + (button.dataset.lightboxControl === "next" ? 1 : -1))));
-  dialog.querySelector(".lightbox-fullscreen")?.addEventListener("click", () => document.fullscreenElement ? document.exitFullscreen() : dialog.requestFullscreen?.());
+  fullscreenButton?.addEventListener("click", toggleFullscreen);
   dialog.addEventListener("click", (event) => { if (event.target === dialog) dialog.close(); });
-  dialog.addEventListener("keydown", (event) => { if (event.key === "ArrowLeft") show(active - 1); if (event.key === "ArrowRight") show(active + 1); });
+  document.addEventListener("keydown", (event) => {
+    if (!dialog.open) return;
+    if (event.key === "ArrowLeft" || event.key === "ArrowRight") {
+      event.preventDefault();
+      show(active + (event.key === "ArrowLeft" ? -1 : 1));
+    }
+  });
+  document.addEventListener("fullscreenchange", () => setFullscreenLabel(Boolean(document.fullscreenElement)));
+  dialog.addEventListener("close", () => {
+    dialog.classList.remove("is-fullscreen-fallback");
+    setFullscreenLabel(false);
+    if (document.fullscreenElement === dialog) void document.exitFullscreen();
+  });
 };
 
 const closeMenu = () => { header?.classList.remove("menu-open"); menuToggle?.setAttribute("aria-expanded", "false"); };
