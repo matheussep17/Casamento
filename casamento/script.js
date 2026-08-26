@@ -149,6 +149,16 @@ const setupCarousel = () => {
   carousel.addEventListener("focusin", stop); carousel.addEventListener("focusout", start);
   carousel.addEventListener("pointerdown", (event) => { startX = event.clientX; });
   carousel.addEventListener("pointerup", (event) => { const distance = event.clientX - startX; if (Math.abs(distance) >= 50) interact(distance < 0 ? 1 : -1); startX = undefined; });
+  window.addEventListener("keydown", (event) => {
+    if (event.key !== "ArrowLeft" && event.key !== "ArrowRight") return;
+    if (document.querySelector(".photo-lightbox")?.open) return;
+    if (event.target.closest?.("input, select, textarea, [contenteditable='true']")) return;
+    const bounds = carousel.getBoundingClientRect();
+    const isVisible = bounds.bottom > 0 && bounds.top < innerHeight;
+    if (!isVisible) return;
+    event.preventDefault();
+    interact(event.key === "ArrowLeft" ? -1 : 1);
+  });
   document.addEventListener("visibilitychange", () => document.hidden ? stop() : start());
   reduceMotion.addEventListener?.("change", start);
   show(0); start();
@@ -164,7 +174,7 @@ const setupLightbox = () => {
   const open = (index) => {
     show(index);
     dialog.showModal();
-    dialog.querySelector(".lightbox-close")?.focus({ preventScroll: true });
+    dialog.focus({ preventScroll: true });
   };
   const setFullscreenLabel = (activeFullscreen) => {
     if (fullscreenButton) fullscreenButton.setAttribute("aria-label", activeFullscreen ? "Sair da tela cheia" : "Entrar em tela cheia");
@@ -199,13 +209,14 @@ const setupLightbox = () => {
   dialog.querySelectorAll("[data-lightbox-control]").forEach((button) => button.addEventListener("click", () => show(active + (button.dataset.lightboxControl === "next" ? 1 : -1))));
   fullscreenButton?.addEventListener("click", toggleFullscreen);
   dialog.addEventListener("click", (event) => { if (event.target === dialog) dialog.close(); });
-  document.addEventListener("keydown", (event) => {
+  window.addEventListener("keydown", (event) => {
     if (!dialog.open) return;
     if (event.key === "ArrowLeft" || event.key === "ArrowRight") {
       event.preventDefault();
+      event.stopPropagation();
       show(active + (event.key === "ArrowLeft" ? -1 : 1));
     }
-  });
+  }, true);
   document.addEventListener("fullscreenchange", () => setFullscreenLabel(Boolean(document.fullscreenElement)));
   dialog.addEventListener("close", () => {
     dialog.classList.remove("is-fullscreen-fallback");

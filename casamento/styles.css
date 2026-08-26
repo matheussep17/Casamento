@@ -1600,6 +1600,10 @@ dl.pix-details dd {
   place-items: center;
 }
 
+.photo-lightbox:focus {
+  outline: none;
+}
+
 .photo-lightbox::backdrop {
   background: rgba(12, 16, 14, 0.82);
   backdrop-filter: blur(4px);
