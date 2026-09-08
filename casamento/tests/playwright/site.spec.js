@@ -1,4 +1,4 @@
-const { test, expect } = require('./fixtures');
+const { test, expect, site } = require('./fixtures');
 
 test.describe('site do casamento - fluxos E2E', () => {
   test.beforeEach(async ({ page }) => {
@@ -6,11 +6,12 @@ test.describe('site do casamento - fluxos E2E', () => {
   });
 
   test('carrega conteúdo principal, metadados e recursos locais', async ({ page }) => {
-    await expect(page).toHaveTitle('Camila & Matheus | Casamento');
+    await expect(page).toHaveTitle(site.title);
     await expect(page.locator('h1')).toHaveText('Camila & Matheus');
     await expect(page.locator('meta[name="description"]')).toHaveAttribute('content', /Site de casamento/);
     await expect(page.locator('.countdown')).toBeVisible();
     await expect(page.locator('.carousel-slide')).toHaveCount(5);
+    await page.locator('.photo-carousel').scrollIntoViewIfNeeded();
     await expect(page.locator('img[src*="foto-1.webp"]')).toHaveJSProperty('complete', true);
   });
 
@@ -54,8 +55,9 @@ test.describe('site do casamento - fluxos E2E', () => {
     await page.locator('[data-guest-list] input').nth(0).fill('Matheus Torres');
     await page.locator('[data-guest-list] input').nth(1).fill('Ana Souza');
     await page.getByPlaceholder('Deixe uma mensagem carinhosa').fill('Estamos muito felizes!');
+    await page.locator('[name="conviteConfirmado"]').check();
     await page.getByRole('button', { name: 'Enviar confirmação' }).click();
-    await expect(page.getByRole('status').filter({ hasText: 'Presença confirmada' })).toBeVisible();
+    await expect(page.getByRole('status').filter({ hasText: site.rsvpPreparedStatus })).toBeVisible();
     expect(requestBody).toMatchObject({
       token: 'casamento-2027',
       responsavel: 'Camila Souza',
@@ -79,9 +81,10 @@ test.describe('site do casamento - fluxos E2E', () => {
     await page.getByPlaceholder('Seu nome completo').fill('Convidado Teste');
     await page.locator('[data-guests-select]').selectOption('2');
     await page.locator('[data-guest-list] input').fill('Acompanhante Teste');
+    await page.locator('[name="conviteConfirmado"]').check();
     await page.getByRole('button', { name: 'Enviar confirmação' }).click();
-    await expect(page.getByRole('status').filter({ hasText: 'Cancelamento enviado' })).toBeVisible();
-    expect(await page.evaluate(() => window.__openedUrls[0])).toMatch(/^https:\/\/wa\.me\/5562992304054\?/);
+    await expect(page.getByRole('status').filter({ hasText: site.rsvpPreparedStatus })).toBeVisible();
+    expect(await page.evaluate(() => window.__openedUrls[0])).toMatch(new RegExp(`^https:\\/\\/wa\\.me\\/${site.whatsapp}\\?`));
   });
 
   test('copia a chave Pix e gera o link do Google Agenda', async ({ page }) => {
