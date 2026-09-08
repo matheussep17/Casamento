@@ -1,4 +1,5 @@
 const { test: base, expect } = require('@playwright/test');
+const { site } = require('../shared/test-data');
 
 const RSVP_URL = '**/script.google.com/macros/s/**/exec';
 
@@ -22,4 +23,4 @@ const test = base.extend({
   },
 });
 
-module.exports = { test, expect, RSVP_URL };
+module.exports = { test, expect, RSVP_URL, site };

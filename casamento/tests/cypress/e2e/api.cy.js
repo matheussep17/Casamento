@@ -10,6 +10,7 @@ describe('API RSVP - contrato no Cypress', () => {
     cy.get('input[placeholder="Seu nome completo"]').type('API Cypress');
     cy.get('input[placeholder="(62) 99999-9999"]').type('(62) 99999-9999');
     cy.get('[data-guests-select]').select('1');
+    cy.get('[name="conviteConfirmado"]').check();
     cy.contains('button', 'Enviar confirmação').click();
     cy.wait('@apiContract').its('request.method').should('eq', 'POST');
   });
@@ -20,6 +21,7 @@ describe('API RSVP - contrato no Cypress', () => {
     cy.get('input[placeholder="Seu nome completo"]').type('Offline Cypress');
     cy.get('input[placeholder="(62) 99999-9999"]').type('(62) 99999-9999');
     cy.get('[data-guests-select]').select('1');
+    cy.get('[name="conviteConfirmado"]').check();
     cy.contains('button', 'Enviar confirmação').click();
     cy.wait('@apiError');
     cy.contains('[role="status"]', 'não conseguimos registrar').should('be.visible');

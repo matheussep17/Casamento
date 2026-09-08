@@ -7,6 +7,7 @@ test.describe('API RSVP - contrato de integração', () => {
     await page.getByPlaceholder('Seu nome completo').fill('Pessoa API');
     await page.getByPlaceholder('(62) 99999-9999').fill('(62) 99999-9999');
     await page.locator('[data-guests-select]').selectOption('1');
+    await page.locator('[name="conviteConfirmado"]').check();
     await page.getByRole('button', { name: 'Enviar confirmação' }).click();
     const request = await requestPromise;
     expect(request.method()).toBe('POST');
@@ -20,6 +21,7 @@ test.describe('API RSVP - contrato de integração', () => {
     await page.getByPlaceholder('Seu nome completo').fill('Pessoa Offline');
     await page.getByPlaceholder('(62) 99999-9999').fill('(62) 99999-9999');
     await page.locator('[data-guests-select]').selectOption('1');
+    await page.locator('[name="conviteConfirmado"]').check();
     await page.getByRole('button', { name: 'Enviar confirmação' }).click();
     await expect(page.getByRole('status').filter({ hasText: 'não conseguimos registrar' })).toBeVisible();
     await expect(page.getByPlaceholder('Seu nome completo')).toHaveValue('Pessoa Offline');

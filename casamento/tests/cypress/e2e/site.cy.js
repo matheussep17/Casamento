@@ -1,8 +1,10 @@
+const { site, rsvp } = require('../../shared/test-data');
+
 describe('site do casamento - E2E com Cypress', () => {
   beforeEach(() => cy.visit('/'));
 
   it('valida a página inicial, navegação e FAQ', () => {
-    cy.title().should('eq', 'Camila & Matheus | Casamento');
+    cy.title().should('eq', site.title);
     cy.get('h1').should('contain.text', 'Camila & Matheus');
     cy.get('.countdown').should('be.visible');
     cy.contains('a', 'Informações úteis').click();
@@ -23,21 +25,16 @@ describe('site do casamento - E2E com Cypress', () => {
   });
 
   it('confirma presença e valida o payload da API', () => {
-    cy.get('input[placeholder="Seu nome completo"]').type('Camila Cypress');
-    cy.get('input[placeholder="(62) 99999-9999"]').type('62999998888');
-    cy.get('[data-guests-select]').select('3');
-    cy.get('[data-guest-list] input').eq(0).type('Matheus Cypress');
-    cy.get('[data-guest-list] input').eq(1).type('Ana Cypress');
-    cy.get('[data-message-input]').type('Mensagem Cypress');
+    cy.fillRsvp({ responsible: rsvp.responsible, phone: rsvp.phone, guests: '3', companions: rsvp.companions, message: rsvp.message });
     cy.contains('button', 'Enviar confirmação').click();
     cy.wait('@rsvpApi').its('request.body').then((body) => {
       const payload = typeof body === 'string' ? JSON.parse(body) : body;
-      expect(payload).to.include({ token: 'casamento-2027', presenca: 'sim', responsavel: 'Camila Cypress' });
-      expect(payload.telefone).to.eq('(62) 99999-8888');
+      expect(payload).to.include({ token: site.rsvpToken, presenca: 'sim', responsavel: rsvp.responsible });
+      expect(payload.telefone).to.eq(rsvp.phone);
       expect(payload.convidados).to.have.length(3);
-      expect(payload.convidados[1].nome).to.eq('Matheus Cypress');
+      expect(payload.convidados[1].nome).to.eq(rsvp.companions[0]);
     });
-    cy.contains('[role="status"]', 'Presença confirmada com sucesso.').should('be.visible');
+    cy.contains('[role="status"]', site.rsvpPreparedStatus).should('be.visible');
   });
 
   it('permite cancelar presença e abre WhatsApp', () => {
@@ -47,9 +44,10 @@ describe('site do casamento - E2E com Cypress', () => {
     cy.get('input[placeholder="Seu nome completo"]').type('Cypress Ausente');
     cy.get('[data-guests-select]').select('2');
     cy.get('[data-guest-list] input').type('Acompanhante Ausente');
+    cy.get('[name="conviteConfirmado"]').check();
     cy.contains('button', 'Enviar confirmação').click();
-    cy.contains('[role="status"]', 'Cancelamento enviado').should('be.visible');
-    cy.window().its('__openedUrls.0').should('match', /^https:\/\/wa\.me\/5562992304054\?/);
+    cy.contains('[role="status"]', site.rsvpPreparedStatus).should('be.visible');
+    cy.assertWhatsAppOpened();
   });
 
   it('copia Pix, cria agenda e valida links externos', () => {
