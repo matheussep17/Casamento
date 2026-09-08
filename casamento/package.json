@@ -1,0 +1,21 @@
+{
+  "name": "casamento-camila-matheus",
+  "private": true,
+  "version": "1.0.0",
+  "scripts": {
+    "start": "http-server . -p 4173 -c-1",
+    "test": "npm run test:playwright && npm run test:cypress",
+    "test:playwright": "playwright test",
+    "test:playwright:ui": "playwright test --ui",
+    "test:cypress": "start-server-and-test start http://127.0.0.1:4173 test:cypress:run",
+    "test:cypress:run": "node scripts/run-cypress.js run",
+    "test:cypress:open": "start-server-and-test start http://127.0.0.1:4173 test:cypress:open:run",
+    "test:cypress:open:run": "node scripts/run-cypress.js open"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.52.0",
+    "cypress": "^13.17.0",
+    "http-server": "^14.1.1",
+    "start-server-and-test": "^2.0.8"
+  }
+}
