@@ -1,7 +1,7 @@
-const { test: base, expect } = require('@playwright/test');
-const { site } = require('../shared/test-data');
+const { test: base, expect } = require("@playwright/test");
+const { site } = require("../shared/test-data");
 
-const RSVP_URL = '**/script.google.com/macros/s/**/exec';
+const RSVP_URL = "**/script.google.com/macros/s/**/exec";
 
 const test = base.extend({
   page: async ({ page }, use) => {
@@ -11,13 +11,13 @@ const test = base.extend({
         window.__openedUrls.push(String(url));
         return null;
       };
-      Object.defineProperty(navigator, 'clipboard', {
+      Object.defineProperty(navigator, "clipboard", {
         configurable: true,
         value: { writeText: async () => undefined },
       });
     });
     await page.route(RSVP_URL, async (route) => {
-      await route.fulfill({ status: 200, contentType: 'text/plain', body: 'OK' });
+      await route.fulfill({ status: 200, contentType: "text/plain", body: "OK" });
     });
     await use(page);
   },
