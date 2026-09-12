@@ -1,14 +1,14 @@
 const { test, expect, RSVP_URL, site } = require("./fixtures");
 
 test.describe("site do casamento - regressões e acessibilidade", () => {
-  test.beforeEach(async ({ page }) => {
-    await page.goto("/");
+  test.beforeEach(async ({ weddingPage }) => {
+    await weddingPage.goto();
   });
 
   test("renderiza a contagem regressiva com valores numéricos e data configurada", async ({
-    page,
+    weddingPage,
   }) => {
-    const countdown = page.locator(".countdown");
+    const countdown = weddingPage.countdown;
 
     await expect(countdown).toHaveAttribute("data-wedding-date", "2027-08-07T16:30:00-03:00");
     await expect(countdown.locator('[data-countdown="days"]')).toHaveText(/^\d{3}$/);
@@ -17,22 +17,22 @@ test.describe("site do casamento - regressões e acessibilidade", () => {
     await expect(countdown.locator('[data-countdown="seconds"]')).toHaveText(/^\d{2}$/);
   });
 
-  test("abre a foto ativa pelo teclado e navega no lightbox", async ({ page }) => {
-    const activeSlide = page.locator(".carousel-slide.is-active");
+  test("abre a foto ativa pelo teclado e navega no lightbox", async ({ weddingPage }) => {
+    const activeSlide = weddingPage.activeSlide;
     await activeSlide.focus();
     await activeSlide.press("Enter");
 
-    const dialog = page.locator(".photo-lightbox");
+    const dialog = weddingPage.lightbox;
     await expect(dialog).toBeVisible();
     await expect(dialog.locator("img")).toHaveAttribute("src", /foto-1\.webp/);
 
     await dialog.getByRole("button", { name: "Próxima foto" }).click();
     await expect(dialog.locator("img")).toHaveAttribute("src", /foto-2\.webp/);
-    await page.keyboard.press("Escape");
+    await weddingPage.page.keyboard.press("Escape");
     await expect(dialog).not.toBeVisible();
   });
 
-  test("usa o fallback quando a API de clipboard falha", async ({ page }) => {
+  test("usa o fallback quando a API de clipboard falha", async ({ page, weddingPage }) => {
     await page.evaluate(() => {
       Object.defineProperty(navigator, "clipboard", {
         configurable: true,
@@ -40,7 +40,7 @@ test.describe("site do casamento - regressões e acessibilidade", () => {
       });
     });
 
-    await page.getByRole("button", { name: "Copiar chave Pix" }).click();
+    await weddingPage.copyPix();
     await expect(page.getByRole("status").filter({ hasText: site.pixKey })).toBeVisible();
   });
 
@@ -52,7 +52,7 @@ test.describe("site do casamento - regressões e acessibilidade", () => {
     });
 
     await page.locator('[name="website"]').fill("bot");
-    await page.getByPlaceholder("Seu nome completo").fill("Robô de teste");
+    await page.locator('[name="responsavel"]').fill("Robô de teste");
     await page.locator('[name="telefone"]').fill("62999999999");
     await page.locator("[data-guests-select]").selectOption("1");
     await page.locator('[name="conviteConfirmado"]').check();
@@ -70,7 +70,7 @@ test.describe("site do casamento - regressões e acessibilidade", () => {
     });
 
     await page.getByLabel("Não poderei comparecer").check();
-    await page.getByPlaceholder("Seu nome completo").fill("Pessoa Offline");
+    await page.locator('[name="responsavel"]').fill("Pessoa Offline");
     await page.locator("[data-guests-select]").selectOption("2");
     await page.locator("[data-guest-list] input").fill("Acompanhante Offline");
     await page.locator('[name="conviteConfirmado"]').check();

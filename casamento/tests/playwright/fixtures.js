@@ -1,9 +1,13 @@
 const { test: base, expect } = require("@playwright/test");
 const { site } = require("../shared/test-data");
+const { WeddingPage } = require("./pages/wedding.page");
 
 const RSVP_URL = "**/script.google.com/macros/s/**/exec";
 
 const test = base.extend({
+  weddingPage: async ({ page }, use) => {
+    await use(new WeddingPage(page));
+  },
   page: async ({ page }, use) => {
     await page.addInitScript(() => {
       window.__openedUrls = [];

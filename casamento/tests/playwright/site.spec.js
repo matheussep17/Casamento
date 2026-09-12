@@ -1,21 +1,24 @@
 const { test, expect, site } = require("./fixtures");
 
 test.describe("site do casamento - fluxos E2E", () => {
-  test.beforeEach(async ({ page }) => {
-    await page.goto("/");
+  test.beforeEach(async ({ weddingPage }) => {
+    await weddingPage.goto();
   });
 
-  test("carrega conteúdo principal, metadados e recursos locais", async ({ page }) => {
+  test("carrega conteúdo principal, metadados e recursos locais", async ({ page, weddingPage }) => {
     await expect(page).toHaveTitle(site.title);
     await expect(page.locator("h1")).toHaveText("Camila & Matheus");
     await expect(page.locator('meta[name="description"]')).toHaveAttribute(
       "content",
       /Site de casamento/,
     );
-    await expect(page.locator(".countdown")).toBeVisible();
-    await expect(page.locator(".carousel-slide")).toHaveCount(5);
-    await page.locator(".photo-carousel").scrollIntoViewIfNeeded();
-    await expect(page.locator('img[src*="foto-1.webp"]')).toHaveJSProperty("complete", true);
+    await expect(weddingPage.countdown).toBeVisible();
+    await expect(weddingPage.slides).toHaveCount(5);
+    await weddingPage.carousel.scrollIntoViewIfNeeded();
+    await expect(weddingPage.carousel.locator('img[src*="foto-1.webp"]')).toHaveJSProperty(
+      "complete",
+      true,
+    );
   });
 
   test("navega pelos atalhos, abre FAQ e atualiza o carrossel", async ({ page }) => {
@@ -25,19 +28,25 @@ test.describe("site do casamento - fluxos E2E", () => {
       .getByRole("navigation", { name: "Seções do site" })
       .getByRole("link", { name: "Informações úteis", exact: true })
       .click();
-    await expect(page.locator("#informacoes")).toBeVisible();
+    await expect(page.locator('[id="informacoes"]')).toBeVisible();
     const faq = page.locator("details").filter({ hasText: "Que horas devo chegar?" });
     await faq.locator("summary").click();
     await expect(faq).toHaveAttribute("open", "");
     await page.getByRole("button", { name: "Próxima foto" }).click();
-    await expect(page.locator(".carousel-slide.is-active")).toHaveAttribute("src", /foto-2\.webp/);
+    await expect(page.locator("[data-carousel] .carousel-slide.is-active")).toHaveAttribute(
+      "src",
+      /foto-2\.webp/,
+    );
     await page.getByRole("button", { name: "Mostrar foto 4" }).click();
-    await expect(page.locator(".carousel-slide.is-active")).toHaveAttribute("src", /foto-4\.webp/);
+    await expect(page.locator("[data-carousel] .carousel-slide.is-active")).toHaveAttribute(
+      "src",
+      /foto-4\.webp/,
+    );
   });
 
   test("abre e fecha a foto ampliada com navegação por teclado", async ({ page }) => {
-    await page.locator(".carousel-slide").first().click();
-    const dialog = page.locator(".photo-lightbox");
+    await page.locator("[data-carousel] .carousel-slide").first().click();
+    const dialog = page.locator('dialog[aria-label="Foto ampliada"]');
     await expect(dialog).toBeVisible();
     await expect(dialog.locator("img")).toHaveAttribute("src", /foto-1\.webp/);
     await page.keyboard.press("ArrowRight");
@@ -55,14 +64,14 @@ test.describe("site do casamento - fluxos E2E", () => {
       await route.fulfill({ status: 200, body: "OK" });
     });
     await page.getByRole("link", { name: "Confirmar Presença" }).click();
-    await page.getByPlaceholder("Seu nome completo").fill("Camila Souza");
-    await page.getByPlaceholder("(62) 99999-9999").fill("62999998888");
-    await expect(page.getByPlaceholder("(62) 99999-9999")).toHaveValue("(62) 99999-8888");
+    await page.locator('[name="responsavel"]').fill("Camila Souza");
+    await page.locator('[name="telefone"]').fill("62999998888");
+    await expect(page.locator('[name="telefone"]')).toHaveValue("(62) 99999-8888");
     await page.locator("[data-guests-select]").selectOption("3");
     await expect(page.locator("[data-guest-list] input")).toHaveCount(2);
     await page.locator("[data-guest-list] input").nth(0).fill("Matheus Torres");
     await page.locator("[data-guest-list] input").nth(1).fill("Ana Souza");
-    await page.getByPlaceholder("Deixe uma mensagem carinhosa").fill("Estamos muito felizes!");
+    await page.locator('[name="mensagem"]').fill("Estamos muito felizes!");
     await page.locator('[name="conviteConfirmado"]').check();
     await page.getByRole("button", { name: "Enviar confirmação" }).click();
     await expect(
@@ -86,12 +95,14 @@ test.describe("site do casamento - fluxos E2E", () => {
   test("permite cancelar presença, torna telefone opcional e abre o WhatsApp", async ({ page }) => {
     await page.getByLabel("Não poderei comparecer").check();
     await expect(page.locator("[data-attending-field]")).toBeHidden();
-    await expect(page.getByText("Nome de quem está cancelando")).toBeVisible();
+    await expect(page.locator("[data-responsible-label]")).toHaveText(
+      "Nome de quem está cancelando",
+    );
     await expect(page.locator("[data-message-input]")).toHaveAttribute(
       "placeholder",
       "Conte brevemente o motivo (opcional)",
     );
-    await page.getByPlaceholder("Seu nome completo").fill("Convidado Teste");
+    await page.locator('[name="responsavel"]').fill("Convidado Teste");
     await page.locator("[data-guests-select]").selectOption("2");
     await page.locator("[data-guest-list] input").fill("Acompanhante Teste");
     await page.locator('[name="conviteConfirmado"]').check();
@@ -115,7 +126,7 @@ test.describe("site do casamento - fluxos E2E", () => {
   });
 
   test("valida o RSVP antes de abrir o WhatsApp e preserva acompanhantes", async ({ page }) => {
-    const name = page.getByPlaceholder("Seu nome completo");
+    const name = page.locator('[name="responsavel"]');
     const guests = page.locator("[data-guests-select]");
 
     await guests.selectOption("3");

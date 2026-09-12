@@ -1,14 +1,11 @@
-const { test, expect } = require("./fixtures");
+const { test, expect, RSVP_URL } = require("./fixtures");
 
 test.describe("API RSVP - contrato de integração", () => {
-  test("envia POST em texto com token, presença e convidados", async ({ page }) => {
-    const requestPromise = page.waitForRequest("**/script.google.com/**");
+  test("envia POST em texto com token, presença e convidados", async ({ page, weddingPage }) => {
+    const requestPromise = page.waitForRequest(RSVP_URL);
     await page.goto("/");
-    await page.getByPlaceholder("Seu nome completo").fill("Pessoa API");
-    await page.getByPlaceholder("(62) 99999-9999").fill("(62) 99999-9999");
-    await page.locator("[data-guests-select]").selectOption("1");
-    await page.locator('[name="conviteConfirmado"]').check();
-    await page.getByRole("button", { name: "Enviar confirmação" }).click();
+    await weddingPage.confirmAttendance({ responsible: "Pessoa API", phone: "(62) 99999-9999" });
+    await weddingPage.submitForm();
     const request = await requestPromise;
     expect(request.method()).toBe("POST");
     expect(request.headers()["content-type"]).toContain("text/plain");
@@ -18,17 +15,17 @@ test.describe("API RSVP - contrato de integração", () => {
     });
   });
 
-  test("mantém dados e mostra fallback quando a API falha", async ({ page }) => {
+  test("mantém dados e mostra fallback quando a API falha", async ({ page, weddingPage }) => {
     await page.route("**/script.google.com/**", (route) => route.abort());
     await page.goto("/");
-    await page.getByPlaceholder("Seu nome completo").fill("Pessoa Offline");
-    await page.getByPlaceholder("(62) 99999-9999").fill("(62) 99999-9999");
-    await page.locator("[data-guests-select]").selectOption("1");
-    await page.locator('[name="conviteConfirmado"]').check();
-    await page.getByRole("button", { name: "Enviar confirmação" }).click();
+    await weddingPage.confirmAttendance({
+      responsible: "Pessoa Offline",
+      phone: "(62) 99999-9999",
+    });
+    await weddingPage.submitForm();
     await expect(
       page.getByRole("status").filter({ hasText: "não conseguimos registrar" }),
     ).toBeVisible();
-    await expect(page.getByPlaceholder("Seu nome completo")).toHaveValue("Pessoa Offline");
+    await expect(page.locator('[name="responsavel"]')).toHaveValue("Pessoa Offline");
   });
 });
