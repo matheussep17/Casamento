@@ -113,6 +113,25 @@ test.describe("site do casamento - fluxos E2E", () => {
       opened.some((url) => url.startsWith("https://calendar.google.com/calendar/render?")),
     ).toBeTruthy();
   });
+
+  test("valida o RSVP antes de abrir o WhatsApp e preserva acompanhantes", async ({ page }) => {
+    const name = page.getByPlaceholder("Seu nome completo");
+    const guests = page.locator("[data-guests-select]");
+
+    await guests.selectOption("3");
+    const guestInputs = page.locator("[data-guest-list] input");
+    await expect(guestInputs).toHaveCount(2);
+    await guestInputs.nth(0).fill("Matheus Torres");
+    await guestInputs.nth(1).fill("Ana Souza");
+    await guests.selectOption("2");
+    await guests.selectOption("3");
+    await expect(guestInputs.nth(0)).toHaveValue("Matheus Torres");
+    await expect(guestInputs.nth(1)).toHaveValue("Ana Souza");
+
+    await page.getByRole("button", { name: "Enviar confirmação" }).click();
+    await expect(name).toBeFocused();
+    expect(await page.evaluate(() => window.__openedUrls)).toEqual([]);
+  });
 });
 
 test.describe("site do casamento - responsividade", () => {
@@ -131,5 +150,21 @@ test.describe("site do casamento - responsividade", () => {
       "aria-expanded",
       "false",
     );
+  });
+
+  test("fecha o menu mobile com Escape e ao clicar fora", async ({ page }) => {
+    await page.goto("/");
+    const menu = page.getByRole("button", { name: "Menu" });
+    test.skip(!(await menu.isVisible()), "cenário exclusivo para viewport mobile");
+
+    await menu.click();
+    await expect(menu).toHaveAttribute("aria-expanded", "true");
+    await page.keyboard.press("Escape");
+    await expect(menu).toHaveAttribute("aria-expanded", "false");
+
+    await menu.click();
+    await expect(menu).toHaveAttribute("aria-expanded", "true");
+    await page.locator("main").click({ position: { x: 10, y: 300 }, force: true });
+    await expect(menu).toHaveAttribute("aria-expanded", "false");
   });
 });

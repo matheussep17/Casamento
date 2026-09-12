@@ -21,7 +21,14 @@ function isAttending(form) {
 function renderGuestFields(form, guestsSelect, guestList) {
   if (!guestList || !guestsSelect) return;
 
-  const previousValues = [...guestList.querySelectorAll("input")].map((input) => input.value);
+  const currentValues = [...guestList.querySelectorAll("input")].map((input) => input.value);
+  const rememberedValues = guestList._guestValues || [];
+  if (!guestsSelect.value) {
+    guestList._guestValues = [];
+  } else if (currentValues.length >= rememberedValues.length) {
+    guestList._guestValues = currentValues;
+  }
+  const previousValues = guestList._guestValues || currentValues;
   guestList.replaceChildren();
 
   const attending = isAttending(form);
