@@ -1,7 +1,7 @@
 {
   "name": "casamento-camila-matheus",
   "private": true,
-  "version": "1.0.0",
+  "version": "2.1.41",
   "scripts": {
     "start": "http-server . -p 4173 -c-1",
     "test": "playwright test",
