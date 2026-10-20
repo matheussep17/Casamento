@@ -113,6 +113,10 @@ test.describe("site do casamento - fluxos E2E", () => {
     expect(await page.evaluate(() => window.__openedUrls[0])).toMatch(
       new RegExp(`^https:\\/\\/wa\\.me\\/${site.whatsapp}\\?`),
     );
+    const whatsappMessage = new URL(
+      await page.evaluate(() => window.__openedUrls[0]),
+    ).searchParams.get("text");
+    expect(whatsappMessage).not.toContain("WhatsApp para contato:");
   });
 
   test("copia a chave Pix e gera o link do Google Agenda", async ({ page }) => {
@@ -141,6 +145,30 @@ test.describe("site do casamento - fluxos E2E", () => {
 
     await page.getByRole("button", { name: "Enviar confirmação" }).click();
     await expect(name).toBeFocused();
+    expect(await page.evaluate(() => window.__openedUrls)).toEqual([]);
+  });
+
+  test("bloqueia nomes de responsável ou acompanhante contendo somente espaços", async ({
+    page,
+  }) => {
+    const responsible = page.locator('[name="responsavel"]');
+    const phone = page.locator('[name="telefone"]');
+    const guests = page.locator("[data-guests-select]");
+    const guestInputs = page.locator("[data-guest-list] input");
+
+    await responsible.fill("   ");
+    await phone.fill("62900000000");
+    await guests.selectOption("1");
+    await page.locator('[name="conviteConfirmado"]').check();
+    await page.getByRole("button", { name: "Enviar confirmação" }).click();
+    await expect(responsible).toBeFocused();
+    expect(await page.evaluate(() => window.__openedUrls)).toEqual([]);
+
+    await responsible.fill("Pessoa Teste");
+    await guests.selectOption("2");
+    await guestInputs.fill("   ");
+    await page.getByRole("button", { name: "Enviar confirmação" }).click();
+    await expect(guestInputs).toBeFocused();
     expect(await page.evaluate(() => window.__openedUrls)).toEqual([]);
   });
 });

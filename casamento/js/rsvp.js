@@ -151,7 +151,8 @@ function sendRsvp(body, { people, responsible, phone, message, attendance }) {
 }
 
 function buildWhatsAppMessage({ attendance, responsible, phone, people, message }) {
-  const intro = [`Oi! Aqui é ${responsible}.`, `WhatsApp para contato: ${phone}.`];
+  const intro = [`Oi! Aqui é ${responsible}.`];
+  if (phone) intro.push(`WhatsApp para contato: ${phone}.`);
   const summary =
     attendance === "sim"
       ? `Confirmo presença no casamento para ${people.length} pessoa(s):`
@@ -185,6 +186,12 @@ export function setupRsvp() {
 
     // honeypot anti-spam: se o campo invisível foi preenchido, ignora o envio
     if (form.elements.website?.value) return;
+
+    form.querySelectorAll('[name="responsavel"], [name="nomesAcompanhantes"]').forEach((input) => {
+      input.setCustomValidity(
+        input.value.trim() ? "" : "Informe um nome válido, sem deixar o campo vazio.",
+      );
+    });
     if (!form.reportValidity()) return;
 
     const data = new FormData(form);
@@ -194,8 +201,7 @@ export function setupRsvp() {
     const companions = data
       .getAll("nomesAcompanhantes")
       .map(String)
-      .map((name) => name.trim())
-      .filter(Boolean);
+      .map((name) => name.trim());
     const people = [responsible, ...companions];
     const message = String(data.get("mensagem") || "").trim();
 
@@ -262,6 +268,14 @@ export function setupRsvp() {
   };
 
   form.addEventListener("submit", submitRsvp);
+  form.addEventListener("input", (event) => {
+    if (
+      event.target.matches('[name="responsavel"], [name="nomesAcompanhantes"]') &&
+      event.target.value.trim()
+    ) {
+      event.target.setCustomValidity("");
+    }
+  });
   form.addEventListener("change", (event) => {
     if (event.target.name === "presenca") refreshAttendanceFields();
   });
