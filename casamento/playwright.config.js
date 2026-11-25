@@ -13,7 +13,7 @@ module.exports = defineConfig({
     video: "retain-on-failure",
   },
   webServer: {
-    command: "http-server . -p 4173 -c-1",
+    command: "node server.js",
     url: "http://127.0.0.1:4173",
     reuseExistingServer: !process.env.CI,
   },

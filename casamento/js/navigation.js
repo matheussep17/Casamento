@@ -19,6 +19,21 @@ export function setupNavigation() {
   const header = document.querySelector(".site-header");
   const menuToggle = document.querySelector(".menu-toggle");
 
+  const getCleanUrl = (sectionId) => {
+    const base = location.pathname.includes("/casamento/")
+      ? "/casamento"
+      : location.pathname === "/casamento"
+        ? "/casamento"
+        : "";
+    return sectionId === "inicio" ? `${base}/` : `${base}/${sectionId}`;
+  };
+
+  const getSectionIdFromLocation = () => {
+    if (location.hash) return decodeURIComponent(location.hash.slice(1));
+    const segments = location.pathname.split("/").filter(Boolean);
+    return segments.at(-1) || "inicio";
+  };
+
   const scrollToTarget = (target, behavior = "smooth") => {
     if (!target) return;
     scrollTo({
@@ -55,30 +70,29 @@ export function setupNavigation() {
     const target = document.querySelector(anchor.hash);
     if (!target) return;
     event.preventDefault();
-    if (location.hash !== anchor.hash) {
-      history.pushState(null, "", anchor.hash);
-    }
+    history.pushState(null, "", getCleanUrl(target.id));
     scrollToTarget(target);
     closeMenu();
   });
 
-  const scrollToLocationHash = () => {
-    if (!location.hash) {
+  const scrollToLocation = () => {
+    const sectionId = getSectionIdFromLocation();
+    if (sectionId === "inicio") {
       scrollToTarget(document.querySelector("#inicio"), "auto");
       return;
     }
-    const target = document.querySelector(location.hash);
+    const target = document.querySelector(`#${CSS.escape(sectionId)}`);
     if (target) scrollToTarget(target, "auto");
   };
 
-  window.addEventListener("load", scrollToLocationHash);
-  window.addEventListener("hashchange", scrollToLocationHash);
-  window.addEventListener("popstate", scrollToLocationHash);
+  window.addEventListener("load", scrollToLocation);
+  window.addEventListener("hashchange", scrollToLocation);
+  window.addEventListener("popstate", scrollToLocation);
 
   if (document.readyState === "complete") {
-    requestAnimationFrame(scrollToLocationHash);
-  } else if (location.hash) {
-    requestAnimationFrame(scrollToLocationHash);
+    requestAnimationFrame(scrollToLocation);
+  } else if (location.hash || getSectionIdFromLocation() !== "inicio") {
+    requestAnimationFrame(scrollToLocation);
   }
 
   const links = [...document.querySelectorAll('.nav-links a[href^="#"]')];

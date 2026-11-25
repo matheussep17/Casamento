@@ -59,6 +59,8 @@ export function setupPixCopy() {
 export function setupScrollRestoration() {
   if ("scrollRestoration" in history) history.scrollRestoration = "manual";
   window.addEventListener("load", () => {
-    if (!location.hash) scrollTo(0, 0);
+    const knownSections = ["inicio", "historia", "local", "traje", "programacao", "informacoes", "presenca", "presentes"];
+    const sectionFromPath = location.pathname.split("/").filter(Boolean).at(-1);
+    if (!location.hash && !knownSections.includes(sectionFromPath)) scrollTo(0, 0);
   });
 }

@@ -28,7 +28,7 @@ test.describe("site do casamento - fluxos E2E", () => {
       .getByRole("navigation", { name: "Seções do site" })
       .getByRole("link", { name: "Informações úteis", exact: true })
       .click();
-    await expect(page).toHaveURL(/#informacoes$/);
+    await expect(page).toHaveURL(/\/informacoes$/);
     await expect(page.locator('[id="informacoes"]')).toBeVisible();
     const faq = page.locator("details").filter({ hasText: "Que horas devo chegar?" });
     await faq.locator("summary").click();
@@ -45,9 +45,9 @@ test.describe("site do casamento - fluxos E2E", () => {
     );
   });
 
-  test("abre diretamente uma seção a partir do endereço com hash", async ({ page }) => {
-    await page.goto("/#presenca");
-    await expect(page).toHaveURL(/#presenca$/);
+  test("abre diretamente uma seção a partir da URL limpa", async ({ page }) => {
+    await page.goto("/presenca");
+    await expect(page).toHaveURL(/\/presenca$/);
     await expect(page.locator('[id="presenca"]')).toBeInViewport();
   });
 
