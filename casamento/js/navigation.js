@@ -19,6 +19,16 @@ export function setupNavigation() {
   const header = document.querySelector(".site-header");
   const menuToggle = document.querySelector(".menu-toggle");
 
+  const scrollToTarget = (target, behavior = "smooth") => {
+    if (!target) return;
+    scrollTo({
+      top: target.id === "inicio"
+        ? 0
+        : Math.max(target.offsetTop - (header?.offsetHeight || 0) - 16, 0),
+      behavior,
+    });
+  };
+
   const closeMenu = () => {
     header?.classList.remove("menu-open");
     menuToggle?.setAttribute("aria-expanded", "false");
@@ -45,12 +55,31 @@ export function setupNavigation() {
     const target = document.querySelector(anchor.hash);
     if (!target) return;
     event.preventDefault();
-    scrollTo({
-      top: Math.max(target.offsetTop - (header?.offsetHeight || 0) - 16, 0),
-      behavior: "smooth",
-    });
+    if (location.hash !== anchor.hash) {
+      history.pushState(null, "", anchor.hash);
+    }
+    scrollToTarget(target);
     closeMenu();
   });
+
+  const scrollToLocationHash = () => {
+    if (!location.hash) {
+      scrollToTarget(document.querySelector("#inicio"), "auto");
+      return;
+    }
+    const target = document.querySelector(location.hash);
+    if (target) scrollToTarget(target, "auto");
+  };
+
+  window.addEventListener("load", scrollToLocationHash);
+  window.addEventListener("hashchange", scrollToLocationHash);
+  window.addEventListener("popstate", scrollToLocationHash);
+
+  if (document.readyState === "complete") {
+    requestAnimationFrame(scrollToLocationHash);
+  } else if (location.hash) {
+    requestAnimationFrame(scrollToLocationHash);
+  }
 
   const links = [...document.querySelectorAll('.nav-links a[href^="#"]')];
   const items = links
